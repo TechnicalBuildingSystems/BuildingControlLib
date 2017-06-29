@@ -1,4 +1,4 @@
-![Fraunhofer Institute for Building Physics](./BuildingControlLib/Resources/Images/BuildingControlLib.png)
+![Fraunhofer Institute for Building Physics](./BuildingControlLib/Resources/Images/BuildingControlLib.png = 200x200)
 
 BuildingControlLib
 ==================
