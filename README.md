@@ -1,3 +1,4 @@
+![img](./BuildingControlLib/Resources/Images/LibraryLogo_small.png)
 
 BuildingControlLib
 ==================
