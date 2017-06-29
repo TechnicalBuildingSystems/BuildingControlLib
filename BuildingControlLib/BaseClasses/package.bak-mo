@@ -1,5 +1,0 @@
-within BuildingControlLib;
-package BaseClasses "Contains basic classes and interface classes"
-    extends Modelica.Icons.BasesPackage;
-
-end BaseClasses;

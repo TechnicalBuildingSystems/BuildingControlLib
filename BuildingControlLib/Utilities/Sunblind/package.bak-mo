@@ -1,6 +1,0 @@
-within BuildingControlLib.Utilities;
-package Sunblind "Sunblind models for testing control functions"
-annotation (Documentation(info="<html>
-<p>This package contains sunblind models used to test building control functions.</p>
-</html>"));
-end Sunblind;

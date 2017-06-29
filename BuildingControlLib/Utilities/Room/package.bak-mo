@@ -1,8 +1,0 @@
-within BuildingControlLib.Utilities;
-package Room "Room models for testing control functions"
-
-
-annotation (Documentation(info="<html>
-<p>This package contains room models used to test building control functions. The models have been reused from AixLib library (www.github.com/RWTH-EBC/AixLib)</p>
-</html>"));
-end Room;

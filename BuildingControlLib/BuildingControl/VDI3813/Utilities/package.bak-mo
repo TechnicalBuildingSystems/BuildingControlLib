@@ -1,5 +1,0 @@
-within BuildingControlLib.BuildingControl.VDI3813;
-package Utilities "Important and helpful models for  implementation of room automation functions"
-extends Modelica.Icons.UtilitiesPackage;
-
-end Utilities;

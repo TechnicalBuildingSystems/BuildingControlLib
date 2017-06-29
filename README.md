@@ -14,7 +14,7 @@ The model library **BuildingControlLib** is released by Fraunhofer Institute for
 
 So far the following persons from [Fraunhofer Institute for Building Physics IBP](https://www.ibp.fraunhofer.de/en.html) have contributed to **BuildingControlLib**:
 
-Georg Peßler
+Georg Peßler, 
 [Georg Ferdinand Schneider](https://www.researchgate.net/profile/Georg_Schneider3)  
 
 This research was performed as part of the [Energie Campus Nürnberg](http://www.encn.de/en/) and supported by funding through the "Aufbruch Bayern (Bavaria on the move)&rdquo; initiative of the state of Bavaria.

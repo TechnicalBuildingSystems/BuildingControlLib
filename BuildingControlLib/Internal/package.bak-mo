@@ -1,5 +1,0 @@
-within BuildingControlLib;
-package Internal "Contains internals"
-  extends Modelica.Icons.InternalPackage;
-
-end Internal;

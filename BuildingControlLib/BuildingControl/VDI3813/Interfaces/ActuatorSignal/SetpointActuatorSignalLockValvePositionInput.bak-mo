@@ -1,8 +1,0 @@
-within BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignal;
-connector SetpointActuatorSignalLockValvePositionInput
-  "Input connector of SetpointActuatorSignalLockValvePosition"
- extends Partial.PartialInput;
- input
-    BuildingControlLib.BuildingControl.VDI3813.Types.ActuatorSignal.SetpointActuatorSignalLockValvePosition
-  setpointActuatorSignalLockValvePosition;
-end SetpointActuatorSignalLockValvePositionInput;
