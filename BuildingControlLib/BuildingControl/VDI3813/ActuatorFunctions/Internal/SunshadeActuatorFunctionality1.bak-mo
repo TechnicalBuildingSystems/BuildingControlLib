@@ -1,0 +1,33 @@
+within BuildingControlLib.BuildingControl.VDI3813.ActuatorFunctions.Internal;
+block SunshadeActuatorFunctionality1
+  "Algorithm model to provide functionality of SunshadeActuator"
+  extends
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial.PartialFunctionality;
+
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.CommandPhysicalMotorControlRelayOutput
+    M annotation (Placement(transformation(extent={{-22,80},{20,120}}),
+        iconTransformation(extent={{-22,82},{20,120}})));
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeInput
+    S_SET annotation (Placement(transformation(extent={{-100,-20},{-40,20}}),
+        iconTransformation(extent={{-100,-20},{-40,20}})));
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.StatusSunshadeOutput
+    S_STA annotation (Placement(transformation(extent={{100,-20},{160,20}}),
+        iconTransformation(extent={{100,-20},{160,20}})));
+
+equation
+  // current sunshade value depending from setpoint sunshade value
+  S_STA.statusSunshadePos = S_SET.commandSunshadePos;
+  S_STA.statusSunshadeSlatAngle = S_SET.commandSunshadeSlatAngle;
+
+  // physical output depending from setpoint sunshade value
+  if S_SET.commandSunshadePos > 0 then
+    M.commandPhysicalMotorControlRelay = true;
+  else
+    M.commandPhysicalMotorControlRelay = false;
+  end if;
+
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+            -100},{100,100}}), graphics), Icon(coordinateSystem(
+          preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
+        graphics));
+end SunshadeActuatorFunctionality1;

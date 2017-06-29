@@ -1,0 +1,8 @@
+within BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature;
+connector CommandAdjustTemperatureSetpointOutput
+  "Output connector of CommandAdjustTemperatureSetpoint"
+ extends Partial.PartialPhysicalOutput;
+ output
+    BuildingControlLib.BuildingControl.VDI3813.Types.AirTemperature.CommandAdjustTemperatureSetpoint
+ commandAdjustTemperatureSetpoint;
+end CommandAdjustTemperatureSetpointOutput;

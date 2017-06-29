@@ -1,0 +1,8 @@
+within BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignal;
+connector CommandActuatorSignalLockValvePositionInput
+  "Input connector of CommandActuatorSignalLockValvePosition"
+ extends Partial.PartialInput;
+ input
+    BuildingControlLib.BuildingControl.VDI3813.Types.ActuatorSignal.CommandActuatorSignalLockValvePosition
+  commandActuatorSignalLockValvePosition;
+end CommandActuatorSignalLockValvePositionInput;

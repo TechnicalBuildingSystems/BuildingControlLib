@@ -1,0 +1,3 @@
+within BuildingControlLib.BuildingControl.VDI3814.StateGraph;
+block Greater1
+end Greater1;

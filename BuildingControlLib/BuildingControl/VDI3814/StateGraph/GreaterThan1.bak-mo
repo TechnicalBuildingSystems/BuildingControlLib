@@ -1,0 +1,66 @@
+within BuildingControlLib.BuildingControl.VDI3814.StateGraph;
+block GreaterThan1 "From standard VDI 3814-6 a greather than or equal 1"
+   extends Interfaces.PartialBinaryMISO(nu=nIn);
+   /* ***   ***   ***   ***   ***   ***   ***   ***   ***   ***   */
+   // Connectors
+  Modelica.Blocks.Logical.GreaterEqualThreshold greaterEqualThreshold[nIn](each threshold=
+       1) annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+        rotation=180,
+        origin={-30,0})));
+  Modelica.Blocks.Math.IntegerToReal integerToReal[nIn] annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-70,0})));
+  Modelica.Blocks.MathBoolean.And and1(nu=nIn)   annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={10,0})));
+  Modelica.Blocks.Math.BooleanToInteger booleanToInteger(integerTrue=1,
+      integerFalse=0)
+    annotation (Placement(transformation(extent={{60,-10},{80,10}})));
+   /* ***   ***   ***   ***   ***   ***   ***   ***   ***   ***   */
+   // Parameters
+   parameter Integer nIn = 2;
+equation
+  for i in 1:nIn loop
+      connect(u[i], integerToReal[i].u) annotation (Line(
+      points={{-100,0},{-82,0}},
+      color={255,128,0},
+      smooth=Smooth.None));
+
+  connect(integerToReal[i].y, greaterEqualThreshold[i].u) annotation (Line(
+      points={{-59,0},{-42,0}},
+      color={0,0,127},
+      smooth=Smooth.None));
+
+   connect(greaterEqualThreshold[i].y, and1.u[i]) annotation (Line(
+      points={{-19,0},{-10,0},{-10,0},{0,0}},
+      color={255,0,255},
+      smooth=Smooth.None));
+
+   end for;
+
+  connect(booleanToInteger.u, and1.y) annotation (Line(
+      points={{58,0},{21.5,0}},
+      color={255,0,255},
+      smooth=Smooth.None));
+
+  connect(booleanToInteger.y, y) annotation (Line(
+      points={{81,0},{92,0},{92,-2},{115,-2},{115,0}},
+      color={255,127,0},
+      smooth=Smooth.None));
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+            {100,100}}), graphics={Rectangle(
+          extent={{-100,100},{100,-100}},
+          lineColor={0,0,0},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid), Text(
+          extent={{-46,50},{48,-46}},
+          lineColor={0,0,0},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          textString=">1")}), Diagram(coordinateSystem(preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}}), graphics));
+end GreaterThan1;

@@ -1,0 +1,8 @@
+within BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignal;
+connector StatusActuatorSignalValvePositionOutput
+  "Output connector of StatusActuatorSignalValvePosition"
+ extends Partial.PartialOutput;
+ output
+    BuildingControlLib.BuildingControl.VDI3813.Types.ActuatorSignal.StatusActuatorSignalValvePosition
+ statusActuatorSignalValvePosition;
+end StatusActuatorSignalValvePositionOutput;

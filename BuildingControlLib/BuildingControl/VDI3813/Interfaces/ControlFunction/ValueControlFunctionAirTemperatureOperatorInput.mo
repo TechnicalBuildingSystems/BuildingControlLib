@@ -1,0 +1,8 @@
+within BuildingControlLib.BuildingControl.VDI3813.Interfaces.ControlFunction;
+connector ValueControlFunctionAirTemperatureOperatorInput
+  "Input connector of ValueControlFunctionOperator"
+ extends Partial.PartialInput;
+  input
+    BuildingControlLib.BuildingControl.VDI3813.Types.ControlFunction.ValueControlFunctionAirTemperatureOperator
+    valueControlFunctionAirTemperatureOperator;
+end ValueControlFunctionAirTemperatureOperatorInput;

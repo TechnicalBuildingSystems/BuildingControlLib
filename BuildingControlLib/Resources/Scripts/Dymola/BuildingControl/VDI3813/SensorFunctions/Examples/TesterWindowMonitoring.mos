@@ -1,0 +1,3 @@
+simulateModel("BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterWindowMonitoring", numberOfIntervals=10, method="dassl", resultFile="TesterWindowMonitoring");
+removePlots();
+plot({"windowMonitoring.B_WINDOW.valueWindow","windowMonitoring.B.valuePhysicalBinary"}, colors={{0,0,255},{0,0,255}});

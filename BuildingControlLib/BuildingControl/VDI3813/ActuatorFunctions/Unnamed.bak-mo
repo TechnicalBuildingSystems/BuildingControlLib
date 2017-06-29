@@ -1,0 +1,5 @@
+within BuildingControlLib.BuildingControl.VDI3813.ActuatorFunctions;
+model Unnamed
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+        coordinateSystem(preserveAspectRatio=false)));
+end Unnamed;

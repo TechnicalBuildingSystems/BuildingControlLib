@@ -1,0 +1,12 @@
+ValuePartitionWallOutput
+ValuePartitionWallInput
+ValueWindowOutput
+ValueWindowInput
+ValueDewpointOutput
+ValueDewpointInput
+ValueSwitchFunctionOnOffOutput
+ValueSwitchFunctionOnOffInput
+ValuePrecipitationOutput
+ValuePrecipitationInput
+CommandPhysicalMotorControlRelayOutput
+CommandPhysicalMotorControlRelayInput

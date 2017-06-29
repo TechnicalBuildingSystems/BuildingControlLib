@@ -1,0 +1,8 @@
+within BuildingControlLib.BuildingControl.VDI3813.Interfaces.ControlFunction;
+connector ValueControlFunctionAirTemperatureCurrentlyInput
+  "Input connector of ValueControlFunctionCurrently"
+ extends Partial.PartialInput;
+  input
+    BuildingControlLib.BuildingControl.VDI3813.Types.ControlFunction.ValueControlFunctionAirTemperatureCurrently
+    valueControlFunctionAirTemperatureCurrently;
+end ValueControlFunctionAirTemperatureCurrentlyInput;

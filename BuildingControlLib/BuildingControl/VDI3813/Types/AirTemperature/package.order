@@ -1,0 +1,10 @@
+SetpointAirTemperatureOperator
+ValueAirTemperatureSupply
+ValueAirTemperatureRoom
+ValueAirTemperatureReturn
+ValueAirTemperatureOutdoor
+StatusAirTemperature
+SetpointAirTemperatureUser
+SetpointHeatCoolEnergyModes
+CommandAdjustTemperatureSetpoint
+ValueAdjustTemperatureSetpoint

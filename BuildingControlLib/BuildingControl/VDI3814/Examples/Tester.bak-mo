@@ -1,0 +1,5 @@
+within BuildingControlLib.BuildingControl.VDI3814.Examples;
+model Tester
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+            -100},{100,100}}), graphics));
+end Tester;

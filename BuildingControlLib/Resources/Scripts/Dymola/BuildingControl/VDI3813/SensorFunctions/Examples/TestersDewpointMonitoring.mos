@@ -1,0 +1,3 @@
+simulateModel("BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterDewpointMonitoring", numberOfIntervals=10, method="dassl", resultFile="TesterDewpointMonitoring");
+removePlots();
+plot({"dewpointMonitoring.B.valuePhysicalBinary","dewpointMonitoring.B_DEW.valueDewpoint"}, colors={{0,0,255},{0,0,255}});

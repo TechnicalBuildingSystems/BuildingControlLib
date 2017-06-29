@@ -1,0 +1,28 @@
+within BuildingControlLib.BuildingControl.VDI3814.Interfaces;
+connector BinaryOutput = output Types.Binary "'output Binary' as connector" annotation (
+  defaultComponentName="y",
+  Icon(
+    coordinateSystem(preserveAspectRatio=true,
+      extent={{-100.0,-100.0},{100.0,100.0}},
+      initialScale=0.1),
+      graphics={
+    Polygon(
+      lineColor={127,0,0},
+      points={{-100.0,100.0},{100.0,0.0},{-100.0,-100.0}})}),
+  Diagram(
+    coordinateSystem(preserveAspectRatio=true,
+      extent={{-100.0,-100.0},{100.0,100.0}},
+      initialScale=0.1),
+      graphics={
+    Polygon(
+      lineColor={127,0,0},
+      points={{-100,50},{0,0},{-100,-50}}),
+    Text(
+      lineColor={127,0,0},
+      extent={{30.0,60.0},{30.0,110.0}},
+      textString="%name")}),
+  Documentation(info="<html>
+<p>
+Connector with one output signal of type Binary. Derived from Modelica.Blocks.Interfaces.RealOutput
+</p>
+</html>"));

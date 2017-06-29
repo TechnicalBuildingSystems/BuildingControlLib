@@ -1,0 +1,71 @@
+within BuildingControlLib.BuildingControl.VDI3813.ApplicationFunctions.Examples;
+model TesterTimeProg
+extends Modelica.Icons.Example;
+  Nonstandardized.ScheduleWeekly weeklySchedule(
+    offset = offset,
+    startTime = startTimeWSCH,
+    inputIntervalsAndValue = PAR_WSCH) annotation (Placement(transformation(extent={{-80,-80},{-60,-60}})));
+    Nonstandardized.ScheduleDaily  exceptionSchedule(
+    offset = offset,
+    startTime = startTimeESCH,
+    inputIntervalsAndValue = PAR_ESCH) annotation (Placement(transformation(extent={{-80,-20},{-60,0}})));
+    Nonstandardized.ScheduleYearly exceptionCalendar(
+    offset = offset,
+    startTime = startTimeCAL,
+    inputIntervalsAndValue = PAR_CAL) annotation (Placement(transformation(extent={{-80,-50},{-60,-30}})));
+
+      Modelica.Blocks.Logical.GreaterThreshold greaterThreshold(threshold=-1)
+    annotation (Placement(transformation(extent={{-40,-50},{-20,-30}})));
+  Modelica.Blocks.Logical.Switch switch1
+    annotation (Placement(transformation(extent={{0,-50},{20,-30}})));
+  Modelica.Blocks.Math.RealToInteger realToInteger
+    annotation (Placement(transformation(extent={{40,-50},{60,-30}})));
+  Sources.EnergyMode.PrescribedM_BMS prescribedM_BMS annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={70,10})));
+
+equation
+  connect(realToInteger.y,prescribedM_BMS. u) annotation (Line(
+      points={{61,-40},{66,-40},{66,2}},
+      color={255,127,0},
+      smooth=Smooth.None));
+  connect(greaterThreshold.u, exceptionCalendar.y) annotation (Line(
+      points={{-42,-40},{-59,-40}},
+      color={0,0,127},
+      smooth=Smooth.None));
+  connect(realToInteger.u, switch1.y) annotation (Line(
+      points={{38,-40},{21,-40}},
+      color={0,0,127},
+      smooth=Smooth.None));
+  connect(switch1.u2, greaterThreshold.y) annotation (Line(
+      points={{-2,-40},{-19,-40}},
+      color={255,0,255},
+      smooth=Smooth.None));
+  connect(weeklySchedule.y, switch1.u3) annotation (Line(
+      points={{-59,-70},{-10,-70},{-10,-48},{-2,-48}},
+      color={0,0,127},
+      smooth=Smooth.None));
+  connect(exceptionSchedule.y, switch1.u1) annotation (Line(
+      points={{-59,-10},{-10,-10},{-10,-32},{-2,-32}},
+      color={0,0,127},
+      smooth=Smooth.None));
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+            -100},{100,100}}), graphics),
+    experiment(StopTime=1.8144e+006),
+    __Dymola_experimentSetupOutput,preferedView="Info",
+    Documentation(revisions="<html>
+<ul>
+<li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
+</ul>
+</html>
+", info="<html>
+<h4><span style=\"color: #008000\">Overview</span></h4>
+<p>Block that implements functionality of &QUOT;Time program&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.4, p. 35 - 37]</a>. </p>
+<h4><span style=\"color: #008000\">Functional Description</span></h4>
+<p>&QUOT;The function <i>Time program</i> (RA-FL section 6, column 3; informative function block Figure 25) allows time-controlled generation of output information, thus influencing or controlling application functions or actuator functions.The time program contains the time and date functions as well as calendar entries including exception days (e. g. holidays). The respective switching operations are generated via a default week schedule and exception day schedules with switching point/value pairs. Such a time program can be implemented and maintained either directly via an interaction interface, or it is transferred by a management communication function to an operating device or external system.&QUOT;<a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.4, p. 35 - 37]</a></p>
+<h4><span style=\"color: #008000\">Concept</span></h4>
+<p>In this test there is a input time and a conversion block. Inside the TimeProgramEnergyMode some energy modes defined for special times via schedules. The expected energy modes from the schedules had been compared to the generated output.</p>
+</html>"));
+end TesterTimeProg;

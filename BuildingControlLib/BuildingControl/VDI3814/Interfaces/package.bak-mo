@@ -1,0 +1,5 @@
+within BuildingControlLib.BuildingControl.VDI3814;
+package Interfaces "All connectors and partial models derived from Modelica Standard Library and adjusted to Binary type"
+  extends Modelica.Icons.InterfacesPackage;
+
+end Interfaces;

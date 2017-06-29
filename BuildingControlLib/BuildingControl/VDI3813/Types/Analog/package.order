@@ -1,0 +1,6 @@
+CommandPhysicalLightControl
+CommandPhysicalControlDrive
+ValuePhysicalIlluminance
+ValuePhysicalTemperature
+ValuePhysicalAirQuality
+ValuePhysicalWindVelocity

@@ -1,0 +1,10 @@
+within BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples;
+model TestClock "Model for testing a clock"
+extends Modelica.Icons.Example;
+  Modelica.Blocks.Sources.Clock clock(offset=500)
+    annotation (Placement(transformation(extent={{-20,0},{0,20}})));
+equation
+
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{
+            -100,-100},{100,100}}), graphics));
+end TestClock;

@@ -1,0 +1,4 @@
+within BuildingControlLib.BuildingControl.VDI3814.Types;
+type EnergyModes = enumeration(
+    zero,
+    one) "Need to break boolean values on binary values";

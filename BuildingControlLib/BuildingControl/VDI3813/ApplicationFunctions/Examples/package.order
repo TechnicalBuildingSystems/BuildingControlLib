@@ -1,0 +1,8 @@
+TesterOccupancyEvaluation
+TesterTimeProgramEnergyMode
+TesterPriorityControl
+TesterAutomaticTwilightControl
+TesterAutomaticSolarControl
+TesterAutomaticThermalControl
+TesterEnergyModeSelection
+TesterSetpointCalculation

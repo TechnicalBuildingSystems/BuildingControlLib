@@ -1,0 +1,4 @@
+within BuildingControlLib.Examples;
+model TesterVAVSimulation
+  extends Modelica.Icons.Example;
+end TesterVAVSimulation;

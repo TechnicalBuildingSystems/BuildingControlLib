@@ -1,0 +1,27 @@
+within BuildingControlLib.BuildingControl.Nonstandardized.Examples;
+model TestSequenceControl1 "Tester for SequenceControl block"
+  extends Modelica.Icons.Example;
+
+  /*  CurvesIntervalCoordinates={
+      {{16,100},{19,0}},
+      {{23,0},{26,100}}}*/
+  SequenceControl1 sequenceControl1_1
+    annotation (Placement(transformation(extent={{-6,-12},{14,8}})));
+  Modelica.Blocks.Sources.Ramp ramp(
+    height=28 - 15,
+    duration=100,
+    offset=15,
+    startTime=10) annotation (Placement(transformation(extent={{-78,-10},{-58,
+            10}})));
+equation
+
+  connect(sequenceControl1_1.u, ramp.y) annotation (Line(points={{-8,-2},{-32,
+          -2},{-32,0},{-57,0}}, color={0,0,127}));
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+            -100},{100,100}})),           Documentation(revisions="<html>
+<ul>
+<li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
+</ul>
+</html>
+"), experiment(StopTime=600));
+end TestSequenceControl1;

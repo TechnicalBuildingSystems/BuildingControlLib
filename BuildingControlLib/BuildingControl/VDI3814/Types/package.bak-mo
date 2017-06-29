@@ -1,0 +1,5 @@
+within BuildingControlLib.BuildingControl.VDI3814;
+package Types "Data types for implementation of VDI 3814-6 stategraph objects
+"
+  extends Modelica.Icons.TypesPackage;
+end Types;

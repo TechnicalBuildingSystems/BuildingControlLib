@@ -27,6 +27,8 @@ We would like to thank all developers from Modelica community and in particular 
 
 The libary uses models from the [**AixLib**-library](https://github.com/RWTH-EBC/AixLib), version 0.4.0 and models of the [Buildings-library](https://github.com/lbl-srg/modelica-buildings), version 4.0.0.
 
+The library has been tested with Dymola 2017 FD01 64bit on Windows 7 64bit.
+
 ### Version
 
 The current version 0.1.0 is a pre-release.
