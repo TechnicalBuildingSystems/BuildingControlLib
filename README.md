@@ -16,6 +16,18 @@ The libary uses models from the [**AixLib**-library](https://github.com/RWTH-EBC
 
 The library has been tested with Dymola 2017 FD01 64bit on Windows 7 64bit.
 
+### Version
+
+The current version 0.1.0 is a pre-release.
+
+### How to cite **BuildingControlLib**
+
+When you use **BuildingControlLib** in your research please cite the following paper:
+
+- Schneider, G. F., Peßler, G. and Steiger, S. (2017): _Modelling and Simulation of Standardised Control Functions from Building Automation_. In: Proceedings of 12th International Modelica Conference. 15th - 17th May, Prague, Czech Republic, DOI: 10.3384/ecp17132209 [pdf](https://modelica.org/events/modelica2017/proceedings/html/submissions/ecp17132209_SchneiderPelerSteiger.pdf).
+
+
+
 ### Overview and implementation
 #### VDI 3813
 
@@ -186,16 +198,6 @@ This research was performed as part of the [Energie Campus Nürnberg](http://www
 We like to thank the Verein Deutscher Ingenieure - VDI (German Association of Engineers), Düsseldorf, Germany for the granted right to use some of the parts of the VDI 3813 standard for documenting our library.
 
 We would like to thank all developers from Modelica community and in particular of the Annex60 effort for their contributions and work.
-
-### Version
-
-The current version 0.1.0 is a pre-release.
-
-### How to cite **BuildingControlLib**
-
-When you use **BuildingControlLib** in your research please cite the following paper:
-
-- Schneider, G. F., Peßler, G. and Steiger, S. (2017): _Modelling and Simulation of Standardised Control Functions from Building Automation_. In: Proceedings of 12th International Modelica Conference. 15th - 17th May, Prague, Czech Republic, DOI: 10.3384/ecp17132209 [pdf](https://modelica.org/events/modelica2017/proceedings/html/submissions/ecp17132209_SchneiderPelerSteiger.pdf).
 
 ### How to contribute to the development of BuildingControlLib
 
