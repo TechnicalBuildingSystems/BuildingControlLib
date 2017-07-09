@@ -7,6 +7,34 @@ Welcome to BuildingControlLib, a Modelica library for modelling and simulation o
 
 [comment]: <> (This is a comment, it will not be included)
 
+
+# Overview and implementation
+
+| Standard | control function | Readiness |
+|:---------|:-----------------|:---------:|
+| VDI 3813 control functions | ||
+| |||
+| VDI 3814 control functions | |
+| ||
+| Non-standardized||
+ ||||
+ ||||
+ 
+ 
+ # Future implementation
+ 
+| Item | Timeframe |
+|:-----|:----------|
+ |||
+| Redesign VDI 3813 to Non-Semantic connector| short term|
+ |Implement missing VDI 3813 | mid term|
+| Implement missing VDI 3814| mid term|
+| Implement ISO 16484 | longterm|
+| Implement ASHRAE 36| long term|
+ 
+
+
+
 ### License
 
 The model library **BuildingControlLib** is released by Fraunhofer Institute for Building Physics IBP under the [Modelica License 2.0](https://www.modelica.org/licenses/ModelicaLicense2).
