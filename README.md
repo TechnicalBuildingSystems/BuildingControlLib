@@ -106,12 +106,12 @@ The library has been tested with Dymola 2017 FD01 64bit on Windows 7 64bit.
 |  | Binary value (input), state | no |  
 |  | Accumulated/totalized value (input) | no |  
 |  | Analog value (input), measuring | no | 
-Management functions |  | |
+| Management functions |  | |
 |  | Input/output/value object types | no |  
 |  | Complex object types | no |  
 |  | Event storage | no |  
 |  | Historical database | no | 
-Operator functions |  |  |
+|Operator functions |  |  |
 |  | Graphic/static plant schematic | no |  
 |  | Dynamic display | no |  
 |  | Event instruction text | no |  
@@ -124,11 +124,11 @@ Operator functions |  |  |
 |  | Command execution check | no | 
 |  | State processing | no |
 | Interlocks |||
-|  | Plant control | no |  | 
-|  | Motor control | no |  | 
-|  | Switchover | no |  | 
-|  | Step control | no |  | 
-|  | Safety/Frost protection control | no |  | 
+|  | Plant control | no |   
+|  | Motor control | no |  
+|  | Switchover | no | 
+|  | Step control | no |  
+|  | Safety/Frost protection control | no | 
 | Closed loop control | ||
 |  | P control loop | no | 
 |  | PI/PID control loop | no | 
@@ -158,8 +158,8 @@ Operator functions |  |  |
 | Standard | control function | Implemented and tested |
 |:---|:---|:---:|
 | Non-standardized |||
-|| Function1 | ready |
-| | Function2 | notready |
+|| Sequence control | ready |
+| | Schedule | ready |
  
  
  ### Future implementation projects
