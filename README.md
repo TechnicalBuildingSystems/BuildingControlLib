@@ -180,12 +180,13 @@ When you use **BuildingControlLib** in your research please cite the following p
 |:---|:---|
  |||
 | Redesign VDI 3813 to Non-Semantic connector| short term|
+| Implementation of continuoous integration | short term|
 | Implement missing control functions VDI 3813 | mid term |
 | Implement missing control functions VDI 3814| mid term |
 | Implementation of control functions from ISO 16484 | long term |
 | Implemention of control functions from ASHRAE 36| long term |
+| Re-implementation for clocked control functions | long term |
  
-
 ### Acknowledgements
 
 So far the following persons from [Fraunhofer Institute for Building Physics IBP](https://www.ibp.fraunhofer.de/en.html) have contributed to **BuildingControlLib**:
