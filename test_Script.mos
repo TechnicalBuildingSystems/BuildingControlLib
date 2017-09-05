@@ -1,0 +1,8 @@
+loadFile("BuildingControlLib/package.mo");
+loadFile("BuildingControlLibTest/package.mo");
+
+res1:=simulate(BuildingControlLibTest.test_OperatorAndDisplayFunctions);
+resF:=res1.resultFile;
+if resF=="" then
+  exit(1);
+end if;

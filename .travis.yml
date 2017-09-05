@@ -1,0 +1,28 @@
+
+dist: trusty
+sudo: false
+language: generic
+notifications:
+  email: false
+    on_success: change # default: change
+    on_failure: always # default: always
+#
+# commands to install OpenModelica
+addons:
+  apt:
+    sources:
+    - sourceline: "deb http://build.openmodelica.org/apt `lsb_release -cs` nightly"
+      key_url: "http://build.openmodelica.org/apt/openmodelica.asc"
+    packages:
+    - omc
+    - omlib-modelica-3.2.2
+#
+# commands to run the test script
+before_script:
+  - echo $TRAVIS_COMMIT_RANGE
+  - git diff --name-only $TRAVIS_COMMIT_RANGE
+script: 
+  - CHANGED_FILES=($(git diff --name-status $TRAVIS_COMMIT_RANGE))
+  - echo ${CHANGED_FILES}
+  - omc --version
+- omc test_Script.mos
