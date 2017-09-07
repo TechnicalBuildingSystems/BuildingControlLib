@@ -2,8 +2,6 @@ loadFile("BuildingControlLib/package.mo");
 
 res1:=simulate(BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterWindVelocityMeasurement);
 resF:=res1.resultFile;
-if resF=="ERROR" then
-  exit(1);
-elseif resF=="" then
+if resF=="" then
   exit(1);
 end if;

@@ -19,14 +19,11 @@ equation
 algorithm
 when terminal() then
 
-  assert( 1.0 - Modelica.Constants.eps < windVelocityMeasurement.W_ACT.valueWindVelocity and windVelocityMeasurement.W_ACT.valueWindVelocity < 1.0 + Modelica.Constants.eps , "ERROR") ;
+  assert( 2.0 - Modelica.Constants.eps < windVelocityMeasurement.W_ACT.valueWindVelocity and windVelocityMeasurement.W_ACT.valueWindVelocity < 1.0 + Modelica.Constants.eps , "ERROR") ;
 // ModelicaServices.Machine.eps 
 if 1.0 - Modelica.Constants.eps < windVelocityMeasurement.W_ACT.valueWindVelocity and windVelocityMeasurement.W_ACT.valueWindVelocity < 1.0 + Modelica.Constants.eps then
 //terminate("Successful test of BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterWindVelocityMeasurement");
 terminate("SUCCESS");
-else
-//terminate("ERROR in  BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterWindVelocityMeasurement");
-terminate("ERROR");
 end if;  
   
 end when;
