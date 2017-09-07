@@ -1,5 +1,3 @@
 testReferenceEquality
-test_BuildingControlVDI3813ActuatorFunctions
-test_BuildingControlVDI3813ApplicationFunctions
-test_BuildingControlVDI3813OperatorAndDisplayFunctions
+
 test_BuildingControlVDI3813SensorFunctions

@@ -3,6 +3,14 @@
 *.exe
 *.mat
 *.mof
+*.c
+*.o
+*.libs
+*.log
+*.makefile
+*.h
+*.json
+*.xml
 buildlog.txt
 dsfinal.txt
 dsin.txt
