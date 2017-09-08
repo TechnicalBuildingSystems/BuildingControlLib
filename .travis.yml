@@ -1,11 +1,8 @@
-
 dist: trusty
 sudo: false
 language: generic
 notifications:
   email: false
-    on_success: change # default: change
-    on_failure: always # default: always
 #
 # commands to install OpenModelica
 addons:
@@ -25,4 +22,4 @@ script:
   - CHANGED_FILES=($(git diff --name-status $TRAVIS_COMMIT_RANGE))
   - echo ${CHANGED_FILES}
   - omc --version
-- omc test_Script.mos
+  - omc test_Script.mos
