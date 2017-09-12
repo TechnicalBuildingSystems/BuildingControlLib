@@ -38,4 +38,8 @@ equation
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>"));
+algorithm
+when terminal() then
+  assert( precipitationDetection.R_ACT.valuePrecipitation == true, "ERROR") ;
+end when;
 end TesterPrecipitationDetection;

@@ -76,4 +76,5 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}),  graphics),
     __Dymola_experimentSetupOutput);
+
 end TesterAirTemperatureMeasurement;

@@ -5,3 +5,39 @@ resF:=res1.resultFile;
 if resF=="" then
   exit(1);
 end if;
+
+res1:=simulate(BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterBrightnessMeasurement);
+resF:=res1.resultFile;
+if resF=="" then
+  exit(1);
+end if;
+
+res1:=simulate(BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterAirQualityMeasurement);
+resF:=res1.resultFile;
+if resF=="" then
+  exit(1);
+end if;
+
+res1:=simulate(BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterPrecipitationDetection);
+resF:=res1.resultFile;
+if resF=="" then
+  exit(1);
+end if;
+
+res1:=simulate(BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterDewpointMonitoring);
+resF:=res1.resultFile;
+if resF=="" then
+  exit(1);
+end if;
+
+res1:=simulate(BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterWindowMonitoring);
+resF:=res1.resultFile;
+if resF=="" then
+  exit(1);
+end if;
+
+res1:=simulate(BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterPresenceDetection);
+resF:=res1.resultFile;
+if resF=="" then
+  exit(1);
+end if;
