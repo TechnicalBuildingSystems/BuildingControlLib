@@ -1,6 +1,6 @@
 within BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples;
-model TesterBrigthnessMeasurement
-  "Model for testing the functionality of BrigthnessMeasurement"
+model TesterBrightnessMeasurement
+  "Model for testing the functionality of BrightnessMeasurement"
   extends Modelica.Icons.Example;
   BrightnessMeasurementFunctions.BrightnessMeasurementRoom
     brightnessMeasurementRoom
@@ -54,4 +54,4 @@ when terminal() then
 // ModelicaServices.Machine.eps   
 end when;
 
-end TesterBrigthnessMeasurement;
+end TesterBrightnessMeasurement;
