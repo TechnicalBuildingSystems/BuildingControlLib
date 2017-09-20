@@ -41,3 +41,9 @@ resF:=res1.resultFile;
 if resF=="" then
   exit(1);
 end if;
+
+//res1:=simulate(BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterAirTemperatureMeasurement);
+//resF:=res1.resultFile;
+//if resF=="" then
+//  exit(1);
+//end if;
