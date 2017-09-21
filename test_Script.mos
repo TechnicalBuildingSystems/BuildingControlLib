@@ -1,4 +1,3 @@
-loadFile("BuildingControlLib/package.mo");
 loadFile("BuildingControlLibTest/package.mo");
 
 res1:=simulate(BuildingControlLibTest.BuildingControl.VDI3813.SensorFunctions.TesterWindVelocityMeasurement);
