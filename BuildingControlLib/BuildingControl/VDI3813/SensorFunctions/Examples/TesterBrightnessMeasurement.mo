@@ -47,11 +47,6 @@ equation
 </ul>
 </html>"));
 
-algorithm
-when terminal() then
-  assert( 1.0 - Modelica.Constants.eps < brightnessMeasurementOutdoor.H_OUT.valueIlluminanceOutdoor and brightnessMeasurementOutdoor.H_OUT.valueIlluminanceOutdoor < 1.0 + Modelica.Constants.eps , "ERROR") ;
-    assert( 1.0 - Modelica.Constants.eps < brightnessMeasurementRoom.H_ROOM.valueIlluminanceRoom and brightnessMeasurementRoom.H_ROOM.valueIlluminanceRoom < 1.0 + Modelica.Constants.eps , "ERROR") ;
-// ModelicaServices.Machine.eps   
-end when;
+
 
 end TesterBrightnessMeasurement;

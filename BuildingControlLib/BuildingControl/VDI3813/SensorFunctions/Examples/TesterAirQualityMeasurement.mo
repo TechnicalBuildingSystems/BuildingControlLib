@@ -37,8 +37,5 @@ equation
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>"));
-algorithm
-when terminal() then
-  assert( 1.0 - Modelica.Constants.eps < airQualityMeasurement.Q_ROOM.valueAirQuality and airQualityMeasurement.Q_ROOM.valueAirQuality < 1.0 + Modelica.Constants.eps , "ERROR") ;
-end when;
+
 end TesterAirQualityMeasurement;

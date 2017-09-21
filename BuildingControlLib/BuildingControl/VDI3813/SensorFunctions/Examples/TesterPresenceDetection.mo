@@ -42,9 +42,5 @@ equation
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>"));
-algorithm
-when terminal() then
-  assert( presenceDetection.P_AUTO.valuePresenceSensor == false, "ERROR") ;
-  assert( presenceDetection1.P_AUTO.valuePresenceSensor == false, "ERROR") ;
-end when;
+
 end TesterPresenceDetection;

@@ -37,8 +37,5 @@ equation
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>"));
-algorithm
-when terminal() then
-  assert( windowMonitoring.B_WINDOW.valueWindow == true, "ERROR") ;
-end when;
+
 end TesterWindowMonitoring;

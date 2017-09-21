@@ -77,11 +77,6 @@ equation
             100,100}}),  graphics),
     __Dymola_experimentSetupOutput);
 
-algorithm
-when terminal() then
-  assert( 21.0 - Modelica.Constants.eps < airTemperatureMeasurementRoom.T_ROOM.valueAirTemperatureRoom and airTemperatureMeasurementRoom.T_ROOM.valueAirTemperatureRoom < 21.0 + Modelica.Constants.eps , "ERROR") ;
-  assert( 23.0 - Modelica.Constants.eps < airTemperatureMeasurementReturn.T_RETURN.valueAirTemperatureReturn and airTemperatureMeasurementReturn.T_RETURN.valueAirTemperatureReturn < 23.0 + Modelica.Constants.eps , "ERROR") ;
-  assert( 24.0 - Modelica.Constants.eps < airTemperatureMeasurementSupply.T_SUPPLY.valueAirTemperatureSupply and airTemperatureMeasurementSupply.T_SUPPLY.valueAirTemperatureSupply < 24.0 + Modelica.Constants.eps , "ERROR") ;
-end when;
+
 
 end TesterAirTemperatureMeasurement;

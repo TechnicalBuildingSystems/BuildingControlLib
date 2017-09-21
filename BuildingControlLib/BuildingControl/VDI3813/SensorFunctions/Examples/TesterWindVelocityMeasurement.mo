@@ -16,11 +16,7 @@ equation
       smooth=Smooth.None));
   connect(windVelocityMeasurement.W, prescribedPhysicalWindVelocity.W);
 
-algorithm
-when terminal() then
-  assert( 1.0 - Modelica.Constants.eps < windVelocityMeasurement.W_ACT.valueWindVelocity and windVelocityMeasurement.W_ACT.valueWindVelocity < 1.0 + Modelica.Constants.eps , "ERROR") ;
-// ModelicaServices.Machine.eps   
-end when;
+
 
     annotation (preferredView="info",experiment(StopTime=1000, Interval=1),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
