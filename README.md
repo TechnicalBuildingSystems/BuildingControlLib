@@ -25,6 +25,10 @@ When you use **BuildingControlLib** in your research please cite the following p
 
 - Schneider, G. F., Peßler, G. and Steiger, S. (2017): _Modelling and Simulation of Standardised Control Functions from Building Automation_. In: Proceedings of 12th International Modelica Conference. 15th - 17th May, Prague, Czech Republic, DOI: 10.3384/ecp17132209 [pdf](https://modelica.org/events/modelica2017/proceedings/html/submissions/ecp17132209_SchneiderPelerSteiger.pdf).
 
+also we registered a DOI for the repository at [Zenodo](https://zenodo.org)
+
+[![DOI](https://zenodo.org/badge/95814668.svg)](https://zenodo.org/badge/latestdoi/95814668)
+
 
 
 ### Overview and implementation
