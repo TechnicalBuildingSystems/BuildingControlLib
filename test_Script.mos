@@ -1,7 +1,12 @@
 loadFile("BuildingControlLibTest/package.mo");
 
+getErrorString();
+
 res1:=simulate(BuildingControlLibTest.BuildingControl.VDI3813.SensorFunctions.TesterPresenceDetection);
 resF:=res1.resultFile;
 if resF=="" then
   exit(1);
 end if;
+
+getErrorString();
+
