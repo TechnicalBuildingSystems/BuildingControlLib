@@ -59,10 +59,10 @@ package VDI3813
       extends BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterWindVelocityMeasurement;
       algorithm
     when terminal() then
-      assert( 1.0 - Modelica.Constants.eps < windVelocityMeasurement.W_ACT.valueWindVelocity and windVelocityMeasurement.W_ACT.valueWindVelocity < 1.0 + Modelica.Constants.eps , "ERROR") ;
-    // ModelicaServices.Machine.eps   
+      assert( 1.0 - Modelica.Constants.eps < windVelocityMeasurement.W_ACT.valueWindVelocity and windVelocityMeasurement.W_ACT.valueWindVelocity < 1.0 + Modelica.Constants.eps , "ERROR") ;   
     end when;
     end TesterWindVelocityMeasurement;
+
 
     
     model TesterPrecipitationDetection

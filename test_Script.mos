@@ -1,41 +1,5 @@
 loadFile("BuildingControlLibTest/package.mo");
 
-res1:=simulate(BuildingControlLibTest.BuildingControl.VDI3813.SensorFunctions.TesterWindVelocityMeasurement);
-resF:=res1.resultFile;
-if resF=="" then
-  exit(1);
-end if;
-
-res1:=simulate(BuildingControlLibTest.BuildingControl.VDI3813.SensorFunctions.TesterBrightnessMeasurement);
-resF:=res1.resultFile;
-if resF=="" then
-  exit(1);
-end if;
-
-res1:=simulate(BuildingControlLibTest.BuildingControl.VDI3813.SensorFunctions.TesterAirQualityMeasurement);
-resF:=res1.resultFile;
-if resF=="" then
-  exit(1);
-end if;
-
-res1:=simulate(BuildingControlLibTest.BuildingControl.VDI3813.SensorFunctions.TesterPrecipitationDetection);
-resF:=res1.resultFile;
-if resF=="" then
-  exit(1);
-end if;
-
-res1:=simulate(BuildingControlLibTest.BuildingControl.VDI3813.SensorFunctions.TesterDewpointMonitoring);
-resF:=res1.resultFile;
-if resF=="" then
-  exit(1);
-end if;
-
-res1:=simulate(BuildingControlLibTest.BuildingControl.VDI3813.SensorFunctions.TesterWindowMonitoring);
-resF:=res1.resultFile;
-if resF=="" then
-  exit(1);
-end if;
-
 res1:=simulate(BuildingControlLibTest.BuildingControl.VDI3813.SensorFunctions.TesterPresenceDetection);
 resF:=res1.resultFile;
 if resF=="" then
