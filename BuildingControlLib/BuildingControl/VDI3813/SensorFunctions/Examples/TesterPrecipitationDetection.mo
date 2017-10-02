@@ -32,7 +32,7 @@ equation
 <p>By default PAR_CAL ist true which leads to a positive logic. That means if precipitation&nbsp; is detected R is true and R_ACT is set to true. If no&nbsp;precipitation&nbsp;is detected R is false and R_ACT is set to false.</p>
 <p>If PAR_CAL is set to false the logic is complementary/inverted. If precipitation is detected R is false and R_ACT is set to true etc..</p>
 <h4><span style=\"color:#008000\">Concept</span></h4>
-<p>The simulation contains a boolean signal source to immitate a precipitation sensor. The signal is passed to a converter for changing the signal type from Modelica standard type to VDI 3813 semantic type. From there the signal goes to the sensor function, which converts the measured signal to an output signal. Because the positive logic has been choosen, the form of the output signal should be similar to the boolean input pulse. </p>
+<p>The simulation contains a boolean signal source to imitate a precipitation sensor. The signal is passed to a converter for changing the signal type from Modelica standard type to VDI 3813 semantic type. From there the signal goes to the sensor function, which converts the measured signal to an output signal. Because the positive logic has been chosen, the form of the output signal should be similar to the boolean input pulse. </p>
 </html>", revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>

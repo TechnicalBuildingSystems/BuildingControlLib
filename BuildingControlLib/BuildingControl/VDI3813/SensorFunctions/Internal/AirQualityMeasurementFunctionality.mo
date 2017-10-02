@@ -33,7 +33,7 @@ equation
 <p>Block that implements the functionality of &QUOT;Air quality measurement&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.7, p. 15]</a>. </p>
 <h4><span style=\"color:#008000\">Functional Description</span></h4>
 <p>&QUOT;The sensor function <i>Air quality measurement</i> (RAFL section 2, column 6; informative function block Figure 8) provides information allowing conclusions to be drawn about the air quality in a room.&QUOT; <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.7, p. 15]</a></p>
-<p>Because the specification of the air quality signal is indefinite, in this case a value between 0 and 1 had been choosen to represent the air quality, whereas the value 0 stands for the worst quality and 1 for the best quality.</p>
+<p>Because the specification of the air quality signal is indefinite, in this case a value between 0 and 1 had been chosen to represent the air quality, whereas the value 0 stands for the worst quality and 1 for the best quality.</p>
 <h4><span style=\"color:#008000\">Input Variables</span></h4>
 <p><b>Tab . 1: </b>The following table presents the input variables of the function as specified in the standard.</p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>

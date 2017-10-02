@@ -1,6 +1,6 @@
 within BuildingControlLib.BuildingControl.VDI3814.StateGraph;
 model StateDelayed
-  "State in a VDI 3814-6 Stategraph, inlcudes per definition also transitions"
+  "State in a VDI 3814-6 Stategraph, includes per definition also transitions"
    extends Interfaces.PartialState(transitions(
     waitTime = {1}, enableTimer = { false}));
 
