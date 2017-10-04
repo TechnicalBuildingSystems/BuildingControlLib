@@ -18,7 +18,7 @@ annotation (preferredView="info",Documentation(info="<html>
 </table>
 </html>", revisions="<html>
 <ul>
-<li>March 07, 2017&nbsp; by Georg Ferdinand Schneider & Georg Ambrosius Peﬂler:<br>Implemented.</li>
+<li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>
 "));
