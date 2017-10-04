@@ -496,7 +496,7 @@ package MacroFunctions
 "));
   end MacroSunblind;
   annotation (preferredView="info",Documentation(info="<html>
-<p>This package contains operator and display functions desribed in VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1]</a>:</p>
+<p>This package contains operator and display functions described in VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1]</a>:</p>
 <p>&QUOT;For a simplified representation of several interacting RA functions, several RA functions can be combined to give an RA macro, in which case the internal information relations need not be represented.&QUOT;  <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.6.2, p. 94]</a></p>
 </html>", revisions="<html>
 <ul>
