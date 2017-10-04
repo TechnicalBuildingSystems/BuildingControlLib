@@ -50,7 +50,7 @@ equation
 </tr>
 </table>
 <p><br><h4><span style=\"color:#008000\">Output Variables</span></h4></p>
-<p><b>Tab . 2: </b>In the standard there is no textual description of the return air temperature measurement and theres no informative description <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.5, p. 13-14]</a>. But air-bound heating and cooling systems are mentioned in the description. Some of these systems mix fresh air with return air to save energy for heating. Because of that a return air temperature has been defined. The acronym T_RETURN is choosen to represent the return air temperature output of the sensor.</p>
+<p><b>Tab . 2: </b>In the standard there is no textual description of the return air temperature measurement and theres no informative description <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.5, p. 13-14]</a>. But air-bound heating and cooling systems are mentioned in the description. Some of these systems mix fresh air with return air to save energy for heating. Because of that a return air temperature has been defined. The acronym T_RETURN is chosen to represent the return air temperature output of the sensor.</p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
 <td><p align=\"center\"><h4>Acronym</h4></p></td>
 <td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>

@@ -1,6 +1,6 @@
 within BuildingControlLib.BuildingControl.VDI3814.StateGraph;
 model State
-  "State in a VDI 3814-6 Stategraph, inlcudes per definition also transitions"
+  "State in a VDI 3814-6 Stategraph, includes per definition also transitions"
    extends Interfaces.PartialState;
 
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,

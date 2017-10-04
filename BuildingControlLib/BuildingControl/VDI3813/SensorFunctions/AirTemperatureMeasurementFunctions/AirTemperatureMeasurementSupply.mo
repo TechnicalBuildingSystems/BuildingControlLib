@@ -72,7 +72,7 @@ Documentation(info="<html>
 </tr>
 </table>
 <p><br><h4><span style=\"color:#008000\">Output Variables</span></h4></p>
-<p><b>Tab . 2: </b>In the standard there is some textual description of the supply air temperature measurement but theres no informative description <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.5, p. 13-14]</a>. Because of that the acronym T_SUPPLY is choosen to represent the mentioned supply air temperature output of the sensor.</p>
+<p><b>Tab . 2: </b>In the standard there is some textual description of the supply air temperature measurement but theres no informative description <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.5, p. 13-14]</a>. Because of that the acronym T_SUPPLY is chosen to represent the mentioned supply air temperature output of the sensor.</p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
 <td><p align=\"center\"><h4>Acronym</h4></p></td>
 <td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>

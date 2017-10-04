@@ -1,6 +1,6 @@
 within BuildingControlLib.Utilities.Wall;
 model Wall_ASHRAE140_mod
-  "Wall modell for ASHRAE 140 with absorbtion of solar radiation, modified with controllable sunblind"
+  "Wall modell for ASHRAE 140 with absorption of solar radiation, modified with controllable sunblind"
   import BuildingControlLib;
 
   //Type parameter
@@ -208,7 +208,7 @@ end if;
 //******************************************************************
 
 if (outside) then
-  //absorbtion of solar radition in wall
+  //absorption of solar radition in wall
   connect(SolarRadTotal.y, AbscoeffA.u);
   connect(AbscoeffA.y, absSolarRadWall.Q_flow) annotation (Line(
       points={{-36.4,88},{-30,88}},

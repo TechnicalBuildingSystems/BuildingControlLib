@@ -146,7 +146,7 @@ model ModeSelector_VDI3814 "Finite State Machine for the operational modes"
   Modelica.Blocks.Math.BooleanToInteger modeUnOccOff(integerTrue=Integer(
         Buildings.Examples.VAVReheat.Controls.OperationModes.unoccupiedOff))
     annotation (Placement(transformation(extent={{-270,203},{-250,223}})));
-  BuildingControl.VDI3814.StateGraph.InitialState intialState(nIn=0, nOut=1)
+  BuildingControl.VDI3814.StateGraph.InitialState initialState(nIn=0, nOut=1)
     "InitialState" annotation (Placement(transformation(
         extent={{-35,-36},{35,36}},
         rotation=0,
@@ -400,7 +400,7 @@ equation
       points={{-241,-58},{-232,-58},{-232,-8},{-112,-8},{-112,150.64},{-86,150.64}},
       color={255,127,0},
       smooth=Smooth.None));
-  connect(intialState.outPort[1], unOccOff.inPort[1]) annotation (Line(
+  connect(initialState.outPort[1], unOccOff.inPort[1]) annotation (Line(
       points={{-342.65,280.56},{-342.65,269.58},{-336,269.58},{-336,244.267}},
       color={0,0,0},
       smooth=Smooth.None));

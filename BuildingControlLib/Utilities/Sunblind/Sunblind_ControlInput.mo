@@ -148,7 +148,7 @@ equation
 <h4><span style=\"color:#008000\">Assumptions</span></h4>
 <p>All directions are closed at the same time.</p>
 <p>All three components of the solar radiation of the tilted surface (direct, diffuse and reflected from ground) are reduced by the same factor.</p>
-<p>There is no possibilty to disable the sunblind in a specific direction. This isn&apos;t necessary, as you can set gsunblind in this direction to 1, which means, that the whole radiance is passing through the closed sunblind.</p>
+<p>There is no possibility to disable the sunblind in a specific direction. This isn&apos;t necessary, as you can set gsunblind in this direction to 1, which means, that the whole radiance is passing through the closed sunblind.</p>
 <h4><span style=\"color:#008000\">Example Results</span></h4>
 <p>To be added.</p>
 <h4><span style=\"color:#008000\">Acknowledgements</span></h4>

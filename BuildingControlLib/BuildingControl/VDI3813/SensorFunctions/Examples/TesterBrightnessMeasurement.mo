@@ -40,7 +40,7 @@ equation
 <h4><span style=\"color:#008000\">Functional Description</span></h4>
 <p>&QUOT;The function <i>Brightness measurement</i> (RA-FL section 2, column 5; informative function block Figure 7) is required for measuring the illuminance in rooms as well as for determining the illuminance of daylight. The former is used for lighting functions, whereas the intensity of daylight influences particularly the sunshading functions.&QUOT; <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.6, p. 14]</a></p>
 <h4><span style=\"color:#008000\">Concept</span></h4>
-<p>The simulation contains a pulse signal source to immitate a brightness sensor. The signal is passed to a converter for changing the signal type from Modelica standard type to VDI 3813 semantic type. From there the signal goes to the brightness measurement functions. For both the choosen parameters are the same (slope = 1, y intercept = 0). Both outputs should show identical values and they should be similar to the input pulse. </p>
+<p>The simulation contains a pulse signal source to imitate a brightness sensor. The signal is passed to a converter for changing the signal type from Modelica standard type to VDI 3813 semantic type. From there the signal goes to the brightness measurement functions. For both the chosen parameters are the same (slope = 1, y intercept = 0). Both outputs should show identical values and they should be similar to the input pulse. </p>
 </html>", revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>

@@ -158,6 +158,6 @@ TSetHea = macroSunBlind.automaticThermalControl.T_SETPTS.setpointHeatCoolEnergyM
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>", info="<html>
-<p>This model illustrates the coupling of a modelled room automation solution to a room model from AixLib-library. The room automation solution controls the sunblind and deploys the sunshade dependend on the presence of occupants and the room temperature.</p>
+<p>This model illustrates the coupling of a modelled room automation solution to a room model from AixLib-library. The room automation solution controls the sunblind and deploys the sunshade dependent on the presence of occupants and the room temperature.</p>
 </html>"));
 end TestRoomWithAutomationVDI3813;
