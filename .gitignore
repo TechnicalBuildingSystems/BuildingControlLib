@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 # ignore Dymola output, log and temporary files (in alphabetical order)
 *.bak-mo
 *.exe
@@ -27,4 +31,8 @@ request
 stat
 status
 stop
+<<<<<<< HEAD
 success
+=======
+success
+>>>>>>> master
