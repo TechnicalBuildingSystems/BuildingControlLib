@@ -29,7 +29,7 @@ equation
 <h4><span style=\"color:#008000\">Functional Description</span></h4>
 <p>&QUOT;The sensor function <i>Wind velocity measurement</i> (RA-FL section 2, column 7; informative function block Figure 9) provides information about the flow velocity of outdoor air at the measuring site (e. g. a building facade). This information is used to protect, e. g. particularly external sunshades from damage due to wind conditions.&QUOT; <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.8, p. 16]</a></p>
 <h4><span style=\"color:#008000\">Concept</span></h4>
-<p>The simulation contains a pulse signal source to immitate wind velocity sensor. The signal is passed to a converter for changing the signal type from Modelica standard type to VDI 3813 semantic type. From there the signal goes to the wind velocity measurement function. Because the parameter slope = 1 and y intercept = 0 the output should show the same pulse curve as the input pulse.</p>
+<p>The simulation contains a pulse signal source to imitate wind velocity sensor. The signal is passed to a converter for changing the signal type from Modelica standard type to VDI 3813 semantic type. From there the signal goes to the wind velocity measurement function. Because the parameter slope = 1 and y intercept = 0 the output should show the same pulse curve as the input pulse.</p>
 </html>", revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>

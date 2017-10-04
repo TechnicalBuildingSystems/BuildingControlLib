@@ -971,7 +971,7 @@ package Rooms "Room models for testing control functions"
 
   model SouthFacingWindows "windows facing south"
 
-    parameter Modelica.SIunits.Length Room_Lenght=6 "length" annotation (Dialog(group = "Dimensions", descriptionLabel = true));
+    parameter Modelica.SIunits.Length Room_Length=6 "length" annotation (Dialog(group = "Dimensions", descriptionLabel = true));
     parameter Modelica.SIunits.Height Room_Height=2.7 "height" annotation (Dialog(group = "Dimensions", descriptionLabel = true));
     parameter Modelica.SIunits.Length Room_Width=8 "width"
                                                           annotation (Dialog(group = "Dimensions", descriptionLabel = true));
@@ -1008,7 +1008,7 @@ package Rooms "Room models for testing control functions"
       "choose a Window type" annotation(Dialog(group="Windows"),choicesAllMatching= true);
 
   protected
-    parameter Modelica.SIunits.Volume Room_V=Room_Lenght*Room_Height*Room_Width;
+    parameter Modelica.SIunits.Volume Room_V=Room_Length*Room_Height*Room_Width;
 
   public
     Walls.Wall_ASHRAE140_Controllable outerWall_South(
@@ -1028,7 +1028,7 @@ package Rooms "Room models for testing control functions"
       annotation (Placement(transformation(extent={{-76,-36},{-62,44}})));
 
     AixLib.Building.Components.Walls.Wall_ASHRAE140 outerWall_West(
-      wall_length=Room_Lenght,
+      wall_length=Room_Length,
       wall_height=Room_Height,
       withDoor=false,
       T0=T0_IW,
@@ -1041,7 +1041,7 @@ package Rooms "Room models for testing control functions"
           rotation=-90,
           origin={26,78})));
     AixLib.Building.Components.Walls.Wall_ASHRAE140 outerWall_East(
-      wall_length=Room_Lenght,
+      wall_length=Room_Length,
       wall_height=Room_Height,
       T0=T0_IW,
       outside=true,
@@ -1066,7 +1066,7 @@ package Rooms "Room models for testing control functions"
       surfaceType=AixLib.DataBase.Surfaces.RoughnessForHT.Brick_RoughPlaster(),
       Model=2) annotation (Placement(transformation(extent={{74,-36},{60,44}})));
     AixLib.Building.Components.Walls.Wall_ASHRAE140 ceiling(
-      wall_length=Room_Lenght,
+      wall_length=Room_Length,
       wall_height=Room_Width,
       ISOrientation=3,
       withDoor=false,
@@ -1080,7 +1080,7 @@ package Rooms "Room models for testing control functions"
           rotation=270,
           origin={-32,78})));
     AixLib.Building.Components.Walls.Wall_ASHRAE140 floor(
-      wall_length=Room_Lenght,
+      wall_length=Room_Length,
       wall_height=Room_Width,
       withDoor=false,
       ISOrientation=2,
