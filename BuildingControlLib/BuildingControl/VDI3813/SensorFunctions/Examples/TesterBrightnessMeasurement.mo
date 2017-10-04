@@ -1,6 +1,6 @@
 within BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples;
-model TesterBrigthnessMeasurement
-  "Model for testing the functionality of BrigthnessMeasurement"
+model TesterBrightnessMeasurement
+  "Model for testing the functionality of BrightnessMeasurement"
   extends Modelica.Icons.Example;
   BrightnessMeasurementFunctions.BrightnessMeasurementRoom
     brightnessMeasurementRoom
@@ -21,7 +21,6 @@ equation
       points={{-10,-1.9},{-12,-1.9},{-12,-16},{32,-16},{32,-40},{30,-40}},
       color={0,0,0},
       smooth=Smooth.None));
-
   connect(prescribedPhysicalIlluminance.H, brightnessMeasurementRoom.H)
     annotation (Line(
       points={{-10,-1.9},{-12,-1.9},{-12,-16},{-62,-16},{-62,-40},{-70,-40}},
@@ -47,4 +46,7 @@ equation
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>"));
-end TesterBrigthnessMeasurement;
+
+
+
+end TesterBrightnessMeasurement;

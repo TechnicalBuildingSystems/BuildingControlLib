@@ -14,12 +14,11 @@ equation
       points={{-58,50},{-68,50},{-68,51},{-79,51}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(windVelocityMeasurement.W, prescribedPhysicalWindVelocity.W)
-    annotation (Line(
-      points={{2,30},{2,50},{-38.1,50}},
-      color={0,0,0},
-      smooth=Smooth.None));
-      annotation (preferredView="info",experiment(StopTime=1000, Interval=1),
+  connect(windVelocityMeasurement.W, prescribedPhysicalWindVelocity.W);
+
+
+
+    annotation (preferredView="info",experiment(StopTime=1000, Interval=1),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics),
     __Dymola_experimentSetupOutput,
@@ -35,4 +34,8 @@ equation
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>"));
+      annotation (Line(
+      points={{2,30},{2,50},{-38.1,50}},
+      color={0,0,0},
+      smooth=Smooth.None));
 end TesterWindVelocityMeasurement;
