@@ -1,3 +1,4 @@
+loadFile("BuildingControlLib/package.mo");
 loadFile("BuildingControlLibTest/package.mo");
 
 getErrorString();
