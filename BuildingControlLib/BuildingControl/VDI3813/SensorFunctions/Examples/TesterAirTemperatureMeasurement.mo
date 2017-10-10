@@ -18,18 +18,18 @@ model TesterAirTemperatureMeasurement
         rotation=0,
         origin={-50,10})));
   AirTemperatureMeasurementFunctions.AirTemperatureMeasurementOutdoor
-    airTemperatureMeasurementOutdoor(PAR_CAL_yIntercept=2)
+    airTemperatureMeasurementOutdoor(PAR_CAL_slope = 1, PAR_CAL_yIntercept = 2)
     annotation (Placement(transformation(extent={{0,-40},{60,-20}})));
   Sources.Analog.PrescribedT prescribedT
     annotation (Placement(transformation(extent={{-22,-2},{-2,18}})));
   AirTemperatureMeasurementFunctions.AirTemperatureMeasurementRoom
-    airTemperatureMeasurementRoom(PAR_CAL_yIntercept=1)
+    airTemperatureMeasurementRoom(PAR_CAL_slope = 1, PAR_CAL_yIntercept = 1)
     annotation (Placement(transformation(extent={{-100,-40},{-40,-20}})));
   AirTemperatureMeasurementFunctions.AirTemperatureMeasurementSupply
-    airTemperatureMeasurementSupply(PAR_CAL_yIntercept=4)
+    airTemperatureMeasurementSupply(PAR_CAL_slope = 1, PAR_CAL_yIntercept = 4)
     annotation (Placement(transformation(extent={{0,-80},{60,-60}})));
   AirTemperatureMeasurementFunctions.AirTemperatureMeasurementReturn
-    airTemperatureMeasurementReturn(PAR_CAL_yIntercept=3)
+    airTemperatureMeasurementReturn(PAR_CAL_slope = 1, PAR_CAL_yIntercept = 3)
     annotation (Placement(transformation(extent={{-100,-80},{-40,-60}})));
 equation
   connect(prescribedT.u, temperatureSensor.T) annotation (Line(

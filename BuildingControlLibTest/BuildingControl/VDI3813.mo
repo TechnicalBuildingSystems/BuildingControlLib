@@ -7,7 +7,7 @@ package VDI3813
     extends Modelica.Icons.VariantsPackage;
 
     model TesterPresenceDetection
-      extends BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterPresenceDetection(sourceP.table = {0, 250, 400});
+      extends BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples.TesterPresenceDetection(sourceP.table = {0, 250, 400}, sourceP.startValue = true, presenceDetection.holdingActive = true, presenceDetection1.holdingActive = false);
     algorithm
       when terminal() then
         assert(presenceDetection.P_AUTO.valuePresenceSensor == false, "ERROR");

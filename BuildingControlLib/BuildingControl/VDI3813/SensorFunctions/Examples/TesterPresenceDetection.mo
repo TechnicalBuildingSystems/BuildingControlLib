@@ -9,18 +9,17 @@ model TesterPresenceDetection
     "converter from MSL Boolean to prescribed P"
     annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
   Modelica.Blocks.Sources.BooleanTable sourceP(startValue=true, table={0,250,
-        400}) annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
+        400}) annotation (Placement(visible = true, transformation(extent = {{-80, 40}, {-60, 60}}, rotation = 0)));
   PresenceDetection presenceDetection1(holdingActive=false)
     "Function Presence detection holding is deactivated"
     annotation (Placement(transformation(extent={{0,-100},{80,-40}})));
 equation
+  connect(sourceP.y, prescribedP.u) annotation (Line(
+      points = {{-59, 50}, {-48, 50}, {-48, 52}, {-38, 52}},
+      color={255,0,255}));
   connect(prescribedP.P, presenceDetection.P) annotation (Line(
       points={{-19.9,50},{40,50},{40,40}},
       color={0,0,0},
-      smooth=Smooth.None));
-  connect(sourceP.y, prescribedP.u) annotation (Line(
-      points={{-59,50},{-48,50},{-48,52},{-38,52}},
-      color={255,0,255},
       smooth=Smooth.None));
   connect(presenceDetection1.P, prescribedP.P) annotation (Line(
       points={{40,-40},{40,-30},{-12,-30},{-12,50},{-19.9,50}},
