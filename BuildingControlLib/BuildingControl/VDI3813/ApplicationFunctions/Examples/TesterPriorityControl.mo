@@ -117,7 +117,7 @@ equation
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),                                                                               Icon(
         coordinateSystem(extent={{-100,-100},{100,100}})),
-    experiment(StopTime=1000),
+    experiment(StartTime=0, StopTime=5, Interval=1, Tolerance=1e-6),
     __Dymola_experimentSetupOutput,preferedView="Info",
     Documentation(revisions="<html>
 <ul>

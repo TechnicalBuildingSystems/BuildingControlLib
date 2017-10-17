@@ -61,7 +61,7 @@ equation
       points={{-60,10},{-68,10},{-68,50},{20,50}},
       color={191,0,0},
       smooth=Smooth.None));
-      annotation ( preferredView="info",Documentation(info="<html>
+      annotation ( preferredView="info",experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6),Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>
 <p>Simulation to check the behaviour of the function models of &QUOT;Air temperature measurement&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.5, p. 13]</a>.</p>
 <h4><span style=\"color:#008000\">Functional Description</span></h4>
@@ -72,7 +72,7 @@ equation
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
-</html>"),    experiment(StopTime=1000, Interval=1),
+</html>"),  
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}),  graphics),
     __Dymola_experimentSetupOutput);

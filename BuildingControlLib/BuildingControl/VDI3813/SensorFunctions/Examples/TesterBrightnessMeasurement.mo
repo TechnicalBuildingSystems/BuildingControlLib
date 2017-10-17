@@ -13,7 +13,7 @@ model TesterBrightnessMeasurement
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-10,10})));
-  Modelica.Blocks.Sources.Pulse pulse(period=100)
+  Modelica.Blocks.Sources.Pulse pulse(period= 300)
     annotation (Placement(transformation(extent={{-78,28},{-58,50}})));
 equation
   connect(prescribedPhysicalIlluminance.H, brightnessMeasurementOutdoor.H)
@@ -30,7 +30,7 @@ equation
       points={{-57,39},{-10.5,39},{-10.5,18},{-10,18}},
       color={0,0,127},
       smooth=Smooth.None));
-      annotation ( preferredView="info", experiment(StopTime=1000, Interval=1),
+      annotation ( preferredView="info", experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics),
     __Dymola_experimentSetupOutput,

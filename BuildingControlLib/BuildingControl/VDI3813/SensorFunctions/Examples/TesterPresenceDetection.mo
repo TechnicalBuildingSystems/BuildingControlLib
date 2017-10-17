@@ -25,7 +25,7 @@ equation
       points={{40,-40},{40,-30},{-12,-30},{-12,50},{-19.9,50}},
       color={0,0,0},
       smooth=Smooth.None));
-      annotation ( preferredView="info", experiment(StopTime=1000),
+      annotation ( preferredView="info", experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}),  graphics),
     __Dymola_experimentSetupOutput,

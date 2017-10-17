@@ -2,7 +2,7 @@ within BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples;
 model TesterWindVelocityMeasurement
   "Model for testing the functionality of WindVelocityMeasurement"
   extends Modelica.Icons.Example;
-  Modelica.Blocks.Sources.Pulse pulse(period=100)
+  Modelica.Blocks.Sources.Pulse pulse(amplitude = 1, offset = 0, period = 300, startTime = 0, width = 50)
     annotation (Placement(transformation(extent={{-100,40},{-80,62}})));
   Sources.Analog.PrescribedW
     prescribedPhysicalWindVelocity
@@ -18,7 +18,11 @@ equation
 
 
 
-    annotation (preferredView="info",experiment(StopTime=1000, Interval=1),
+    annotation (Line(
+      points={{2,30},{2,50},{-38.1,50}},
+      color={0,0,0},
+      smooth=Smooth.None));
+      annotation (preferredView="info",experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics),
     __Dymola_experimentSetupOutput,
@@ -34,8 +38,4 @@ equation
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>"));
-      annotation (Line(
-      points={{2,30},{2,50},{-38.1,50}},
-      color={0,0,0},
-      smooth=Smooth.None));
 end TesterWindVelocityMeasurement;

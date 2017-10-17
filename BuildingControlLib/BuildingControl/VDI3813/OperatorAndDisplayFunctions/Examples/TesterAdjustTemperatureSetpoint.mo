@@ -66,7 +66,6 @@ equation
 </html>"),
     experiment(
       StopTime=30,
-      Interval=1,
-      __Dymola_Algorithm="Dassl"),
+      Interval=1),
     __Dymola_experimentSetupOutput);
 end TesterAdjustTemperatureSetpoint;

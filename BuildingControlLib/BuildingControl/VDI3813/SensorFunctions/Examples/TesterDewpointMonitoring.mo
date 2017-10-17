@@ -2,7 +2,7 @@ within BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples;
 model TesterDewpointMonitoring
   "Model for testing the functionality of DewpointMonitoring"
   extends Modelica.Icons.Example;
-  Modelica.Blocks.Sources.BooleanPulse sourceDewpoint(period= 100)
+  Modelica.Blocks.Sources.BooleanPulse sourceDewpoint(period = 300, startTime = 0, width = 50)
     annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
   Sources.Physical.PrescribedB prescribedB
     annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
@@ -17,8 +17,7 @@ equation
       points={{-19.9,50},{0.35,50},{0.35,0},{0,0}},
       color={0,0,0},
       smooth=Smooth.None));
-      annotation (preferredView="info", experiment(
-        __Dymola_NumberOfIntervals=10),
+      annotation (preferredView="info", experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics),
     __Dymola_experimentSetupOutput,
