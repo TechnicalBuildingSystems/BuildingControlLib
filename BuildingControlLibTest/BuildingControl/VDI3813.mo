@@ -143,9 +143,10 @@ end TesterPresenceDetection;
 
     model TesterAdjustTemperatureSetpoint
       extends BuildingControlLib.BuildingControl.VDI3813.OperatorAndDisplayFunctions.Examples.TesterAdjustTemperatureSetpoint;
-      annotation(preferedView="Info", experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6));
+      annotation(preferedView="Info", experiment(StartTime=0, StopTime=50, Interval=1, Tolerance=1e-6));
     
     end TesterAdjustTemperatureSetpoint;
+
 
   end OperatorAndDisplayFunctions;
 
@@ -154,9 +155,10 @@ end TesterPresenceDetection;
 
     model TesterOccupancyEvaluation
       extends BuildingControlLib.BuildingControl.VDI3813.ApplicationFunctions.Examples.TesterOccupancyEvaluation;
-    annotation(preferedView="Info", experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6));
+    annotation(preferedView="Info", experiment(StartTime=0, StopTime=50, Interval=1, Tolerance=1e-6));
     
     end TesterOccupancyEvaluation;
+
 
 
     model TesterTimeProgramEnergyMode
@@ -175,30 +177,34 @@ end TesterPresenceDetection;
 
     model TesterAutomaticTwilightControl
       extends BuildingControlLib.BuildingControl.VDI3813.ApplicationFunctions.Examples.TesterAutomaticTwilightControl;
-      annotation(preferedView="Info", experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6));
+      annotation(preferedView="Info", experiment(StartTime=0, StopTime=300, Interval=1, Tolerance=1e-6));
     
     end TesterAutomaticTwilightControl;
 
 
+
     model TesterAutomaticSolarControl
       extends BuildingControlLib.BuildingControl.VDI3813.ApplicationFunctions.Examples.TesterAutomaticSolarControl;
-      annotation(preferedView="Info", experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6));
+      annotation(preferedView="Info", experiment(StartTime=0, StopTime=1500, Interval=1, Tolerance=1e-6));
     
     end TesterAutomaticSolarControl;
 
 
+
     model TesterAutomaticThermalControl
       extends BuildingControlLib.BuildingControl.VDI3813.ApplicationFunctions.Examples.TesterAutomaticThermalControl;
-      annotation(preferedView="Info", experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6));
+      annotation(preferedView="Info", experiment(StartTime=0, StopTime=2000, Interval=1, Tolerance=1e-6));
     
     end TesterAutomaticThermalControl;
 
 
+
     model TesterEnergyModeSelection
       extends BuildingControlLib.BuildingControl.VDI3813.ApplicationFunctions.Examples.TesterEnergyModeSelection;
-      annotation(preferedView="Info", experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6));
+      annotation(preferedView="Info", experiment(StartTime=0, StopTime=100, Interval=1, Tolerance=1e-6));
     
     end TesterEnergyModeSelection;
+
 
 
     model TesterSetpointCalculation

@@ -45,7 +45,7 @@ equation
       color={255,0,255},
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}})),experiment(StartTime=0, StopTime=5, Interval=1, Tolerance=1e-6),                preferedView="Info", Documentation(revisions="<html>
+            -100},{100,100}})),experiment(StartTime=0, StopTime=50, Interval=1, Tolerance=1e-6),                preferedView="Info", Documentation(revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>

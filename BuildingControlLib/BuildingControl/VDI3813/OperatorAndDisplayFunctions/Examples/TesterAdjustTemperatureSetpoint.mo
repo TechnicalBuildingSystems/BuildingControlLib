@@ -65,7 +65,7 @@ equation
 </ul>
 </html>"),
     experiment(
-      StopTime=30,
+      StopTime=50,
       Interval=1),
     __Dymola_experimentSetupOutput);
 end TesterAdjustTemperatureSetpoint;
