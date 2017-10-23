@@ -9,7 +9,7 @@ model TesterActuateSunshade
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Sources.Sunshade.PrescribedCMD_S prescribedCMD_S
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
-  Modelica.Blocks.Sources.BooleanStep sourceCMD(startTime=10)
+  Modelica.Blocks.Sources.BooleanStep sourceCMD(startTime= 200)
     annotation (Placement(transformation(extent={{-92,40},{-72,60}})));
   Modelica.Blocks.Sources.RealExpression sourceCurrentPosition
     annotation (Placement(transformation(extent={{-98,0},{-78,20}})));
@@ -44,8 +44,7 @@ equation
 </ul>
 </html>"),
     experiment(
-      StopTime=20,
-      Interval=1,
-      __Dymola_Algorithm="Dassl"),
+      StopTime=1000,
+      Interval=1),
     __Dymola_experimentSetupOutput);
 end TesterActuateSunshade;

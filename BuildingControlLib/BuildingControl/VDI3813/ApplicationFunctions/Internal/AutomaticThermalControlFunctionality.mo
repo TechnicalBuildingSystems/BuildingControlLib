@@ -23,11 +23,10 @@ block AutomaticThermalControlFunctionality
     S_MAN "New position of sunshade." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-10},{140,10}})));
 
-  parameter Modelica.SIunits.Illuminance PAR_H_ACT
+  parameter Modelica.SIunits.Illuminance PAR_H_ACT = 100
     "Threshold value of outdoor illuminance in lux";
-  parameter Real[2] PAR_S_HEAT "Heating mode setpoints for sun shade position in percent and slat angle in degree.";
-  parameter Real[2] PAR_S_COOL
-    "Cooling mode setpoints for sun shade position in percent and slat angle in degree.";
+  parameter Real[2] PAR_S_HEAT = {0,45} "Heating mode setpoints for sun shade position in percent and slat angle in degree.";
+  parameter Real[2] PAR_S_COOL = {1,11} "Cooling mode setpoints for sun shade position in percent and slat angle in degree.";
 
   inner Modelica.StateGraph.StateGraphRoot stateGraphRoot
     annotation (Placement(transformation(extent={{86,86},{94,94}})));

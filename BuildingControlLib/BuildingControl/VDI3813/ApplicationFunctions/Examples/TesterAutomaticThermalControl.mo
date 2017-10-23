@@ -63,12 +63,12 @@ model TesterAutomaticThermalControl
     airTemperatureMeasurementRoom
     annotation (Placement(transformation(extent={{-94,-32},{-34,-12}})));
   Modelica.Blocks.Sources.Pulse    sourceT_ROOM(
-    amplitude=-3,
-    offset=273.15 + 22,
-    width=50,
+    amplitude=-10,
+    nperiod=2,
+    offset=273.15 + 30,
     period=800,
     startTime=100,
-    nperiod=2) "Room temperature osciilates between 22 and 19 degree Celsius"
+    width=50) "Room temperature osciilates between 22 and 19 degree Celsius"
                                                                annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},

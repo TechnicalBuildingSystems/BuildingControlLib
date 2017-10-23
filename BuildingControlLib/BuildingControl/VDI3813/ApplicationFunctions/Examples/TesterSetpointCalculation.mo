@@ -50,7 +50,7 @@ equation
       thickness=1,
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),preferedView="Info",                                                                     graphics),
+            -100},{100,100}}),preferedView="Info",experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6),                                                                     graphics),
       Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>
 <p>Block that implements function &QUOT;Setpoint calculation&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.21, p. 68 - 70]</a>.</p>

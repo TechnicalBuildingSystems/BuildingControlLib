@@ -18,18 +18,18 @@ model TesterAirTemperatureMeasurement
         rotation=0,
         origin={-50,10})));
   AirTemperatureMeasurementFunctions.AirTemperatureMeasurementOutdoor
-    airTemperatureMeasurementOutdoor(PAR_CAL_yIntercept=2)
+    airTemperatureMeasurementOutdoor(PAR_CAL_slope = 1, PAR_CAL_yIntercept = 2)
     annotation (Placement(transformation(extent={{0,-40},{60,-20}})));
   Sources.Analog.PrescribedT prescribedT
     annotation (Placement(transformation(extent={{-22,-2},{-2,18}})));
   AirTemperatureMeasurementFunctions.AirTemperatureMeasurementRoom
-    airTemperatureMeasurementRoom(PAR_CAL_yIntercept=1)
+    airTemperatureMeasurementRoom(PAR_CAL_slope = 1, PAR_CAL_yIntercept = 1)
     annotation (Placement(transformation(extent={{-100,-40},{-40,-20}})));
   AirTemperatureMeasurementFunctions.AirTemperatureMeasurementSupply
-    airTemperatureMeasurementSupply(PAR_CAL_yIntercept=4)
+    airTemperatureMeasurementSupply(PAR_CAL_slope = 1, PAR_CAL_yIntercept = 4)
     annotation (Placement(transformation(extent={{0,-80},{60,-60}})));
   AirTemperatureMeasurementFunctions.AirTemperatureMeasurementReturn
-    airTemperatureMeasurementReturn(PAR_CAL_yIntercept=3)
+    airTemperatureMeasurementReturn(PAR_CAL_slope = 1, PAR_CAL_yIntercept = 3)
     annotation (Placement(transformation(extent={{-100,-80},{-40,-60}})));
 equation
   connect(prescribedT.u, temperatureSensor.T) annotation (Line(
@@ -61,7 +61,7 @@ equation
       points={{-60,10},{-68,10},{-68,50},{20,50}},
       color={191,0,0},
       smooth=Smooth.None));
-      annotation ( preferredView="info",Documentation(info="<html>
+      annotation ( preferredView="info",experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6),Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>
 <p>Simulation to check the behaviour of the function models of &QUOT;Air temperature measurement&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.5, p. 13]</a>.</p>
 <h4><span style=\"color:#008000\">Functional Description</span></h4>
@@ -72,7 +72,7 @@ equation
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
-</html>"),    experiment(StopTime=1000, Interval=1),
+</html>"),  
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}),  graphics),
     __Dymola_experimentSetupOutput);

@@ -31,7 +31,7 @@ equation
           29.5,46},{-32,46},{-32,90},{0,90}}, color={0,0,0}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-260,
             -100},{100,200}})),
-    experiment(StopTime=86400, Interval=60),
+    experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6),
     __Dymola_experimentSetupOutput,preferredView="info",
     Documentation(info="<html>
 <h4><span style=\"color: #008000\">Overview</span></h4>

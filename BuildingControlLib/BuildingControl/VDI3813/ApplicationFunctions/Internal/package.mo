@@ -100,7 +100,7 @@ package Internal "Algorithm models that implement the functionality of the appli
           rotation=270,
           origin={-50,-50})));
 
-    sunShadeUtility posOperating(               valFalse(y = 0), valTrue(y=-1))
+    sunShadeUtility posOperating(valFalse(y = 0), valTrue(y=-1))
       annotation (Placement(transformation(extent={{40,60},{60,80}})));
     sunShadeUtility posDeactivated(valTrue(y = PAR_S_DEA[1]),valFalse(y = 0))
       annotation (Placement(transformation(extent={{40,0},{60,20}})));
@@ -270,6 +270,7 @@ package Internal "Algorithm models that implement the functionality of the appli
 </html>"),
     Icon(coordinateSystem(extent={{-100,-100},{100,100}})));
   end AutomaticSolarControlFunctionality;
+
 
 
 

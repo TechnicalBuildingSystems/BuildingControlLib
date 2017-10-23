@@ -12,7 +12,7 @@ addons:
       key_url: "http://build.openmodelica.org/apt/openmodelica.asc"
     packages:
     - omc
-    - omlib-modelica-3.2.2
+    - omlib-modelica-3.2.1
 #
 # commands to run the test script
 before_script:

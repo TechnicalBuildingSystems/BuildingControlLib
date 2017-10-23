@@ -3,7 +3,7 @@
 BuildingControlLib
 ==================
 
-Welcome to BuildingControlLib, a Modelica library for modelling and simulation of standardized and non-standardized control functions from Building Automation Systems. The library is developed at maintained at the [Fraunhofer Institute for Building Physics IBP](https://www.ibp.fraunhofer.de/en.html) in the [Technical Building Systems Working Group](https://www.ibp.fraunhofer.de/en/Expertise/energy-efficiency-and-indoor-climate/TechnicalBuildingSystemsSolutions.html) in Nuremberg, Germany.
+Welcome to BuildingControlLib, a Modelica library for modelling and simulation of standardized and non-standardized control functions from Building Automation Systems. The library is developed and maintained at the [Fraunhofer Institute for Building Physics IBP](https://www.ibp.fraunhofer.de/en.html) in the [Technical Building Systems Working Group](https://www.ibp.fraunhofer.de/en/Expertise/energy-efficiency-and-indoor-climate/TechnicalBuildingSystemsSolutions.html) in Nuremberg, Germany.
 
 ### License
 

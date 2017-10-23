@@ -2,7 +2,7 @@ within BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples;
 model TesterPrecipitationDetection
   "Model for testing the functionality of PrecipitationDetection"
   extends Modelica.Icons.Example;
-  Modelica.Blocks.Sources.BooleanPulse booleanPulse(period=100)
+  Modelica.Blocks.Sources.BooleanPulse booleanPulse(period= 300)
     annotation (Placement(transformation(extent={{-92,22},{-72,42}})));
   PrecipitationDetection precipitationDetection
     annotation (Placement(transformation(extent={{-32,-20},{50,8}})));
@@ -19,7 +19,7 @@ equation
       points={{-38.1,30},{9,30},{9,8}},
       color={0,0,0},
       smooth=Smooth.None));
-      annotation (preferredView="info",experiment(StopTime=1000, Interval=1),
+      annotation (preferredView="info",experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
             100}}),      graphics),
     __Dymola_experimentSetupOutput,

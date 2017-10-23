@@ -2,7 +2,7 @@ within BuildingControlLib.BuildingControl.VDI3813.SensorFunctions.Examples;
 model TesterWindowMonitoring
   "Model for testing the functionality of WindowMonitoring"
   extends Modelica.Icons.Example;
-  Modelica.Blocks.Sources.BooleanPulse sourceWindow(period=1)
+  Modelica.Blocks.Sources.BooleanPulse sourceWindow(period = 300, startTime = 0, width = 50)
     annotation (Placement(transformation(extent={{-70,2},{-50,22}})));
   WindowMonitoring windowMonitoring
     annotation (Placement(transformation(extent={{-34,-52},{38,-6}})));
@@ -17,8 +17,7 @@ equation
       points={{-13.9,10},{2.35,10},{2.35,-6},{2,-6}},
       color={0,0,0},
       smooth=Smooth.None));
-      annotation ( preferredView="info", experiment(
-        __Dymola_NumberOfIntervals=10),
+      annotation ( preferredView="info", experiment(StartTime=0, StopTime=1000, Interval=1, Tolerance=1e-6),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}),  graphics),
     __Dymola_experimentSetupOutput,
