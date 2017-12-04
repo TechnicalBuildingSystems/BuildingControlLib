@@ -185,7 +185,6 @@ also we registered a DOI for the repository at [Zenodo](https://zenodo.org)
  
 | Item | Timeframe |
 |:---|:---|
- |||
 | Redesign VDI 3813 to Non-Semantic connector| short term|
 | Implementation of continuoous integration | short term|
 | Implement missing control functions VDI 3813 | mid term |
