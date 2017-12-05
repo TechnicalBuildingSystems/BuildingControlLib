@@ -31,7 +31,7 @@ equation
 <p>By default PAR_CAL ist true which leads to a negative logic. That means if the window is closed B is true and B_WINDOW is set to true. If the window&nbsp;is open B is false and B_WINDOW is set to false.</p>
 <p>If PAR_CAL is set to false the logic is complementary/inverted. If the window is closed B is false and B_WINDOW is set to true etc..</p>
 <h4><span style=\"color:#008000\">Concept</span></h4>
-<p>The simulation contains a boolean signal source to immitate a window sensor. The signal is passed to a converter for changing the signal type from Modelica standard type to VDI 3813 semantic type. From there the signal goes to the window monitoring function, which converts the measured signal to an output signal depending on the choosen parameters of the function. By default the negative logic is activated. A closed window is represented by true signal of the source which leads to a false signal of the window monitoring. For an open window everything is complementary.</p>
+<p>The simulation contains a boolean signal source to imitate a window sensor. The signal is passed to a converter for changing the signal type from Modelica standard type to VDI 3813 semantic type. From there the signal goes to the window monitoring function, which converts the measured signal to an output signal depending on the chosen parameters of the function. By default the negative logic is activated. A closed window is represented by true signal of the source which leads to a false signal of the window monitoring. For an open window everything is complementary.</p>
 </html>", revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>

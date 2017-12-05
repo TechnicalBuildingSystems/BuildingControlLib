@@ -47,7 +47,7 @@ Documentation(info="<html>
 <p>Block that implements function &QUOT;Air quality measurement&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.7, p. 15]</a>. </p>
 <h4><span style=\"color:#008000\">Functional Description</span></h4>
 <p>&QUOT;The sensor function <i>Air quality measurement</i> (RAFL section 2, column 6; informative function block Figure 8) provides information allowing conclusions to be drawn about the air quality in a room.&QUOT; <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.7, p. 15]</a></p>
-<p>Because the specification of the air quality signal is indefinite, in this case a value between 0 and 1 had been choosen to represent the air quality, whereas the value 0 stands for the worst quality and 1 for the best quality.</p>
+<p>Because the specification of the air quality signal is indefinite, in this case a value between 0 and 1 had been chosen to represent the air quality, whereas the value 0 stands for the worst quality and 1 for the best quality.</p>
 <p><b>Fig. 1: </b>&QUOT;Informative representation of the sensor function <i>Air quality measurement</i>&QUOT;, <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.7, Figure 8, p. 15]</a></p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"0\"><tr>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_AirQualityMeasurement.png\" alt=\"docVDI3813_AirQualityMeasurement.png\"/> </p></td>

@@ -4,7 +4,7 @@ package SensorFunctions "Sensor functions referring to VDI3813 directive"
 
 
 annotation (preferredView="info",Documentation(info="<html>
-<p>This package contains sensor functions as desribed in VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1]</a>:</p>
+<p>This package contains sensor functions as described in VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1]</a>:</p>
 <p>&QUOT;Sensor functions (Figure 2) convert physical quantities, either directly or by interpreting electrical signals, to output information which in turn serves as input to application functions or actuator functions. They thus represent the physical input interface of the system with the environment. Matching of the signals or measuring equipment often requires calibration parameters, e. g. for the mapping of characteristic curves and measured-value ranges or for the compensation of zero errors.&QUOT; <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.1, p. 10]</a></p>
 <p><b>Fig. 1: </b>UML class diagramm of the <i>sensor functions</i> basic design idea.<a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.1, p. 10]</a></p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"0\"><tr>
@@ -18,7 +18,7 @@ annotation (preferredView="info",Documentation(info="<html>
 </table>
 </html>", revisions="<html>
 <ul>
-<li>March 07, 2017&nbsp; by Georg Ferdinand Schneider & Georg Ambrosius Peﬂler:<br>Implemented.</li>
+<li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>
 "));
