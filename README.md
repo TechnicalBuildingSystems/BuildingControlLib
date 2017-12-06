@@ -13,11 +13,11 @@ The model library **BuildingControlLib** is released by Fraunhofer Institute for
 
 ### Dependencies
 
-The libary uses models from the [**AixLib**-library](https://github.com/RWTH-EBC/AixLib), version 0.4.0 and models of the [Buildings-library](https://github.com/lbl-srg/modelica-buildings), version 4.0.0.
+The libary uses models from the [**AixLib**-library](https://github.com/RWTH-EBC/AixLib), version 0.4.0 and models of the [**Modelica  Buildings library**](https://github.com/lbl-srg/modelica-buildings), version 4.0.0.
 
-The library uses models from Modelica Standard Library version 3.2.2.
+The library uses models from **Modelica Standard Library** version 3.2.2.
 
-The library has been tested with Dymola 2017 FD01 64bit on Windows 7 64bit.
+The library has been tested with **Dymola 2017 FD01 64bit** and the **Microsoft Visual Studio Professional 2010 C compiler** on **Windows 7 64bit**.
 
 ### Version
 
@@ -211,6 +211,12 @@ We would like to thank all developers from Modelica community and in particular 
 You are invited to contribute to the development of **BuildingControlLib**.
 Issues can be reported using this site's [Issues section](https://github.com/TechnicalBuildingSystems/BuildingControlLib/issues).
 Furthermore, you are welcome to contribute via [Pull Requests](https://github.com/TechnicalBuildingSystems/BuildingControlLib/pulls).
+
+| Branch | Purpose | IDE Compatibility |
+|:---|:---|:---|
+| master| This branch is always deployable and contains the official history and last official revision state of the library. | The branch  is compatible to Dymola 2017 FD01. |
+| development | This branch is used to integrate new features between revisions into the library. If you want to contribute to the library by adding new features, please branch from development and later merge your completed work here. | The branch is compatible to Dymola 2017 FD01. |
+| continuousIntegration | Because of compatibility problems between different Modelica IDEs, we decided to make the master branch compatible to Dymola and this one to OpenModelica. Additionally this branch contains a test library, which is used by TravisCI after every change. | The branch is compatible to OpenModelica 1.11.0.|
 
 We recommend the workflow as suggested by state-of-the-art Modelica libraries, e.g. as described in the [Wiki](https://github.com/RWTH-EBC/AixLib/wiki). of **AixLib** library.
 
