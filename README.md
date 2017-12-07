@@ -67,7 +67,7 @@ also we registered a DOI for the repository at [Zenodo](https://zenodo.org)
 |Basic|||
 ||Occupancy evaluation|yes|
 ||Control via room utilisation|no|
-||Time program|yes|
+||Time program|no|
 ||Partition wall control|no|
 ||Lighting|||
 ||Light control|no|
@@ -77,7 +77,7 @@ also we registered a DOI for the repository at [Zenodo](https://zenodo.org)
 ||Constant-light control|no|
 ||Twilight control|no|
 |Sunshading|||
-||Priority control|yes|
+||Priority control|no|
 ||Automatic twilight control|yes|
 ||Automatic solar control|yes|
 ||Slat tracking|no|
@@ -185,8 +185,8 @@ also we registered a DOI for the repository at [Zenodo](https://zenodo.org)
 | Item | Timeframe |
 |:---|:---|
  |||
-| Redesign VDI 3813 to Non-Semantic connector| short term|
-| Implementation of continuoous integration | short term|
+| Redesign VDI 3813 to Non-Semantic connector| short term |
+| Implementation of continuoous integration | short term |
 | Implement missing control functions VDI 3813 | mid term |
 | Implement missing control functions VDI 3814| mid term |
 | Implementation of control functions from ISO 16484 | long term |
