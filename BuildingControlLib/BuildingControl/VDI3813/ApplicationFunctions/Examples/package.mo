@@ -2,18 +2,6 @@ within BuildingControlLib.BuildingControl.VDI3813.ApplicationFunctions;
 package Examples "Models for functionality test of application functions"
   extends Modelica.Icons.ExamplesPackage;
 
-
-
-
-
-
-
-
-
-
-
-
-
  model TesterAutomaticSolarControl
   extends Modelica.Icons.Example;
    Sunshading.AutomaticSolarControl automaticSolarControl(PAR_S_ACT={1,20},

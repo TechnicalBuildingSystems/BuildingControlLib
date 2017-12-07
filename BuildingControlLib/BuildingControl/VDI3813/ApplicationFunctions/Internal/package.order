@@ -5,8 +5,6 @@ EnergyModeSelectionFunctionality
 FunctionSelectionFunctionality
 Limiter
 OccupancyEvaluationFunctionality
-PriorityControlFunctionality
 SetpointCalculationFunctionality
 sunShadeUtility
 TemperatureControlFunctionality
-TimeProgramEnergyModeFunctionality
