@@ -4,7 +4,11 @@ partial connector PartialPhysicalInput
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}),
-                         graphics={
+                         graphics={Rectangle(
+          extent={{-100,100},{100,-100}},
+          pattern=LinePattern.None,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
         Text(
           extent={{20,0},{200,92}},
           lineColor={0,0,0},

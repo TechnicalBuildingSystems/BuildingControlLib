@@ -42,8 +42,8 @@ equation
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}),      graphics), Icon(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
-        graphics),  preferredView="info",
+          preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
+                    preferredView="info",
 Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>
 <p>Block that implements function &QUOT;Air temperature measurement&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.5, p. 13]</a>. For semantic correctness it is specialized for room temperatures.</p>

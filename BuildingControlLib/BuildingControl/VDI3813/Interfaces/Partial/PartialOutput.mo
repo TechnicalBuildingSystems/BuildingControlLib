@@ -3,7 +3,13 @@ partial connector PartialOutput
   "Superclass for function block outputs to provide graphics"
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
-            {100,100}}), graphics={Polygon(
+            {100,100}}), graphics={
+        Rectangle(
+          extent={{100,100},{-100,-100}},
+          pattern=LinePattern.None,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+                                   Polygon(
           points={{-100,100},{-100,-100},{0,0},{-100,100}},
           lineColor={0,0,0},
           lineThickness=1,

@@ -1,7 +1,5 @@
 within BuildingControlLib.BuildingControl.VDI3813.Interfaces.Physical;
-connector ValuePhysicalPresenceInput "Input connector of ValuePhysicalPresence"
+connector ValuePhysicalPresenceInput "Physical signal of presence detection(true = presence detected/false = no presence detected"
  extends Partial.PartialPhysicalInput;
- input
-    BuildingControlLib.BuildingControl.VDI3813.Types.Physical.ValuePhysicalPresence
-  valuePhysicalPresence;
+ input Boolean valuePhysicalPresence;
 end ValuePhysicalPresenceInput;

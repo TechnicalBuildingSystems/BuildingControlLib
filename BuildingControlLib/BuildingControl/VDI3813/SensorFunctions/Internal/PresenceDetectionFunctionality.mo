@@ -7,13 +7,14 @@ block PresenceDetectionFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Physical.ValuePhysicalPresenceInput
-    P
-    "Physical signal of presence detection(true = presence detected / false = no presence detected)."   annotation (Placement(transformation(extent={{-20,80},{20,120}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput P
+    "Physical signal of presence detection(true = presence detected / false = no presence detected)."
+    annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceSensorOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput2
     P_AUTO
-    "Boolean presence state in a room which comes from a sensor(true = occupied / false = unoccupied)." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
+    "Boolean presence state in a room which comes from a sensor(true = occupied / false = unoccupied)."
+    annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Parameter definition
@@ -37,7 +38,7 @@ block PresenceDetectionFunctionality
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-38,-48})));
-  Modelica.StateGraph.Transition t1(condition=not holdingActive and P.valuePhysicalPresence)
+  Modelica.StateGraph.Transition t1(condition=not holdingActive and P.u)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -45,11 +46,11 @@ block PresenceDetectionFunctionality
   Modelica.StateGraph.Transition t3(
     enableTimer=true,
     waitTime=PAR_HOLD,
-    condition=not P.valuePhysicalPresence) annotation (Placement(transformation(
+    condition=not P.u) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={2,-78})));
-  Modelica.StateGraph.Transition t2(condition=holdingActive and P.valuePhysicalPresence)
+  Modelica.StateGraph.Transition t2(condition=holdingActive and P.u)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -57,7 +58,7 @@ block PresenceDetectionFunctionality
   Modelica.StateGraph.Transition t4(
     waitTime=500,
     enableTimer=false,
-    condition=not P.valuePhysicalPresence) annotation (Placement(transformation(
+    condition=not P.u) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-38,-78})));
@@ -73,14 +74,13 @@ block PresenceDetectionFunctionality
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-70,72})));
-  Sources.Presence.PrescribedP_AUTO prescribedP_AUTO
-    annotation (Placement(transformation(extent={{56,-40},{76,-20}})));
   Modelica.Blocks.MathBoolean.Or or1(nu=3)
     annotation (Placement(transformation(extent={{26,-36},{38,-24}})));
   Modelica.Blocks.Logical.Not not1
     annotation (Placement(transformation(extent={{0,20},{20,40}})));
 equation
-
+  /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
+  // Connection equations
   connect(t1.outPort, holdingNotActive.inPort[1]) annotation (Line(
       points={{-38,-19.5},{-38,-37}},
       color={0,0,0},
@@ -121,16 +121,6 @@ equation
       points={{2,-79.5},{2,-96},{40,-96},{40,60},{-20,60},{-20,43},{-19.3333,43}},
       color={0,0,0},
       smooth=Smooth.None));
-
-  connect(prescribedP_AUTO.P_AUTO, P_AUTO) annotation (Line(
-      points={{77.9,-30},{92.95,-30},{92.95,0},{130,0}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(or1.y, prescribedP_AUTO.u) annotation (Line(
-      points={{38.9,-30},{58,-30}},
-      color={255,0,255},
-      smooth=Smooth.None));
   connect(or1.u[1], holdingIsActive.active) annotation (Line(
       points={{26,-27.2},{18,-27.2},{18,-48},{13,-48}},
       color={255,0,255},
@@ -148,8 +138,12 @@ equation
       points={{21,30},{24,30},{24,-32.8},{26,-32.8}},
       color={255,0,255},
       smooth=Smooth.None));
+
+  /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
+  // Output value
+  P_AUTO.y = or1.y;
    annotation (preferredView="info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}), graphics), Icon(coordinateSystem(
+            -100},{100,100}})),           Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
         graphics),
     Documentation(info="<html>

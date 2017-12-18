@@ -4,6 +4,11 @@ partial connector PartialInput
 
    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
              {100,100}}), graphics={
+        Rectangle(
+          extent={{100,100},{-100,-100}},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
          Text(
            extent={{20,90},{176,-78}},
            lineColor={0,0,0},

@@ -5,30 +5,14 @@ model TesterPresenceDetection
   PresenceDetection presenceDetection(holdingActive=true)
     "Function Presence detection holding is activated"
     annotation (Placement(transformation(extent={{0,-20},{80,40}})));
-  Sources.Physical.PrescribedP prescribedP
-    "converter from MSL Boolean to prescribed P"
-    annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
   Modelica.Blocks.Sources.BooleanTable sourceP(startValue=true, table={0,250,
         400}) annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
   PresenceDetection presenceDetection1(holdingActive=false)
     "Function Presence detection holding is deactivated"
     annotation (Placement(transformation(extent={{0,-100},{80,-40}})));
-equation
-  connect(prescribedP.P, presenceDetection.P) annotation (Line(
-      points={{-19.9,50},{40,50},{40,40}},
-      color={0,0,0},
-      smooth=Smooth.None));
-  connect(sourceP.y, prescribedP.u) annotation (Line(
-      points={{-59,50},{-48,50},{-48,52},{-38,52}},
-      color={255,0,255},
-      smooth=Smooth.None));
-  connect(presenceDetection1.P, prescribedP.P) annotation (Line(
-      points={{40,-40},{40,-30},{-12,-30},{-12,50},{-19.9,50}},
-      color={0,0,0},
-      smooth=Smooth.None));
       annotation ( preferredView="info", experiment(StopTime=1000),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
-            100,100}}),  graphics),
+            100,100}})),
     __Dymola_experimentSetupOutput,
     Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>
