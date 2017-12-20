@@ -26,4 +26,7 @@ model TesterPresenceDetection
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>"));
+equation
+  connect(sourceP.y,presenceDetection.P);
+  connect(sourceP.y,presenceDetection1.P);
 end TesterPresenceDetection;

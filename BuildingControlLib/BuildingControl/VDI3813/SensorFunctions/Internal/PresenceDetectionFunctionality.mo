@@ -7,11 +7,11 @@ block PresenceDetectionFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput P
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput P
     "Physical signal of presence detection(true = presence detected / false = no presence detected)."
     annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput2
+  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput2
     P_AUTO
     "Boolean presence state in a room which comes from a sensor(true = occupied / false = unoccupied)."
     annotation (Placement(transformation(extent={{100,-20},{160,20}}),
@@ -26,7 +26,7 @@ block PresenceDetectionFunctionality
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Components
 
-  Modelica.StateGraph.InitialStep initialStep(nIn=1, nOut=1)
+  Modelica.StateGraph.InitialStep initialStep(nIn = 1, nOut = 1)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-70,90})));
@@ -38,43 +38,43 @@ block PresenceDetectionFunctionality
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-38,-48})));
-  Modelica.StateGraph.Transition t1(condition=not holdingActive and P.u)
+  Modelica.StateGraph.Transition t1(condition = not holdingActive and P)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-38,-18})));
   Modelica.StateGraph.Transition t3(
-    enableTimer=true,
-    waitTime=PAR_HOLD,
-    condition=not P.u) annotation (Placement(transformation(
+    waitTime = PAR_HOLD,
+    enableTimer = true,
+    condition = not P) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={2,-78})));
-  Modelica.StateGraph.Transition t2(condition=holdingActive and P.u)
+  Modelica.StateGraph.Transition t2(condition = holdingActive and P)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={2,-18})));
   Modelica.StateGraph.Transition t4(
-    waitTime=500,
-    enableTimer=false,
-    condition=not P.u) annotation (Placement(transformation(
+    waitTime = PAR_HOLD,
+    enableTimer = false,
+    condition = not P) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-38,-78})));
   inner Modelica.StateGraph.StateGraphRoot stateGraphRoot
     annotation (Placement(transformation(extent={{68,66},{88,86}})));
-  Modelica.StateGraph.StepWithSignal evaluateHoldingActive(nIn=3, nOut=2)
+  Modelica.StateGraph.StepWithSignal evaluateHoldingActive(nIn = 3, nOut = 2)
     annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-20,32})));
-  Modelica.StateGraph.Transition t5(condition=true) annotation (Placement(
+  Modelica.StateGraph.Transition t5(condition = true) annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-70,72})));
-  Modelica.Blocks.MathBoolean.Or or1(nu=3)
+  Modelica.Blocks.MathBoolean.Or or1(nu = 3)
     annotation (Placement(transformation(extent={{26,-36},{38,-24}})));
   Modelica.Blocks.Logical.Not not1
     annotation (Placement(transformation(extent={{0,20},{20,40}})));
@@ -110,7 +110,7 @@ equation
       color={0,0,0},
       smooth=Smooth.None));
   connect(t5.outPort, evaluateHoldingActive.inPort[1]) annotation (Line(
-      points={{-70,70.5},{-70,70.5},{-70,60},{-20,60},{-20,43},{-20.6667,43}},
+      points={{-70,70.5},{-70,60},{-20,60},{-20,43},{-20.6667,43}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(t4.outPort, evaluateHoldingActive.inPort[2]) annotation (Line(
@@ -126,8 +126,7 @@ equation
       color={255,0,255},
       smooth=Smooth.None));
   connect(holdingNotActive.active, or1.u[2]) annotation (Line(
-      points={{-27,-48},{-22,-48},{-22,12},{18,12},{18,-26},{18,-26},{18,-30},{26,
-          -30}},
+      points={{-27,-48},{-22,-48},{-22,12},{18,12},{18,-30},{26,-30}},
       color={255,0,255},
       smooth=Smooth.None));
   connect(evaluateHoldingActive.active, not1.u) annotation (Line(
@@ -138,14 +137,13 @@ equation
       points={{21,30},{24,30},{24,-32.8},{26,-32.8}},
       color={255,0,255},
       smooth=Smooth.None));
-
+  connect(or1.y, P_AUTO);
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Output value
-  P_AUTO.y = or1.y;
+  //P_AUTO = or1.y;
    annotation (preferredView="info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),           Icon(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
-        graphics),
+          preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>
 <p>Block that implements the functionality of &QUOT;Presence detection&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.2, p. 10-11]</a>. </p>

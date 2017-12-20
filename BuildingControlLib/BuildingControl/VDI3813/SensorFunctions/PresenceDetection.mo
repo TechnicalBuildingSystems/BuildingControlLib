@@ -5,11 +5,11 @@ block PresenceDetection "Sensor function to retrieve presence from physical sens
   holdingActive=holdingActive));
  parameter Modelica.SIunits.Time PAR_HOLD=500 "Holding time in seconds for presence state, when presence has been detected.";
  parameter Boolean holdingActive=false "Flag for the presence holding process (true = holding is activated / false = holding is deactivated)";
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanInput P
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput P
     "Physical signal of presence detection(true = presence detected/false = no presence detected)."
     annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput2
     P_AUTO
     "Boolean presence state in a room which comes from a sensor(true = occupied / false = unoccupied)."
     annotation (Placement(transformation(extent={{100,60},{120,80}}),
