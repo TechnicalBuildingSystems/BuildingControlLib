@@ -13,16 +13,16 @@ block AirTemperatureMeasurementRoomFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Analog.ValuePhysicalTemperatureInput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.RealInput
     T "Physical signal of indoor air temperature measurement." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.ValueAirTemperatureRoomOutput
+  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.RealOutput
     T_ROOM "Room air temperature in Kelvin." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
-  T_ROOM.valueAirTemperatureRoom = slope * T.valuePhysicalTemperature + yIntercept;
+  T_ROOM = slope * T + yIntercept;
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),

@@ -7,25 +7,25 @@ block PrecipitationDetectionFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Physical.ValuePhysicalPrecipitationInput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput
     R
     "Physical signal of precipitation detection (default: true = precipitation detected / false = no precipitation detected)."
                                                                                                         annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValuePrecipitationOutput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput
     R_ACT
     "Boolean value for precipitation outside the building (default: true = precipitation detected / false = no precipitation detected)."
-                                                                                                        annotation (Placement(transformation(extent={{100,-20},{160,20}}),
-                   iconTransformation(extent={{100,-20},{160,20}})));
+    annotation (Placement(transformation(extent={{100,-20},{160,20}}),
+        iconTransformation(extent={{100,-20},{160,20}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Parameter definition
   parameter Boolean PAR_CAL = true
     "matching to the contact type of the electronic precipitation detector, [1, section 6.1.9, Figure 10, p. 17]";
 equation
   if PAR_CAL then
-    R.valuePhysicalPrecipitation = R_ACT.valuePrecipitation;
+    R = R_ACT;
   else
-    R.valuePhysicalPrecipitation = not R_ACT.valuePrecipitation;
+    R = not R_ACT;
   end if;
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(

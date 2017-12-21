@@ -11,7 +11,8 @@ block PresenceDetectionFunctionality
     "Physical signal of presence detection(true = presence detected / false = no presence detected)."
     annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput2
+  output
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput
     P_AUTO
     "Boolean presence state in a room which comes from a sensor(true = occupied / false = unoccupied)."
     annotation (Placement(transformation(extent={{100,-20},{160,20}}),

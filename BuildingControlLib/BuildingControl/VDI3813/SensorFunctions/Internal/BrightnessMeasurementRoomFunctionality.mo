@@ -13,16 +13,16 @@ block BrightnessMeasurementRoomFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Analog.ValuePhysicalIlluminanceInput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.RealInput
     H "Physical signal of indoor brightness measurement." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceRoomOutput
+  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.RealOutput
     H_ROOM "Indoor illuminance in Lux." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
-    H_ROOM.valueIlluminanceRoom = PAR_CAL_slope * H.valuePhysicalIlluminance + PAR_CAL_yIntercept;
+    H_ROOM = PAR_CAL_slope * H + PAR_CAL_yIntercept;
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),

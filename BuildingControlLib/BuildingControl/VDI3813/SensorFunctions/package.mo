@@ -1,4 +1,4 @@
-﻿within BuildingControlLib.BuildingControl.VDI3813;
+within BuildingControlLib.BuildingControl.VDI3813;
 package SensorFunctions "Sensor functions referring to VDI3813 directive"
       extends Modelica.Icons.VariantsPackage;
 

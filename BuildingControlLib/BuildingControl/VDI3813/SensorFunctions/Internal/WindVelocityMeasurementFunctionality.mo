@@ -13,16 +13,16 @@ block WindVelocityMeasurementFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Analog.ValuePhysicalWindVelocityInput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.RealInput
     W "Physical signal of an outdoor wind velocity measurement." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.WindVelocity.ValueWindVelocityOutput
+  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.RealOutput
     W_ACT "Outdoor air velocity in m/s."
      annotation (Placement(transformation(extent={{100,-20},{160,20}}),
                    iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
-  W.valuePhysicalWindVelocity = PAR_CAL_slope * W_ACT.valueWindVelocity + PAR_CAL_yIntercept;
+  W = PAR_CAL_slope * W_ACT + PAR_CAL_yIntercept;
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),

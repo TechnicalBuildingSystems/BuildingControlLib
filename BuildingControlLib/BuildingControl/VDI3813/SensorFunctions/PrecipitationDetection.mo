@@ -10,16 +10,16 @@ block PrecipitationDetection
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Physical.ValuePhysicalPrecipitationInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput
     R
     "Physical signal of precipitation detection(true = precipitation detected/false = no precipitation detected)."
                                                                                                         annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValuePrecipitationOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput
     R_ACT
     "Boolean value for precipitation outside the building(true = precipitation detected / false = no precipitation detected)."
-                                                                                                        annotation (Placement(transformation(extent={{100,60},{120,80}}),
-                   iconTransformation(extent={{100,-20},{160,20}})));
+    annotation (Placement(transformation(extent={{100,60},{120,80}}),
+        iconTransformation(extent={{100,-20},{160,20}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Parameter definition
   parameter Boolean PAR_CAL = true

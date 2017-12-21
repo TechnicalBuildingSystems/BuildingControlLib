@@ -7,24 +7,24 @@ block WindowMonitoringFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Physical.ValuePhysicalBinaryInput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput
     B
     "Physical signal of window contact (default: true = closed / false = open)."   annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueWindowOutput
+  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput
     B_WINDOW "Boolean window state (default: true = closed / false = open)."
-     annotation (Placement(transformation(extent={{100,-20},{140,20}}),
-                  iconTransformation(extent={{100,-20},{160,20}})));
+    annotation (Placement(transformation(extent={{100,-20},{140,20}}),
+        iconTransformation(extent={{100,-20},{160,20}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Parameter definition
   parameter Boolean PAR_CAL = true
     "matching to contact type of window contact,[1, section 6.1.3, Figure 4, p. 12]";
 equation
   if PAR_CAL then
-    B_WINDOW.valueWindow =  B.valuePhysicalBinary;
+    B_WINDOW =  B;
   else
-    B_WINDOW.valueWindow =  not B.valuePhysicalBinary;
+    B_WINDOW =  not B;
   end if;
    annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(

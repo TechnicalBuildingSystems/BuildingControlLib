@@ -10,14 +10,14 @@ block WindowMonitoring
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Physical.ValuePhysicalBinaryInput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput
     B "Physical signal of window contact (true = closed / false = open)." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-20,80},{20,120}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueWindowOutput
-    B_WINDOW "Boolean window state (true = closed / false = open)."
-     annotation (Placement(transformation(extent={{100,60},{120,80}}),
-                  iconTransformation(extent={{100,-20},{160,20}})));
+  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput
+    B_WINDOW "Boolean window state (true = closed / false = open)." annotation (
+     Placement(transformation(extent={{100,60},{120,80}}), iconTransformation(
+          extent={{100,-20},{160,20}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Parameter definition
   parameter Boolean PAR_CAL = true

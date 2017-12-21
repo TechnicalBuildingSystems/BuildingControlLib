@@ -13,16 +13,16 @@ block BrightnessMeasurementOutdoorFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Analog.ValuePhysicalIlluminanceInput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.RealInput
     H "Physical signal of outdoor brightness measurement." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorOutput
+  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.RealOutput
     H_OUT "Outdoor illuminance in Lux." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
-    H_OUT.valueIlluminanceOutdoor = PAR_CAL_slope *
-     H.valuePhysicalIlluminance + PAR_CAL_yIntercept;
+    H_OUT = PAR_CAL_slope *
+     H + PAR_CAL_yIntercept;
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),

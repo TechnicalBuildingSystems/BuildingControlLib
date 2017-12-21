@@ -10,6 +10,9 @@ model TesterPresenceDetection
   PresenceDetection presenceDetection1(holdingActive=false)
     "Function Presence detection holding is deactivated"
     annotation (Placement(transformation(extent={{0,-100},{80,-40}})));
+equation
+  connect(sourceP.y,presenceDetection.P);
+  connect(sourceP.y,presenceDetection1.P);
       annotation ( preferredView="info", experiment(StopTime=1000),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}})),
@@ -26,7 +29,4 @@ model TesterPresenceDetection
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
 </html>"));
-equation
-  connect(sourceP.y,presenceDetection.P);
-  connect(sourceP.y,presenceDetection1.P);
 end TesterPresenceDetection;

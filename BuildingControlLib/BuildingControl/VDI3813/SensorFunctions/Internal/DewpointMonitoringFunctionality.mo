@@ -7,25 +7,25 @@ block DewpointMonitoringFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Physical.ValuePhysicalBinaryInput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput
     B
     "Physical signal of dewpoint contact (default: true = dewpoint reached / false = dewpoint not reached)."
                                                                                                         annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueDewpointOutput
+  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput
     B_DEW
     "Boolean dewpoint state of rooms or room segments (default: true = dewpoint reached / false = dewpoint not reached)."
-     annotation (Placement(transformation(extent={{100,-20},{160,20}}),
-                   iconTransformation(extent={{100,-20},{160,20}})));
+    annotation (Placement(transformation(extent={{100,-20},{160,20}}),
+        iconTransformation(extent={{100,-20},{160,20}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Parameter definition
   parameter Boolean PAR_CAL = true
     "matching to contact type of dewpoint monitor, [1, section 6.1.4, Figure 5, p. 13]";
 equation
   if PAR_CAL then
-    B_DEW.valueDewpoint =  B.valuePhysicalBinary;
+    B_DEW =  B;
   else
-    B_DEW.valueDewpoint =  not B.valuePhysicalBinary;
+    B_DEW =  not B;
   end if;
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(

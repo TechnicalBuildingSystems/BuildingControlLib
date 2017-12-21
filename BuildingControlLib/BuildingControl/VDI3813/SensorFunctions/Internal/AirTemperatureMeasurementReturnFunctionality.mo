@@ -13,16 +13,16 @@ block AirTemperatureMeasurementReturnFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Analog.ValuePhysicalTemperatureInput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.RealInput
     T "Physical signal of return air temperature measurement." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.ValueAirTemperatureReturnOutput
+  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.RealOutput
     T_RETURN "Return air temperature of a ventilation system in Kelvin." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
-    T_RETURN.valueAirTemperatureReturn = slope * T.valuePhysicalTemperature + yIntercept;
+    T_RETURN = slope * T + yIntercept;
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
