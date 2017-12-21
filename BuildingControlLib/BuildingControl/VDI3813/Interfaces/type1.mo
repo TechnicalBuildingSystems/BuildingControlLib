@@ -1,13 +1,13 @@
 within BuildingControlLib.BuildingControl.VDI3813.Interfaces;
 package type1 "Control signals, passed between room automation functions"
   connector RealInput "Real input"
+    extends Modelica.Blocks.Interfaces.RealOutput;
     extends Partial.PartialInput;
-    input Real u;
   end RealInput;
 
   connector RealOutput "Real output"
+    extends Modelica.Blocks.Interfaces.RealOutput;
     extends Partial.PartialOutput;
-    output Real y;
   end RealOutput;
 
   connector BooleanOutput2 "Boolean output"
@@ -39,4 +39,50 @@ package type1 "Control signals, passed between room automation functions"
     extends Partial.PartialOutput;
     output Real y;
   end RealOutput2;
+
+  connector RealInput3 = input Real annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+               {100,100}}), graphics={
+          Rectangle(
+            extent={{100,100},{-100,-100}},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid,
+            pattern=LinePattern.None),
+           Text(
+             extent={{20,90},{176,-78}},
+             lineColor={0,0,0},
+             lineThickness=1,
+             fillColor={255,255,255},
+             fillPattern=FillPattern.Solid,
+             textString="%name",
+             fontName="Arial",
+             textStyle={TextStyle.Bold}),
+           Polygon(
+             points={{-100,100},{-100,-100},{0,0},{-100,100}},
+             lineColor={0,0,0},
+             lineThickness=1,
+             smooth=Smooth.None,
+             fillColor={255,255,255},
+             fillPattern=FillPattern.Solid)}));
+  connector RealOutput3 = output Real   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+              {100,100}}), graphics={
+          Rectangle(
+            extent={{100,100},{-100,-100}},
+            pattern=LinePattern.None,
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+                                     Polygon(
+            points={{-100,100},{-100,-100},{0,0},{-100,100}},
+            lineColor={0,0,0},
+            lineThickness=1,
+            smooth=Smooth.None,
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid), Text(
+            extent={{-264,88},{-108,-80}},
+            lineColor={0,0,0},
+            lineThickness=1,
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid,
+            textString="%name",
+            fontName="Arial",
+            textStyle={TextStyle.Bold})}));
 end type1;

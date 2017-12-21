@@ -30,4 +30,27 @@ package type2
     extends Partial.PartialPhysicalOutput;
     output Real y;
   end RealOutput2;
+
+  connector RealInput3 = input Real   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+              -100},{100,100}}),
+                           graphics={Rectangle(
+            extent={{-100,100},{100,-100}},
+            pattern=LinePattern.None,
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{20,0},{200,92}},
+            lineColor={0,0,0},
+            textString="%name")}));
+  connector RealOutput3 = output Real   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+              -100},{100,100}}),
+                           graphics={Rectangle(
+            extent={{-100,100},{100,-100}},
+            pattern=LinePattern.None,
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{8,0},{208,90}},
+            lineColor={0,0,0},
+            textString="%name")}));
 end type2;

@@ -13,11 +13,11 @@ block AirTemperatureMeasurementOutdoorFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.RealInput2
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.RealInput2
     T "Physical signal of outdoor air temperature measurement." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
 
-  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.RealOutput2
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.RealOutput2
     T_OUT "Outdoor air temperature in Kelvin." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 

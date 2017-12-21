@@ -37,7 +37,10 @@ equation
   connect(temperatureSensor.T, airTemperatureMeasurementOutdoor.T.u);
   connect(temperatureSensor.T, airTemperatureMeasurementRoom.T.u);
   connect(temperatureSensor.T, airTemperatureMeasurementSupply.T.u);
-  connect(temperatureSensor.T, airTemperatureMeasurementReturn.T.u);
+  //connect(temperatureSensor.T, airTemperatureMeasurementReturn.T);
+  connect(temperatureSensor.T, airTemperatureMeasurementReturn.T) annotation (
+      Line(points={{-40,10},{-20,10},{-20,-52},{-70,-52},{-70,-60},{-70,-60}},
+        color={0,0,127}));
       annotation ( preferredView="info",Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>
 <p>Simulation to check the behaviour of the function models of &QUOT;Air temperature measurement&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.5, p. 13]</a>.</p>
