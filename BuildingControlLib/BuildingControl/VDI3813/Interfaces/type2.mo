@@ -20,4 +20,14 @@ package type2
     extends Modelica.Blocks.Interfaces.RealOutput;
     extends Partial.PartialPhysicalOutput;
   end RealOutput;
+
+  connector RealInput2
+    extends Partial.PartialPhysicalInput;
+    input Real u;
+  end RealInput2;
+
+  connector RealOutput2
+    extends Partial.PartialPhysicalOutput;
+    output Real y;
+  end RealOutput2;
 end type2;

@@ -29,4 +29,14 @@ package type1 "Control signals, passed between room automation functions"
     extends Modelica.Blocks.Interfaces.BooleanInput;
     extends Partial.PartialInput;
   end BooleanInput;
+
+  connector RealInput2
+    extends Partial.PartialInput;
+    input Real u;
+  end RealInput2;
+
+  connector RealOutput2
+    extends Partial.PartialOutput;
+    output Real y;
+  end RealOutput2;
 end type1;
