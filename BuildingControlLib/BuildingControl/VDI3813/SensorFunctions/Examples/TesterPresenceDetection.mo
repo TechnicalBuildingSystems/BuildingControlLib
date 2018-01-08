@@ -11,8 +11,12 @@ model TesterPresenceDetection
     "Function Presence detection holding is deactivated"
     annotation (Placement(transformation(extent={{0,-100},{80,-40}})));
 equation
-  connect(sourceP.y,presenceDetection.P);
-  connect(sourceP.y,presenceDetection1.P);
+  connect(sourceP.y, presenceDetection.P) annotation (Line(points={{-59,50},{40,
+          50},{40,48},{40,48},{40,40},{40,40}},
+                                color={255,0,255}));
+  connect(sourceP.y, presenceDetection1.P) annotation (Line(points={{-59,50},{
+          -8,50},{-8,-30},{40,-30},{40,-40},{40,-40}},
+                                  color={255,0,255}));
       annotation ( preferredView="info", experiment(StopTime=1000),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}})),

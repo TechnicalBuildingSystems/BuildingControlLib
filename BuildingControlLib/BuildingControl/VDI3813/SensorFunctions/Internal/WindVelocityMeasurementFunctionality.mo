@@ -13,10 +13,10 @@ block WindVelocityMeasurementFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.RealInput
+   BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealInput
     W "Physical signal of an outdoor wind velocity measurement." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.RealOutput
+   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput
     W_ACT "Outdoor air velocity in m/s."
      annotation (Placement(transformation(extent={{100,-20},{160,20}}),
                    iconTransformation(extent={{100,-20},{160,20}})));

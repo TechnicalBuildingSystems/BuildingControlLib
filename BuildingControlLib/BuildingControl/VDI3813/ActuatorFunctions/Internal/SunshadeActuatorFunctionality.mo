@@ -4,26 +4,26 @@ block SunshadeActuatorFunctionality
   extends
     BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial.PartialFunctionality;
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.CommandPhysicalMotorControlRelayOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanOutput
     M "Physical signal to change the sunshade position." annotation (Placement(transformation(extent={{-22,80},{20,120}}),
         iconTransformation(extent={{-22,82},{20,120}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeInput
-    S_SET "New position of the sunshade." annotation (Placement(transformation(extent={{-100,-20},{-40,20}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
+    S_SET "New position of the sunshade(1: position, 2: slat angle)." annotation (Placement(transformation(extent={{-100,-20},{-40,20}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.StatusSunshadeOutput
-    S_STA "Current position of the sunshade." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
+    S_STA "Current position of the sunshade(1: position, 2: slat angle)." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
   // current sunshade value depending from setpoint sunshade value
-  S_STA.statusSunshadePos = S_SET.commandSunshadePos;
-  S_STA.statusSunshadeSlatAngle = S_SET.commandSunshadeSlatAngle;
+  S_STA[1] = S_SET[1];
+  S_STA[2] = S_SET[2];
 
   // physical output depending from setpoint sunshade value
-  if S_SET.commandSunshadePos > 0.5 then
-    M.commandPhysicalMotorControlRelay = true;
+  if S_SET[1] > 0.5 then
+    M = true;
   else
-    M.commandPhysicalMotorControlRelay = false;
+    M = false;
   end if;
 
   annotation (preferedView="Info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,

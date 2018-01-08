@@ -4,31 +4,18 @@ model TesterControlDriveActuatorDamperPosition
   extends Modelica.Icons.Example;
   ControlDriveActuator.ControlDriveActuatorDamperPosition controlDriveActuatorDamperPosition
     annotation (Placement(transformation(extent={{-34,-34},{74,22}})));
-  Sources.ActuatorSignal.PrescribedV_SET_DP prescribedV_SET_DP annotation (
-      Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-50,50})));
-  Sensors.SensorY sensorY
-    annotation (Placement(transformation(extent={{40,40},{60,60}})));
   Modelica.Blocks.Interaction.Show.RealValue realValue
     annotation (Placement(transformation(extent={{76,40},{96,60}})));
   Modelica.Blocks.Sources.Step sourceV_SET_DP(height=1, startTime=200)
     annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
 equation
 
-  connect(prescribedV_SET_DP.V_SET_DP, controlDriveActuatorDamperPosition.V_SET_DP)
-    annotation (Line(
-      points={{-50,38.1},{-50,-6},{-17.8,-6}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(sensorY.Y, controlDriveActuatorDamperPosition.Y)
-    annotation (Line(points={{40,50},{20,50},{20,22.28},{19.46,22.28}}));
-  connect(sensorY.y, realValue.numberPort)
-    annotation (Line(points={{62,50},{74.5,50},{74.5,50}}, color={0,0,127}));
-  connect(prescribedV_SET_DP.u, sourceV_SET_DP.y) annotation (Line(points={{-50,
-          58},{-64,58},{-64,70},{-79,70}}, color={0,0,127}));
+  connect(realValue.numberPort, controlDriveActuatorDamperPosition.Y)
+    annotation (Line(points={{74.5,50},{20,50},{20,22.28},{19.46,22.28}}, color
+        ={0,0,127}));
+  connect(sourceV_SET_DP.y, controlDriveActuatorDamperPosition.V_SET_DP)
+    annotation (Line(points={{-79,70},{-60,70},{-60,-6},{-36,-6},{-17.8,-6}},
+        color={0,0,127}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),
     experiment(StopTime=1000, Interval=60),

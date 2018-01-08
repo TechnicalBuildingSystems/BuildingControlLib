@@ -1,9 +1,7 @@
-within BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial;
-partial connector PartialOutput
-  "Superclass for function block outputs to provide graphics"
-
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
-            {100,100}}), graphics={Polygon(
+within BuildingControlLib.BuildingControl.VDI3813.Interfaces;
+connector RealOutput =  output Real   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+            {100,100}}), graphics={
+          Polygon(
           points={{-100,100},{-100,-100},{0,0},{-100,100}},
           lineColor={0,0,0},
           lineThickness=1,
@@ -18,4 +16,3 @@ partial connector PartialOutput
           textString="%name",
           fontName="Arial",
           textStyle={TextStyle.Bold})}));
-end PartialOutput;

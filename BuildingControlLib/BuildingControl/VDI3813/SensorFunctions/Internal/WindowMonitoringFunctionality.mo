@@ -7,12 +7,12 @@ block WindowMonitoringFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput
+   BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanInput
     B
     "Physical signal of window contact (default: true = closed / false = open)."   annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
 
-  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput
+   BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanOutput
     B_WINDOW "Boolean window state (default: true = closed / false = open)."
     annotation (Placement(transformation(extent={{100,-20},{140,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));

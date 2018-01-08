@@ -7,12 +7,12 @@ block PrecipitationDetectionFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput
+   BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanInput
     R
     "Physical signal of precipitation detection (default: true = precipitation detected / false = no precipitation detected)."
                                                                                                         annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput
+   BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanOutput
     R_ACT
     "Boolean value for precipitation outside the building (default: true = precipitation detected / false = no precipitation detected)."
     annotation (Placement(transformation(extent={{100,-20},{160,20}}),

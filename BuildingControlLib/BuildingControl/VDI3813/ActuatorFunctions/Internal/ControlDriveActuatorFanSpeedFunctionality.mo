@@ -4,24 +4,24 @@ block ControlDriveActuatorFanSpeedFunctionality
   extends
     BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial.PartialFunctionality;
 
-  Interfaces.Analog.CommandPhysicalControlDriveOutput
-    Y "Physical signal to change fan speed."     annotation (Placement(transformation(extent={{-22,80},{20,120}}),
+  Interfaces.PhysicalRealOutput
+    Y "Physical signal to change fan speed(0-1, 0:deactive, 1:full speed)."     annotation (Placement(transformation(extent={{-22,80},{20,120}}),
         iconTransformation(extent={{-22,82},{20,120}})));
-  Interfaces.ActuatorSignal.CommandActuatorSignalFanSpeedInput      V_SET_FS
-    "New fan speed."
+  Interfaces.RealInput      V_SET_FS
+    "New fan speed(0-1, 0:deactive, 1:full speed)."
     annotation (Placement(transformation(extent={{-100,-20},{-40,20}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
-  Interfaces.ActuatorSignal.StatusActuatorSignalFanSpeedOutput      V_STA_FS
-    "Currently used fan speed."
+  Interfaces.RealOutput      V_STA_FS
+    "Currently used fan speed(0-1, 0:deactive, 1:full speed)."
     annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
   // current value
-  V_STA_FS.statusActuatorSignalFanSpeed =  V_SET_FS.commandActuatorSignalFanSpeed;
+  V_STA_FS =  V_SET_FS;
   // physical output depending from setpoint sunshade value
 
-  Y.commandPhysicalControlDrive =  V_SET_FS.commandActuatorSignalFanSpeed;
+  Y =  V_SET_FS;
 
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(

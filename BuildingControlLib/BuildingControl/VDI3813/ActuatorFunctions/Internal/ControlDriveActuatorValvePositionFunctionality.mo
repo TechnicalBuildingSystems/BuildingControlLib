@@ -4,24 +4,24 @@ block ControlDriveActuatorValvePositionFunctionality
   extends
     BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial.PartialFunctionality;
 
-  Interfaces.Analog.CommandPhysicalControlDriveOutput
-    Y "Physical signal to change valve position."   annotation (Placement(transformation(extent={{-22,80},{20,120}}),
+  Interfaces.PhysicalRealOutput
+    Y "Physical signal to change valve position(0-1, 0:closed, 1:opened)."   annotation (Placement(transformation(extent={{-22,80},{20,120}}),
         iconTransformation(extent={{-22,82},{20,120}})));
-  Interfaces.ActuatorSignal.CommandActuatorSignalValvePositionInput V_SET_VP
-    "New valve position."
+  Interfaces.RealInput V_SET_VP
+    "New valve position(0-1, 0:closed, 1:opened)."
     annotation (Placement(transformation(extent={{-100,-20},{-40,20}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
-  Interfaces.ActuatorSignal.StatusActuatorSignalValvePositionOutput V_STA_VP
-    "Currently used valve position."
+  Interfaces.RealOutput V_STA_VP
+    "Currently used valve position(0-1, 0:closed, 1:opened)."
     annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
   // current value
-  V_STA_VP.statusActuatorSignalValvePosition =  V_SET_VP.commandActuatorSignalValvePosition;
+  V_STA_VP =  V_SET_VP;
   // physical output depending from setpoint sunshade value
 
-  Y.commandPhysicalControlDrive =  V_SET_VP.commandActuatorSignalValvePosition;
+  Y =  V_SET_VP;
 
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(

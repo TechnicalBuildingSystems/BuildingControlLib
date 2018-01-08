@@ -34,13 +34,19 @@ equation
       points={{-60,10},{-68,10},{-68,50},{20,50}},
       color={191,0,0},
       smooth=Smooth.None));
-  connect(temperatureSensor.T, airTemperatureMeasurementOutdoor.T.u);
-  connect(temperatureSensor.T, airTemperatureMeasurementRoom.T.u);
-  connect(temperatureSensor.T, airTemperatureMeasurementSupply.T.u);
-  //connect(temperatureSensor.T, airTemperatureMeasurementReturn.T);
-  connect(temperatureSensor.T, airTemperatureMeasurementReturn.T) annotation (
-      Line(points={{-40,10},{-20,10},{-20,-52},{-70,-52},{-70,-60},{-70,-60}},
-        color={0,0,127}));
+
+  connect(airTemperatureMeasurementRoom.T, temperatureSensor.T) annotation (
+      Line(points={{-70,-20},{-70,-20},{-70,-10},{-20,-10},{-20,10},{-40,10}},
+        color={0,0,0}));
+  connect(airTemperatureMeasurementOutdoor.T, temperatureSensor.T) annotation (
+      Line(points={{30,-20},{30,-20},{30,-10},{-20,-10},{-20,10},{-40,10}},
+        color={0,0,0}));
+  connect(airTemperatureMeasurementReturn.T, temperatureSensor.T) annotation (
+      Line(points={{-70,-60},{-70,-50},{-20,-50},{-20,10},{-40,10},{-40,10}},
+        color={0,0,0}));
+  connect(airTemperatureMeasurementSupply.T, temperatureSensor.T) annotation (
+      Line(points={{30,-60},{30,-60},{30,-50},{-20,-50},{-20,10},{-40,10}},
+        color={0,0,0}));
       annotation ( preferredView="info",Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>
 <p>Simulation to check the behaviour of the function models of &QUOT;Air temperature measurement&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.5, p. 13]</a>.</p>

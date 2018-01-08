@@ -15,5 +15,11 @@ Sunshade
 Time
 WindVelocity
 Partial
-type1
-type2
+BooleanInput
+BooleanOutput
+RealInput
+RealOutput
+PhysicalBooleanInput
+PhysicalBooleanOutput
+PhysicalRealInput
+PhysicalRealOutput

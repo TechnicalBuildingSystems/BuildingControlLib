@@ -7,13 +7,12 @@ block PresenceDetectionFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.BooleanInput P
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanInput P
     "Physical signal of presence detection(true = presence detected / false = no presence detected)."
     annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  output
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.BooleanOutput
-    P_AUTO
+
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanOutput P_AUTO
     "Boolean presence state in a room which comes from a sensor(true = occupied / false = unoccupied)."
     annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
@@ -138,10 +137,11 @@ equation
       points={{21,30},{24,30},{24,-32.8},{26,-32.8}},
       color={255,0,255},
       smooth=Smooth.None));
-  connect(or1.y, P_AUTO);
+  //connect(or1.y, P_AUTO.y);
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Output value
-  //P_AUTO = or1.y;
+  connect(or1.y, P_AUTO) annotation (Line(points={{38.9,-30},{74,-30},{74,0},{130,
+          0}}, color={255,0,255}));
    annotation (preferredView="info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),           Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}})),

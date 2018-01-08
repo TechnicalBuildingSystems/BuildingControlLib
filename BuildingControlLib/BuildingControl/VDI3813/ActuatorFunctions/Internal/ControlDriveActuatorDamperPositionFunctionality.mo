@@ -4,24 +4,24 @@ block ControlDriveActuatorDamperPositionFunctionality
   extends
     BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial.PartialFunctionality;
 
-  Interfaces.Analog.CommandPhysicalControlDriveOutput
-    Y "Physical signal to change damper position."   annotation (Placement(transformation(extent={{-22,80},{20,120}}),
+  Interfaces.PhysicalRealOutput
+    Y "Physical signal to change damper position(0-1, 0:closed, 1:opened)."   annotation (Placement(transformation(extent={{-22,80},{20,120}}),
         iconTransformation(extent={{-22,82},{20,120}})));
-  Interfaces.ActuatorSignal.CommandActuatorSignalDamperPositionInput V_SET_DP
-    "New damper position."
+  Interfaces.RealInput V_SET_DP
+    "New damper position(0-1, 0:closed, 1:opened)."
     annotation (Placement(transformation(extent={{-100,-20},{-40,20}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
-  Interfaces.ActuatorSignal.StatusActuatorSignalDamperPositionOutput V_STA_DP
-    "Currently used damper position."
+  Interfaces.RealOutput V_STA_DP
+    "Currently used damper position(0-1, 0:closed, 1:opened)."
     annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
   // current value
-  V_STA_DP.statusActuatorSignalDamperPosition =  V_SET_DP.commandActuatorSignalDamperPosition;
+  V_STA_DP =  V_SET_DP;
   // physical output depending from setpoint sunshade value
 
-  Y.commandPhysicalControlDrive =  V_SET_DP.commandActuatorSignalDamperPosition;
+  Y =  V_SET_DP;
 
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(

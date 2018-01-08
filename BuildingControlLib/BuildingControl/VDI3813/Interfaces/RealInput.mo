@@ -1,8 +1,5 @@
-within BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial;
-partial connector PartialInput
-  "Superclass for function block inputs to provide graphics"
-
-   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+within BuildingControlLib.BuildingControl.VDI3813.Interfaces;
+connector RealInput =  input Real annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
              {100,100}}), graphics={
          Text(
            extent={{20,90},{176,-78}},
@@ -20,4 +17,3 @@ partial connector PartialInput
            smooth=Smooth.None,
            fillColor={255,255,255},
            fillPattern=FillPattern.Solid)}));
-end PartialInput;

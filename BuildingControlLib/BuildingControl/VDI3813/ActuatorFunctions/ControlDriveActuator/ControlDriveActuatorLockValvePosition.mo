@@ -12,16 +12,16 @@ block ControlDriveActuatorLockValvePosition
       functionality);
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignal.CommandActuatorSignalLockValvePositionInput
-    V_SET_LCK "New lock valve position." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
+    V_SET_LCK "New lock valve position(0-1, 0:closed, 1:opened)." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignal.StatusActuatorSignalValvePositionOutput
-    V_STA_VP "Currently used lock valve position." annotation (Placement(transformation(extent={{100,60},{120,80}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput
+    V_STA_VP "Currently used lock valve position(0-1, 0:closed, 1:opened)." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Analog.CommandPhysicalControlDriveOutput
-    Y "Physical signal to change lock valve position." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealOutput
+    Y "Physical signal to change lock valve position(0-1, 0:closed, 1:opened)." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-22,82},{20,120}})));
 
 equation

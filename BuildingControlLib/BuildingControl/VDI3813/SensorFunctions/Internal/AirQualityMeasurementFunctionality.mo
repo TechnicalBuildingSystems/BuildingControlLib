@@ -13,10 +13,10 @@ block AirQualityMeasurementFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  input BuildingControlLib.BuildingControl.VDI3813.Interfaces.type2.RealInput
+   BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealInput
     Q "Physical signal of an indoor air quality measurement." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
-  output BuildingControlLib.BuildingControl.VDI3813.Interfaces.type1.RealOutput
+   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput
     Q_ROOM
     "Relative air quality in rooms (0 = worst quality; 1 = best quality)."
      annotation (Placement(transformation(extent={{100,-20},{160,20}}),
@@ -25,7 +25,7 @@ block AirQualityMeasurementFunctionality
 equation
     Q = PAR_CAL_slope * Q_ROOM + PAR_CAL_yIntercept;
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}), graphics), Icon(coordinateSystem(
+            -100},{100,100}})),           Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
         graphics),
     Documentation(info="<html>
