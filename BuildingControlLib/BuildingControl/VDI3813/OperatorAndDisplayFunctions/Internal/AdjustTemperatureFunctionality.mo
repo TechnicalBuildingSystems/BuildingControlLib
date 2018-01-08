@@ -3,14 +3,14 @@ block AdjustTemperatureFunctionality
   "Algorithm model to provide functionality of AdjustTemperatureSetpoint"
 extends
     BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial.PartialFunctionality;
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.StatusAirTemperatureInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_STA "Absolute temperature difference that is currently used as setpoint." annotation (Placement(
         transformation(extent={{-100,-20},{-40,20}}), iconTransformation(extent=
            {{-100,-20},{-40,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointAirTemperatureUserOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput
     T_SETPT "New absolute temperature difference for use as setpoint." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.CommandAdjustTemperatureSetpointInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealInput
     CMD "Physical operation command (absolute temperature difference) for changing room air temperature." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
         Real u;
@@ -25,14 +25,14 @@ parameter Boolean strict=false "= true, if strict limits with noEvent(..)"
     annotation (Evaluate=true, choices(checkBox=true), Dialog(tab="Advanced"));
 
 equation
-   u = T_STA.statusAirTemperature + CMD.commandAdjustTemperatureSetpoint;
-   uMax = T_STA.statusAirTemperature + PAR_T_UL;
-   uMin = T_STA.statusAirTemperature - PAR_T_LL;
+   u = T_STA + CMD;
+   uMax = T_STA + PAR_T_UL;
+   uMin = T_STA - PAR_T_LL;
 
   if strict then
-    T_SETPT.setpointAirTemperatureUser = smooth(0, noEvent(if u > uMax then uMax else if u < uMin then uMin else u));
+    T_SETPT = smooth(0, noEvent(if u > uMax then uMax else if u < uMin then uMin else u));
   else
-    T_SETPT.setpointAirTemperatureUser = smooth(0,if u > uMax then uMax else if u < uMin then uMin else u);
+    T_SETPT = smooth(0,if u > uMax then uMax else if u < uMin then uMin else u);
   end if;
 
          annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,

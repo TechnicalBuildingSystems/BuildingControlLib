@@ -8,14 +8,14 @@ block ActuateSunshade
       functionality);
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.StatusSunshadeInput
-    S_STA "Currently used sunshade position."    annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
+    S_STA "Currently used sunshade position(1:position, 2:slat angle)."    annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
-  Interfaces.Sunshade.CommandSunshadeManualOutput
-    S_MAN "New sunshade position."   annotation (Placement(transformation(extent={{100,60},{120,80}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
+    S_MAN "New sunshade position(1:position, 2:slat angle)."   annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-20},{160,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandActuateSunshadeInput
-    CMD "Physical operation command for changing sunshade state."   annotation (Placement(transformation(extent={{-10,90},{10,110}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanInput
+    CMD "Physical operation command for changing sunshade state(true: sun protection, false: no sun protection)."   annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-20,80},{20,120}})));
 
 equation

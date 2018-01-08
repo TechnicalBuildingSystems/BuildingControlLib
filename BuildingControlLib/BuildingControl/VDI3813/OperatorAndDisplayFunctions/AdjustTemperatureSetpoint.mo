@@ -8,13 +8,13 @@ block AdjustTemperatureSetpoint
       functionality(PAR_T_UL=PAR_T_UL,PAR_T_LL=PAR_T_LL,strict=strict));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.StatusAirTemperatureInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_STA "Absolute temperature difference that is currently used as setpoint."    annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointAirTemperatureUserOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput
     T_SETPT "New absolute temperature difference for use as setpoint."   annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-20},{160,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.CommandAdjustTemperatureSetpointInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealInput
     CMD "Physical operation command (absolute temperature difference) for changing room air temperature."   annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-20,82},{20,120}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
