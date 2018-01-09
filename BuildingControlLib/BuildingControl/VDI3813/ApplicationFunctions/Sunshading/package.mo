@@ -32,13 +32,13 @@ package Sunshading "Subgroup ob sunshading application functions"
 
     /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
     // Connectors
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueSwitchFunctionOnOffInput B_ON "Command to switch the function on or off (true == on / false == off)."
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput B_ON "Command to switch the function on or off (true == on / false == off)."
         annotation (Placement(transformation(extent={{-100,40},{-80,60}}),
             iconTransformation(extent={{-100,20},{-60,60}})));
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
         H_OUT "Measured outdoor illuminance in lux." annotation (Placement(transformation(extent={{-100,0},{-80,20}}),
             iconTransformation(extent={{-100,-60},{-60,-20}})));
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticOutput
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
         S_AUTO "New sunshade position." annotation (Placement(transformation(extent={{100,-10},{120,10}}),
             iconTransformation(extent={{100,-20},{140,20}})));
 
@@ -179,13 +179,13 @@ package Sunshading "Subgroup ob sunshading application functions"
 
     /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
     // Connectors
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueSwitchFunctionOnOffInput B_ON "Command to switch the function on or off (true == on / false == off)."
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput B_ON "Command to switch the function on or off (true == on / false == off)."
         annotation (Placement(transformation(extent={{-100,40},{-80,60}}),
             iconTransformation(extent={{-100,20},{-60,60}})));
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
         H_OUT "Measured outdoor illuminance in lux." annotation (Placement(transformation(extent={{-100,0},{-80,20}}),
             iconTransformation(extent={{-100,-60},{-60,-20}})));
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticOutput
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
         S_AUTO "New sunshade position." annotation (Placement(transformation(extent={{100,-10},{120,10}}),
             iconTransformation(extent={{100,-20},{140,20}})));
 

@@ -19,10 +19,6 @@ package Examples "Models for functionality test of application functions"
    Sunshading.AutomaticSolarControl automaticSolarControl(PAR_S_ACT={1,20},
       PAR_TI=200)
     annotation (Placement(transformation(extent={{20,0},{100,40}})));
-   Sources.Binary.PrescribedB_ON prescribedB_ON
-     annotation (Placement(transformation(extent={{-20,20},{0,40}})));
-   Sources.Illuminance.PrescribedH_OUT prescribedH_OUT
-     annotation (Placement(transformation(extent={{-20,0},{0,20}})));
   Modelica.Blocks.Sources.BooleanStep sourceB_ON(startTime=10, startValue=false)
     "Imitates starting signal from BAS"
     annotation (Placement(transformation(extent={{-100,40},{-80,60}})));
@@ -45,22 +41,14 @@ package Examples "Models for functionality test of application functions"
     offset=0)
     annotation (Placement(transformation(extent={{-100,-40},{-80,-20}})));
  equation
-  connect(automaticSolarControl.B_ON, prescribedB_ON.B_ON) annotation (Line(
-      points={{28,28},{0,28},{0,30},{1.9,30}},
-      color={0,0,0},
-      thickness=1));
-  connect(automaticSolarControl.H_OUT, prescribedH_OUT.H_OUT) annotation (Line(
-      points={{28,12},{0,12},{0,10},{1.9,10}},
-      color={0,0,0},
-      thickness=1));
-  connect(sourceB_ON.y, prescribedB_ON.u) annotation (Line(points={{-79,50},{
-          -44,50},{-44,30},{-18,30}}, color={255,0,255}));
-  connect(prescribedH_OUT.u, multiSum.y)
-    annotation (Line(points={{-18,10},{-30,10},{-42.98,10}}, color={0,0,127}));
   connect(pulse.y, multiSum.u[1])
     annotation (Line(points={{-79,10},{-56,10},{-56,12.1}}, color={0,0,127}));
   connect(pulse1.y, multiSum.u[2]) annotation (Line(points={{-79,-30},{-66,-30},
           {-66,7.9},{-56,7.9}}, color={0,0,127}));
+  connect(sourceB_ON.y, automaticSolarControl.B_ON) annotation (Line(points={{
+          -79,50},{-30,50},{-30,28},{28,28}}, color={255,0,255}));
+  connect(multiSum.y, automaticSolarControl.H_OUT) annotation (Line(points={{
+          -42.98,10},{-10,10},{-10,12},{28,12}}, color={0,0,127}));
   annotation (experiment(StopTime=1500));
  end TesterAutomaticSolarControl;
 

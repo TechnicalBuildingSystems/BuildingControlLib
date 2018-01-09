@@ -17,14 +17,14 @@ block AutomaticTwilightControlFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueSwitchFunctionOnOffInput B_ON "Command to switch the function on or off (true == on / false == off)."
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput B_ON "Command to switch the function on or off (true == on / false == off)."
       annotation (Placement(transformation(extent={{-220,60},{-200,80}}),
           iconTransformation(extent={{-100,40},{-60,60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
       H_OUT "Measured outdoor illuminance in lux." annotation (Placement(transformation(extent={{-220,20},
           {-200,40}}),
           iconTransformation(extent={{-100,0},{-60,20}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticOutput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
       S_AUTO "New sunshade position." annotation (Placement(transformation(extent={{160,0},
           {180,20}}),
           iconTransformation(extent={{100,-10},{140,10}})));
@@ -38,18 +38,16 @@ inner Modelica.StateGraph.StateGraphRoot stateGraphRoot
   annotation (Placement(transformation(extent={{120,120},{140,140}})));
 Modelica.StateGraph.Transition t0
   annotation (Placement(transformation(extent={{-70,70},{-50,90}})));
-Sources.Sunshade.PrescribedS_AUTO prescribedS_AUTO
-  annotation (Placement(transformation(extent={{120,-20},{140,0}})));
 Modelica.Blocks.Math.MultiSum sunshadePosition(nu=3)
   annotation (Placement(transformation(extent={{120,40},{140,60}})));
 Modelica.Blocks.Math.MultiSum slatAngle(nu=3)
   annotation (Placement(transformation(extent={{120,-80},{140,-60}})));
-Modelica.StateGraph.Transition t1(condition=B_ON.valueSwitchFunctionOnOff)
+Modelica.StateGraph.Transition t1(condition=B_ON)
   annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=-90,
       origin={-54,30})));
-Modelica.StateGraph.Transition t2(condition=H_OUT.valueIlluminanceOutdoor <=
+Modelica.StateGraph.Transition t2(condition=H_OUT <=
       PAR_H_ACT,
     enableTimer=true,
     waitTime=PAR_TI)
@@ -57,12 +55,12 @@ Modelica.StateGraph.Transition t2(condition=H_OUT.valueIlluminanceOutdoor <=
       extent={{-10,10},{10,-10}},
       rotation=270,
       origin={-16,-30})));
-Modelica.StateGraph.Transition t3(condition=B_ON.valueSwitchFunctionOnOff ==
+Modelica.StateGraph.Transition t3(condition=B_ON ==
       false) annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=90,
       origin={-2,-74})));
-Modelica.StateGraph.Transition t7(condition=H_OUT.valueIlluminanceOutdoor >=
+Modelica.StateGraph.Transition t7(condition=H_OUT >=
       PAR_H_DEA,
     enableTimer=true,
     waitTime=PAR_TI)
@@ -70,7 +68,7 @@ Modelica.StateGraph.Transition t7(condition=H_OUT.valueIlluminanceOutdoor >=
       extent={{-10,-10},{10,10}},
       rotation=90,
       origin={-90,-22})));
-Modelica.StateGraph.Transition t6(condition=B_ON.valueSwitchFunctionOnOff ==
+Modelica.StateGraph.Transition t6(condition=B_ON ==
       false) annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=90,
@@ -108,16 +106,6 @@ equation
 
 connect(s0.outPort[1], t0.inPort) annotation (Line(points={{-73.5,80},{-73.5,80},
           {-64,80}},             color={0,0,0}));
-connect(prescribedS_AUTO.S_AUTO, S_AUTO) annotation (Line(
-    points={{141.9,-10},{150,-10},{150,4},{160,4},{160,10},{170,10}},
-    color={0,0,0},
-    thickness=1));
-connect(sunshadePosition.y, prescribedS_AUTO.u[1]) annotation (Line(points={{141.7,
-        50},{150,50},{150,20},{108,20},{108,-11},{122,-11}},
-                                                  color={0,0,127}));
-connect(slatAngle.y, prescribedS_AUTO.u[2]) annotation (Line(points={{141.7,
-        -70},{150,-70},{150,-40},{114,-40},{114,-9},{122,-9}},
-                                            color={0,0,127}));
   connect(t2.outPort, Activated.inPort[1]) annotation (Line(points={{-16,-31.5},
           {-16,-31.5},{-16,-34},{-44,-34},{-44,-34},{-50,-34},{-50,-39}},
                                             color={0,0,0}));
@@ -174,6 +162,10 @@ connect(slatAngle.y, prescribedS_AUTO.u[2]) annotation (Line(points={{141.7,
           {-50,-10.5},{-50,-16},{-12,-16},{-12,2},{-12,28}}, color={0,0,0}));
   connect(Deactivated.outPort[2], t2.inPort) annotation (Line(points={{-49.75,-10.5},
           {-50,-10.5},{-50,-26},{-16,-26}}, color={0,0,0}));
+  connect(sunshadePosition.y, S_AUTO[1]) annotation (Line(points={{141.7,50},{
+          152,50},{152,5},{170,5}}, color={0,0,127}));
+  connect(slatAngle.y, S_AUTO[2]) annotation (Line(points={{141.7,-70},{152,-70},
+          {152,15},{170,15}}, color={0,0,127}));
   annotation (preferedView="Info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
           -100},{100,100}})),                  Documentation(revisions="<html>
 <ul>
