@@ -61,16 +61,16 @@ model SetpointCalculation
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointAirTemperatureOperatorInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_BMS "Setpoint shift provided by the operator of a building through a Building Management System (BMS)." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,20},{-48,60}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointAirTemperatureUserInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_SETPT "Setpoint shift provided by the user of a room manually." annotation (Placement(transformation(extent={{-100,20},{-80,40}}),
         iconTransformation(extent={{-100,-40},{-44,0}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointHeatCoolEnergyModesOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[8]
     T_SETPTS "Measured outdoor air temperature value, that can cause summer compensation shift." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-20},{154,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.ValueAirTemperatureOutdoorInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_OUT "Array of setpoints for heating and cooling in every energy mode." annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
         iconTransformation(extent={{-100,-98},{-48,-60}})));
 

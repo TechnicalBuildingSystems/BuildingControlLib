@@ -54,16 +54,16 @@ block SetpointCalculationFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   /* Connectors */
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointAirTemperatureOperatorInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_BMS "Setpoint shift provided by the operator of a building through a Building Management System (BMS)." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,20},{-48,60}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointAirTemperatureUserInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_SETPT "Setpoint shift provided by the user of a room manually." annotation (Placement(transformation(extent={{-100,20},{-80,40}}),
         iconTransformation(extent={{-100,-40},{-44,0}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointHeatCoolEnergyModesOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[8]
     T_SETPTS "Measured outdoor air temperature value, that can cause summer compensation shift." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-20},{154,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.ValueAirTemperatureOutdoorInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_OUT "Array of setpoints for heating and cooling in every energy mode." annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
         iconTransformation(extent={{-100,-98},{-48,-60}})));
   Nonstandardized.Internal.Limiter
@@ -73,68 +73,65 @@ block SetpointCalculationFunctionality
     yMax=PAR_SUMM_yMax,
     yMin=PAR_SUMM_yMin)
     annotation (Placement(transformation(extent={{0,-70},{20,-50}})));
-  Sensors.SensorT_OUT sensorT_OUT
-    annotation (Placement(transformation(extent={{-32,-88},{-12,-68}})));
 
 equation
-  connect(T_OUT,sensorT_OUT.T_OUT);
-  connect(sensorT_OUT.y,summerCompensation.u);
+  connect(T_OUT,summerCompensation.u);
   summerCompensation.y=T_OUT_shift;
 
   /* A implementation of the functionality of control function setpoint calculation
   described in the standard */
   /* TEconHeat */
 algorithm
-  if T_BMS.setpointAirTemperatureOperator + TEconHeat <= PAR_SETPTS_defTProtHeat then
+  if T_BMS + TEconHeat <= PAR_SETPTS_defTProtHeat then
     TEconHeat := PAR_SETPTS_defTProtHeat;
-  elseif T_BMS.setpointAirTemperatureOperator + PAR_SETPTS_defTEconHeat > PAR_SETPTS_defTProtHeat then
-    TEconHeat := T_BMS.setpointAirTemperatureOperator + TEconHeat;
+  elseif T_BMS + PAR_SETPTS_defTEconHeat > PAR_SETPTS_defTProtHeat then
+    TEconHeat := T_BMS + TEconHeat;
   end if;
 
     /* TEconCool */
-  if T_BMS.setpointAirTemperatureOperator + TEconCool >= PAR_SETPTS_defTProtCool then
+  if T_BMS + TEconCool >= PAR_SETPTS_defTProtCool then
     TEconCool := PAR_SETPTS_defTProtCool;
-  elseif T_BMS.setpointAirTemperatureOperator + TEconCool < PAR_SETPTS_defTProtCool then
-    TEconCool := T_BMS.setpointAirTemperatureOperator + TEconCool;
+  elseif T_BMS + TEconCool < PAR_SETPTS_defTProtCool then
+    TEconCool := T_BMS + TEconCool;
   end if;
 
   /* TPreComfHeat*/
-  if T_SETPT.setpointAirTemperatureUser + T_BMS.setpointAirTemperatureOperator + TPreComfHeat <= TEconHeat then
+  if T_SETPT + T_BMS + TPreComfHeat <= TEconHeat then
     TPreComfHeat := TEconHeat;
   else
-    TPreComfHeat := T_SETPT.setpointAirTemperatureUser + T_BMS.setpointAirTemperatureOperator + TPreComfHeat;
+    TPreComfHeat := T_SETPT + T_BMS + TPreComfHeat;
   end if;
 
     /* TPreComfCool*/
-  if T_SETPT.setpointAirTemperatureUser + T_BMS.setpointAirTemperatureOperator + T_OUT_shift + TPreComfCool >= TEconCool then
+  if T_SETPT + T_BMS + T_OUT_shift + TPreComfCool >= TEconCool then
     TPreComfCool := TEconCool;
   else
-    TPreComfCool := T_SETPT.setpointAirTemperatureUser + T_BMS.setpointAirTemperatureOperator + T_OUT_shift + TPreComfCool;
+    TPreComfCool := T_SETPT + T_BMS + T_OUT_shift + TPreComfCool;
   end if;
 
     /* TComfHeat*/
-  if T_SETPT.setpointAirTemperatureUser + T_BMS.setpointAirTemperatureOperator + TComfHeat <= TEconHeat then
+  if T_SETPT + T_BMS + TComfHeat <= TEconHeat then
     TComfHeat := TEconHeat;
   else
-    TComfHeat := T_SETPT.setpointAirTemperatureUser + T_BMS.setpointAirTemperatureOperator + TComfHeat;
+    TComfHeat := T_SETPT + T_BMS + TComfHeat;
   end if;
 
     /* TComfCool*/
-  if T_SETPT.setpointAirTemperatureUser + T_BMS.setpointAirTemperatureOperator + T_OUT_shift + TComfCool >= TEconCool then
+  if T_SETPT + T_BMS + T_OUT_shift + TComfCool >= TEconCool then
     TComfCool := TEconCool;
   else
-    TComfCool := T_SETPT.setpointAirTemperatureUser + T_BMS.setpointAirTemperatureOperator + T_OUT_shift + TComfCool;
+    TComfCool := T_SETPT + T_BMS + T_OUT_shift + TComfCool;
   end if;
 
-  // forward outputs of T_SETPT.setpointAirTemperatureUserS to connector
-  T_SETPTS.setpointHeatCoolEnergyModes[1] := PAR_SETPTS_defTProtHeat;
-  T_SETPTS.setpointHeatCoolEnergyModes[2] := TEconHeat;
-  T_SETPTS.setpointHeatCoolEnergyModes[3] := TPreComfHeat;
-  T_SETPTS.setpointHeatCoolEnergyModes[4] := TComfHeat;
-  T_SETPTS.setpointHeatCoolEnergyModes[5] := TComfCool;
-  T_SETPTS.setpointHeatCoolEnergyModes[6] := TPreComfCool;
-  T_SETPTS.setpointHeatCoolEnergyModes[7] := TEconCool;
-  T_SETPTS.setpointHeatCoolEnergyModes[8] := PAR_SETPTS_defTProtCool;
+  // forward outputs of T_SETPTS to connector
+  T_SETPTS[1] := PAR_SETPTS_defTProtHeat;
+  T_SETPTS[2] := TEconHeat;
+  T_SETPTS[3] := TPreComfHeat;
+  T_SETPTS[4] := TComfHeat;
+  T_SETPTS[5] := TComfCool;
+  T_SETPTS[6] := TPreComfCool;
+  T_SETPTS[7] := TEconCool;
+  T_SETPTS[8] := PAR_SETPTS_defTProtCool;
 
   annotation (preferedView="Info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),                                                                               Icon(

@@ -5,52 +5,22 @@ model TesterSetpointCalculation
 
   Modelica.Blocks.Sources.Constant T_BMS(k=0)
     annotation (Placement(transformation(extent={{-100,36},{-80,56}})));
-  Sources.AirTemperature.PrescribedT_BMS prescribedT_BMS
-    annotation (Placement(transformation(extent={{-62,36},{-42,56}})));
-  Sources.AirTemperature.PrescribedT_SETPT prescribedT_SETPT
-    annotation (Placement(transformation(extent={{-60,2},{-40,22}})));
   Modelica.Blocks.Sources.Constant T_SETPT(k=0)
     annotation (Placement(transformation(extent={{-100,2},{-80,22}})));
   RoomClimate.SetpointCalculation setpointCalculation(PAR_SUMM_yMin=0,
       PAR_SUMM_yMax=1.2)
     annotation (Placement(transformation(extent={{-20,-32},{86,80}})));
-  Sources.AirTemperature.PrescribedT_OUT prescribedT_OUT
-    annotation (Placement(transformation(extent={{-62,-30},{-42,-10}})));
   Modelica.Blocks.Sources.Constant T_OUT(k=273.15 + 35)
     annotation (Placement(transformation(extent={{-100,-30},{-80,-10}})));
 equation
-  connect(prescribedT_BMS.u, T_BMS.y) annotation (Line(
-      points={{-60,46},{-79,46}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(T_SETPT.y, prescribedT_SETPT.u) annotation (Line(
-      points={{-79,12},{-58,12}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(T_OUT.y, prescribedT_OUT.u) annotation (Line(
-      points={{-79,-20},{-60,-20}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(prescribedT_BMS.T_BMS, setpointCalculation.T_BMS) annotation (
-      Line(
-      points={{-40.1,46},{-32,46},{-32,46.4},{-6.22,46.4}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedT_SETPT.T_SETPT, setpointCalculation.T_SETPT)
-    annotation (Line(
-      points={{-38.1,12},{-30,12},{-30,12.8},{-5.16,12.8}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedT_OUT.T_OUT, setpointCalculation.T_OUT) annotation (
-      Line(
-      points={{-40.1,-20},{-30,-20},{-30,-20.24},{-6.22,-20.24}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
+  connect(T_BMS.y, setpointCalculation.T_BMS) annotation (Line(points={{-79,46},
+          {-48,46},{-48,46.4},{-6.22,46.4}}, color={0,0,127}));
+  connect(T_SETPT.y, setpointCalculation.T_SETPT) annotation (Line(points={{-79,
+          12},{-5.16,12},{-5.16,12.8}}, color={0,0,127}));
+  connect(T_OUT.y, setpointCalculation.T_OUT) annotation (Line(points={{-79,-20},
+          {-48,-20},{-48,-20.24},{-6.22,-20.24}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),preferedView="Info",                                                                     graphics),
+            -100},{100,100}}),preferedView="Info"),
       Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>
 <p>Block that implements function &QUOT;Setpoint calculation&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.21, p. 68 - 70]</a>.</p>

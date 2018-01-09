@@ -5,21 +5,21 @@ block AutomaticThermalControlFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connector
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceEvaluationInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput
     P_ACT
     "Evaluated presence signal (true = occupied / false = unoccupied)."
     annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,40},{-60,60}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     H_OUT "Measured outdoor illuminance in Lux." annotation (Placement(transformation(extent={{-100,20},{-80,40}}),
         iconTransformation(extent={{-100,0},{-60,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.ValueAirTemperatureRoomInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_ROOM "Measured room air temperature in Kelvin." annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
         iconTransformation(extent={{-100,-40},{-60,-20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointHeatCoolEnergyModesInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[8]
     T_SETPTS "Array of setpoints for heating and cooling in every energy mode." annotation (Placement(transformation(extent={{-100,-60},{-80,
             -40}}), iconTransformation(extent={{-100,-80},{-60,-60}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeManualOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
     S_MAN "New position of sunshade." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-10},{140,10}})));
 
@@ -67,44 +67,41 @@ block AutomaticThermalControlFunctionality
 
           Modelica.StateGraph.Transition t0
     annotation (Placement(transformation(extent={{-52,88},{-44,96}})));
-  Modelica.StateGraph.Transition t1(condition=not P_ACT.valuePresenceEvaluation)
+  Modelica.StateGraph.Transition t1(condition=not P_ACT)
     annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
         rotation=270,
         origin={-34,58})));
 
-  Modelica.StateGraph.Transition t2(condition=P_ACT.valuePresenceEvaluation)
+  Modelica.StateGraph.Transition t2(condition=P_ACT)
     annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
         rotation=270,
         origin={4,54})));
-  Modelica.StateGraph.Transition t3(condition=H_OUT.valueIlluminanceOutdoor <
+  Modelica.StateGraph.Transition t3(condition=H_OUT <
         PAR_H_ACT)
     "if the outside illuminance is to low in activity signal is sent"
                    annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
         rotation=0,
         origin={-12,26})));
-  Modelica.StateGraph.Transition t4(condition=H_OUT.valueIlluminanceOutdoor >=
-        PAR_H_ACT and T_ROOM.valueAirTemperatureRoom >= T_SETPTS.setpointHeatCoolEnergyModes[
-        5])
+  Modelica.StateGraph.Transition t4(condition=H_OUT >=
+        PAR_H_ACT and T_ROOM >= T_SETPTS[5])
     "If outdoor illuminance is higher then PAR_H_ACT and if room air temperature is lower than setpoint of comfort heating energy level set point"
             annotation (Placement(transformation(
         extent={{-5,-5},{5,5}},
         rotation=270,
         origin={-43,21})));
-  Modelica.StateGraph.Transition t5(condition=H_OUT.valueIlluminanceOutdoor >=
-        PAR_H_ACT and T_ROOM.valueAirTemperatureRoom <= T_SETPTS.setpointHeatCoolEnergyModes[
-        4])
+  Modelica.StateGraph.Transition t5(condition=H_OUT >=
+        PAR_H_ACT and T_ROOM <= T_SETPTS[4])
     "If outdoor illuminance is higher then PAR_H_ACT and  if room air temperature is higher than comfort cooling energy level set point"
                                                  annotation (Placement(
         transformation(
         extent={{-4,-4},{4,4}},
         rotation=270,
         origin={-18,4})));
-  Modelica.StateGraph.Transition t6(condition=not T_ROOM.valueAirTemperatureRoom
-         <= T_SETPTS.setpointHeatCoolEnergyModes[4] + 1)
-                                                 annotation (Placement(
+  Modelica.StateGraph.Transition t6(condition=not T_ROOM
+         <= T_SETPTS[4] + 1)                     annotation (Placement(
         transformation(
         extent={{-4,-4},{4,4}},
         rotation=0,
@@ -117,8 +114,6 @@ block AutomaticThermalControlFunctionality
         extent={{-5,-5},{5,5}},
         rotation=90,
         origin={25,55})));
-  Sources.Sunshade.PrescribedS_MAN prescribedS_MAN
-    annotation (Placement(transformation(extent={{88,44},{98,52}})));
   Modelica.Blocks.Math.MultiSum sumSunPos(nu=3)
     annotation (Placement(transformation(extent={{72,54},{78,60}})));
   Modelica.Blocks.Math.MultiSum sumSunAng(nu=3)
@@ -147,8 +142,8 @@ block AutomaticThermalControlFunctionality
         extent={{-3,-3},{3,3}},
         rotation=270,
         origin={-63,-1})));
-  Modelica.StateGraph.Transition t8(condition=not T_ROOM.valueAirTemperatureRoom
-         >= T_SETPTS.setpointHeatCoolEnergyModes[5] - 1)
+  Modelica.StateGraph.Transition t8(condition=not T_ROOM
+         >= T_SETPTS[5] - 1)
     annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
         rotation=0,
@@ -219,19 +214,6 @@ equation
       points={{19,40.25},{25,40.25},{25,53}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(prescribedS_MAN.S_MAN, S_MAN) annotation (Line(
-      points={{98.95,48},{98.95,70},{110,70}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(sumSunPos.y, prescribedS_MAN.u[1]) annotation (Line(
-      points={{78.51,57},{84,57},{84,47.6},{89,47.6}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(sumSunAng.y, prescribedS_MAN.u[2]) annotation (Line(
-      points={{78.51,39},{84,39},{84,48.4},{89,48.4}},
-      color={0,0,127},
-      smooth=Smooth.None));
   connect(inActivePos.u, deactivated.active) annotation (Line(
       points={{31.4,17},{26,17},{26,35},{24.5,35}},
       color={255,0,255},
@@ -270,7 +252,7 @@ equation
       smooth=Smooth.None));
 
   connect(inActiveAng.y, sumSunAng.u[1]) annotation (Line(
-      points={{38.3,27},{38.3,28},{38,28},{40,28},{62,28},{62,38},{72,38},{72,40.4}},
+      points={{38.3,27},{38.3,28},{62,28},{62,38},{72,38},{72,40.4}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(heatingAng.y, sumSunAng.u[2]) annotation (Line(
@@ -294,8 +276,12 @@ equation
       points={{-33.4,-32},{20,-32},{20,29.5},{19.375,29.5}},
       color={0,0,0},
       smooth=Smooth.None));
+  connect(sumSunPos.y, S_MAN[1]) annotation (Line(points={{78.51,57},{90.255,57},
+          {90.255,65},{110,65}}, color={0,0,127}));
+  connect(sumSunAng.y, S_MAN[2]) annotation (Line(points={{78.51,39},{78.51,
+          53.5},{110,53.5},{110,75}}, color={0,0,127}));
   annotation (preferedView="Info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),      graphics), Documentation(revisions="<html>
+            -100},{100,100}})),                Documentation(revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>

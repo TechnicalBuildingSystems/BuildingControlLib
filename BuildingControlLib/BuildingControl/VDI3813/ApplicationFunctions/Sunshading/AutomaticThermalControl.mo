@@ -22,21 +22,21 @@ block AutomaticThermalControl
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceEvaluationInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput
       P_ACT
     "Evaluated presence signal (true = occupied / false = unoccupied)."
       annotation (Placement(transformation(extent={{-100,40},{-80,60}}),
           iconTransformation(extent={{-100,40},{-60,60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
       H_OUT "Measured outdoor illuminance in Lux." annotation (Placement(transformation(extent={{-100,0},{-80,20}}),
           iconTransformation(extent={{-100,0},{-60,20}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.ValueAirTemperatureRoomInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
       T_ROOM "Measured room air temperature in Kelvin." annotation (Placement(transformation(extent={{-100,-40},{-80,-20}}),
           iconTransformation(extent={{-100,-40},{-60,-20}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointHeatCoolEnergyModesInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[8]
       T_SETPTS "Array of setpoints for heating and cooling in every energy mode." annotation (Placement(transformation(extent={{-100,-80},{-80,-60}}),
           iconTransformation(extent={{-100,-80},{-60,-60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeManualOutput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
       S_MAN "New position of sunshade." annotation (Placement(transformation(extent={{100,-10},{120,10}}),
           iconTransformation(extent={{100,-10},{140,10}})));
 
