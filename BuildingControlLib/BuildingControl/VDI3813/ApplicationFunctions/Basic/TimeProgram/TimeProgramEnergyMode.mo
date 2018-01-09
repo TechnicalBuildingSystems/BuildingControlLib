@@ -17,8 +17,8 @@ extends
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connector
-  Interfaces.Time.ValueCurrentTimeAndDateInput D_ACT "Current date and time." annotation (Placement(transformation(extent={{-100,20},{-60,60}})));
-  Interfaces.EnergyMode.CommandEnergyModeTimeScheduleOutput M_BMS "Valid energy mode for the current time (defined in schedules by operator)." annotation (
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput D_ACT "Current date and time." annotation (Placement(transformation(extent={{-100,20},{-60,60}})));
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.EnergyModeOutput M_BMS "Valid energy mode for the current time (defined in schedules by operator)." annotation (
       Placement(transformation(extent={{100,20},{122,60}}), iconTransformation(
           extent={{100,20},{140,60}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/

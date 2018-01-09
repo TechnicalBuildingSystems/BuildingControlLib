@@ -10,15 +10,15 @@ extends
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connector
-  Interfaces.Presence.ValuePresenceSensorInput P_AUTO
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput P_AUTO
     "Presence signal for evaluation issues generated from a sensor device."                                                   annotation (Placement(
         transformation(extent={{-100,40},{-80,60}}), iconTransformation(extent={{-100,20},
             {-58,62}})));
-  Interfaces.Presence.CommandPresenceOperatorInput P_MAN
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput P_MAN
     "Presence signal for evaluation issues generated from an operator input."
     annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
         iconTransformation(extent={{-100,-40},{-58,2}})));
-  Interfaces.Presence.ValuePresenceEvaluationOutput P_ACT
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanOutput P_ACT
     "Evaluated presence signal."                                                       annotation (Placement(
         transformation(extent={{100,40},{120,60}}), iconTransformation(extent={{100,20},
             {140,60}})));

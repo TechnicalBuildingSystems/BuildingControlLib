@@ -5,21 +5,21 @@ block PriorityControlFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueWindowInput B_WINDOW "Boolean window state (default: true == closed / false == open)."
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput B_WINDOW "Boolean window state (default: true == closed / false == open)."
     annotation (Placement(transformation(extent={{-100,60},{-80,80}}), iconTransformation(extent={{-100,40},{-60,60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeProtectionInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
     S_PROT "Positioning command for the sunshade from WeatherProtection." annotation (Placement(transformation(extent={{-100,30},{-80,50}}),
         iconTransformation(extent={{-100,10},{-60,30}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeMaintenanceInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
     S_MAINT "Positioning command for the sunshade from operator." annotation (Placement(transformation(extent={{-100,0},{-80,20}}),
         iconTransformation(extent={{-100,-20},{-60,0}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeManualInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
     S_MAN "Positioning command for the sunshade from ActuateSunshade or AutomaticThermalControl." annotation (Placement(transformation(extent={{-100,-30},{-80,-10}}),
         iconTransformation(extent={{-100,-50},{-60,-30}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
     S_AUTO "Positioning command for the sunshade from other automation functions." annotation (Placement(transformation(extent={{-100,-60},{-80,-40}}),
         iconTransformation(extent={{-100,-80},{-60,-60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeOutput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
     S_SET "New position of the sunshade." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-10},{140,10}})));
 
@@ -59,8 +59,7 @@ block PriorityControlFunctionality
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-20,30})));
-  Modelica.StateGraph.Transition t1(condition=B_WINDOW.valueWindow)
-                                                              annotation (Placement(transformation(
+  Modelica.StateGraph.Transition t1(condition=B_WINDOW)       annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-52,52})));
@@ -116,8 +115,6 @@ block PriorityControlFunctionality
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={60,-74})));
-  Sources.Sunshade.PrescribedS_SET prescribedS_SET
-    annotation (Placement(transformation(extent={{74,40},{94,60}})));
 
   sunShadeUtility noPrioSunPos(
     valFalse( y = 0.0), valTrue(y=0.0))
@@ -210,14 +207,14 @@ block PriorityControlFunctionality
     annotation (Placement(transformation(extent={{44,-28},{56,-16}})));
 equation
   // Assignment of positions and angles to evaluation cascade
-  valuesPosition[ PAR_PRIO_S_PROT]    = S_PROT.commandSunshadeProtectionPos;
-  valuesPosition[ PAR_PRIO_S_MAINT]   = S_MAINT.commandSunshadeMaintenancePos;
-  valuesPosition[ PAR_PRIO_S_MAN]     = S_MAN.commandSunshadeManualPos;
-  valuesPosition[ PAR_PRIO_S_AUTO]    = S_AUTO.commandSunshadeAutomaticPos;
-  valuesAngle[ PAR_PRIO_S_PROT]       = S_PROT.commandSunshadeProtectionSlatAngle;
-  valuesAngle[ PAR_PRIO_S_MAINT]      = S_MAINT.commandSunshadeMaintenanceSlatAngle;
-  valuesAngle[ PAR_PRIO_S_MAN]        = S_MAN.commandSunshadeManualSlatAngle;
-  valuesAngle[ PAR_PRIO_S_AUTO]       = S_AUTO.commandSunshadeAutomaticSlatAngle;
+  valuesPosition[ PAR_PRIO_S_PROT]    = S_PROT[1];
+  valuesPosition[ PAR_PRIO_S_MAINT]   = S_MAINT[1];
+  valuesPosition[ PAR_PRIO_S_MAN]     = S_MAN[1];
+  valuesPosition[ PAR_PRIO_S_AUTO]    = S_AUTO[1];
+  valuesAngle[ PAR_PRIO_S_PROT]       = S_PROT[2];
+  valuesAngle[ PAR_PRIO_S_MAINT]      = S_MAINT[2];
+  valuesAngle[ PAR_PRIO_S_MAN]        = S_MAN[2];
+  valuesAngle[ PAR_PRIO_S_AUTO]       = S_AUTO[2];
 
   // if window is closed then evaluate lower priority inputs
   // Value for window state in rooms (true := closed/ window is save , false := open/window and sunshade may collide)"
@@ -242,11 +239,6 @@ equation
   connect(t6.outPort, start.inPort[2]) annotation (Line(
       points={{60,-72.5},{60,100},{-40,100},{-40,82},{-21.7,82},{-21.7,80.6}},
       color={0,0,0},
-      smooth=Smooth.None));
-  connect(prescribedS_SET.S_SET, S_SET) annotation (Line(
-      points={{95.9,50},{98,50},{98,70},{110,70}},
-      color={0,0,0},
-      thickness=1,
       smooth=Smooth.None));
   connect(noPrioSunPos.u, noPrio.active) annotation (Line(
       points={{22,-72.7},{26,-72.7},{26,-77},{28,-77}},
@@ -334,14 +326,6 @@ equation
       color={0,0,0},
       smooth=Smooth.None));
 
-  connect(sumSunAng.y, prescribedS_SET.u[2]) annotation (Line(
-      points={{57.02,-22},{64,-22},{64,51},{76,51}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(sumSunPos.y, prescribedS_SET.u[1]) annotation (Line(
-      points={{43.02,54},{56,54},{56,49},{76,49}},
-      color={0,0,127},
-      smooth=Smooth.None));
   connect(startSunPos.y, sumSunPos.u[1]) annotation (Line(
       points={{1.85,77.5},{10,77.5},{10,78},{20,78},{20,58},{26,58},{26,57.5},{
           30,57.5}},
@@ -393,6 +377,10 @@ equation
       points={{1.85,65.5},{1.85,66},{12,66},{12,-20},{44,-20},{44,-25.5}},
       color={0,0,127},
       smooth=Smooth.None));
+  connect(sumSunPos.y, S_SET[1]) annotation (Line(points={{43.02,54},{72,54},{
+          72,65},{110,65}}, color={0,0,127}));
+  connect(sumSunAng.y, S_SET[2]) annotation (Line(points={{57.02,-22},{80,-22},
+          {80,75},{110,75}}, color={0,0,127}));
   annotation (preferedView="Info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),                Documentation(revisions="<html>
 <ul>

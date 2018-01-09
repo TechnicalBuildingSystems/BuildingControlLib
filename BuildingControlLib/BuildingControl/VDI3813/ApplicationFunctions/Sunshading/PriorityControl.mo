@@ -14,24 +14,24 @@ extends
       PAR_PRIO_S_AUTO=PAR_PRIO_S_AUTO));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueWindowInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput
   B_WINDOW "Boolean window state (default: true == closed / false == open)." annotation (Placement(transformation(extent={{-100,50},{-80,70}}), iconTransformation(extent={{-100,40},
             {-80,60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeProtectionInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
       S_PROT "Positioning command for the sunshade from WeatherProtection." annotation (Placement(transformation(extent={{-100,20},{-80,40}}),
           iconTransformation(extent={{-100,10},{-80,30}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeMaintenanceInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
       S_MAINT "Positioning command for the sunshade from operator." annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
           iconTransformation(extent={{-100,-20},{-80,0}})));
 
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeManualInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
       S_MAN "Positioning command for the sunshade from ActuateSunshade or AutomaticThermalControl." annotation (Placement(transformation(extent={{-100,-40},{-80,-20}}),
           iconTransformation(extent={{-100,-50},{-80,-30}})));
 
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
       S_AUTO "Positioning command for the sunshade from other automation functions." annotation (Placement(transformation(extent={{-100,-70},{-80,-50}}),
           iconTransformation(extent={{-100,-80},{-80,-60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeOutput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
       S_SET "New position of the sunshade." annotation (Placement(transformation(extent={{100,-10},{120,10}}),
           iconTransformation(extent={{100,-20},{140,20}})));
 

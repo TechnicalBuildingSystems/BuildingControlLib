@@ -23,3 +23,5 @@ PhysicalBooleanInput
 PhysicalBooleanOutput
 PhysicalRealInput
 PhysicalRealOutput
+EnergyModeInput
+EnergyModeOutput

@@ -5,15 +5,15 @@ block OccupancyEvaluationFunctionality
     BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial.PartialFunctionality;
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceSensorInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput
     P_AUTO "Presence signal for evaluation issues generated from a sensor device." annotation (Placement(transformation(extent={{-100,0},{-80,20}}),
         iconTransformation(extent={{-100,0},{-60,40}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.CommandPresenceOperatorInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput
     P_MAN
     "Presence signal for evaluation issues generated from an operator input."
     annotation (Placement(transformation(extent={{-100,-36},{-80,-16}}),
         iconTransformation(extent={{-100,-40},{-60,0}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceEvaluationOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanOutput
     P_ACT "Evaluated presence signal." annotation (Placement(transformation(extent={{100,0},{120,20}}),
         iconTransformation(extent={{100,-20},{140,20}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
@@ -23,9 +23,9 @@ block OccupancyEvaluationFunctionality
 
 equation
   if PAR_BEH then
-   P_ACT.valuePresenceEvaluation = P_AUTO.valuePresenceSensor;
+   P_ACT = P_AUTO;
   else
-   P_ACT.valuePresenceEvaluation = P_AUTO.valuePresenceSensor and P_MAN.valuePresenceOperator;
+   P_ACT = P_AUTO and P_MAN;
   end if;
 
   annotation (preferedView="Info",Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,

@@ -40,80 +40,26 @@ model TesterPriorityControl
   Modelica.Blocks.Sources.Constant S_AUTO_Angle(k=40)
     annotation (Placement(transformation(extent={{-78,-100},{-58,-80}})));
 
-  Sources.Binary.PrescribedB_WINDOW prescribedB_WINDOW
-    annotation (Placement(transformation(extent={{-40,60},{-20,80}})));
-  Sources.Sunshade.PrescribedS_PROT prescribedS_PROT
-    annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
-  Sources.Sunshade.PrescribedS_MAINT prescribedS_MAINT
-    annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
-  Sources.Sunshade.PrescribedS_MAN prescribedS_MAN
-    annotation (Placement(transformation(extent={{-40,-60},{-20,-40}})));
-  Sources.Sunshade.PrescribedS_AUTO prescribedS_AUTO
-    annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
 equation
-  connect(prescribedB_WINDOW.u, B_WINDOW.y) annotation (Line(
-      points={{-38,70},{-59,70}},
-      color={255,0,255},
-      smooth=Smooth.None));
-  connect(prescribedB_WINDOW.B_WINDOW, priorityControl.B_WINDOW) annotation (Line(
-      points={{-18.1,70},{-10,70},{-10,48.5},{5.6,48.5}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedS_PROT.S_PROT, priorityControl.S_PROT) annotation (Line(
-      points={{-18.1,30},{-10,30},{-10,18.8},{5.6,18.8}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedS_PROT.u[1], S_PROT_Pos.y) annotation (Line(
-      points={{-38,29},{-40,29},{-40,30},{-50,30},{-50,50},{-99,50}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(prescribedS_PROT.u[2], S_PROT_Angle.y) annotation (Line(
-      points={{-38,31},{-38,31},{-38,30},{-59,30}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(prescribedS_MAINT.S_MAINT, priorityControl.S_MAINT) annotation (
-      Line(
-      points={{-18.1,-10},{-6,-10},{-6,-10.9},{5.6,-10.9}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedS_AUTO.S_AUTO, priorityControl.S_AUTO) annotation (Line(
-      points={{-18.1,-90},{-10,-90},{-10,-70.3},{5.6,-70.3}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(S_MAINT_Pos.y, prescribedS_MAINT.u[1]) annotation (Line(
-      points={{-99,10},{-50,10},{-50,-10},{-38,-10},{-38,-11}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(S_MAINT_Angle.y, prescribedS_MAINT.u[2]) annotation (Line(
-      points={{-59,-10},{-38,-10},{-38,-10},{-38,-10},{-38,-10},{-38,-9}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(S_MAN_Pos.y, prescribedS_MAN.u[1]) annotation (Line(
-      points={{-99,-30},{-50,-30},{-50,-50},{-38,-50},{-38,-51}},
-      color={0,0,127},
-      smooth=Smooth.None));
 
-  connect(S_MAN_Angle.y, prescribedS_MAN.u[2]) annotation (Line(
-      points={{-59,-50},{-38,-50},{-38,-50},{-38,-50},{-38,-50},{-38,-49}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(S_AUTO_Pos.y, prescribedS_AUTO.u[1]) annotation (Line(
-      points={{-99,-70},{-50,-70},{-50,-90},{-38,-90},{-38,-91}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(S_AUTO_Angle.y, prescribedS_AUTO.u[2]) annotation (Line(
-      points={{-57,-90},{-40,-90},{-40,-90},{-40,-90},{-40,-89},{-38,-89}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(priorityControl.S_MAN, prescribedS_MAN.S_MAN) annotation (Line(
-      points={{5.6,-40.6},{-10.5,-40.6},{-10.5,-50},{-18.1,-50}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
+  connect(B_WINDOW.y, priorityControl.B_WINDOW) annotation (Line(points={{-59,
+          70},{-28,70},{-28,48.5},{5.6,48.5}}, color={255,0,255}));
+  connect(S_PROT_Pos.y, priorityControl.S_PROT[1]) annotation (Line(points={{
+          -99,50},{-48,50},{-48,13.85},{5.6,13.85}}, color={0,0,127}));
+  connect(S_PROT_Angle.y, priorityControl.S_PROT[2]) annotation (Line(points={{
+          -59,30},{-28,30},{-28,23.75},{5.6,23.75}}, color={0,0,127}));
+  connect(S_MAINT_Pos.y, priorityControl.S_MAINT[1]) annotation (Line(points={{
+          -99,10},{-48,10},{-48,-15.85},{5.6,-15.85}}, color={0,0,127}));
+  connect(S_MAINT_Angle.y, priorityControl.S_MAINT[2]) annotation (Line(points=
+          {{-59,-10},{5.6,-10},{5.6,-5.95}}, color={0,0,127}));
+  connect(S_MAN_Pos.y, priorityControl.S_MAN[1]) annotation (Line(points={{-99,
+          -30},{-48,-30},{-48,-45.55},{5.6,-45.55}}, color={0,0,127}));
+  connect(S_MAN_Angle.y, priorityControl.S_MAN[2]) annotation (Line(points={{
+          -59,-50},{-30,-50},{-30,-35.65},{5.6,-35.65}}, color={0,0,127}));
+  connect(S_AUTO_Pos.y, priorityControl.S_AUTO[1]) annotation (Line(points={{
+          -99,-70},{5.6,-70},{5.6,-75.25}}, color={0,0,127}));
+  connect(S_AUTO_Angle.y, priorityControl.S_AUTO[2]) annotation (Line(points={{
+          -57,-90},{-28,-90},{-28,-65.35},{5.6,-65.35}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),                                                                               Icon(
         coordinateSystem(extent={{-100,-100},{100,100}})),

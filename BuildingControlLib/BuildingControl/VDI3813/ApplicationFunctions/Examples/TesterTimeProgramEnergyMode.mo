@@ -5,24 +5,15 @@ model TesterTimeProgramEnergyMode
 
   Basic.TimeProgram.TimeProgramEnergyMode timeProgramEnergyMode
     annotation (Placement(transformation(extent={{-20,-12},{80,48}})));
-  Sources.Time.PrescribedD_ACT prescribedD_ACT
-    annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
   Modelica.Blocks.Sources.Constant sourceD_ACT(k=200)
     annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
 equation
-  connect(prescribedD_ACT.D_ACT, timeProgramEnergyMode.D_ACT) annotation (Line(
-      points={{-38.1,30},{-10,30}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(sourceD_ACT.y, prescribedD_ACT.u) annotation (Line(
-      points={{-79,30},{-58,30}},
-      color={0,0,127},
-      smooth=Smooth.None));
+  connect(sourceD_ACT.y, timeProgramEnergyMode.D_ACT)
+    annotation (Line(points={{-79,30},{-10,30},{-10,30}}, color={0,0,127}));
   annotation (experiment(StopTime=1.8144e+006),
       __Dymola_experimentSetupOutput,
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
-            100,100}}), graphics),preferedView="Info",
+            100,100}})),          preferedView="Info",
     Documentation(revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>

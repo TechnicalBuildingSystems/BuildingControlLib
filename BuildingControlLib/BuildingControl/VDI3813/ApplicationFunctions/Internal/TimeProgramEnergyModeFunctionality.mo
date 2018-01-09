@@ -6,9 +6,9 @@ block TimeProgramEnergyModeFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connector
-  Interfaces.Time.ValueCurrentTimeAndDateInput D_ACT
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput D_ACT
     "Input connector of ValueCurrentTimeAndDate" annotation (Placement(transformation(extent={{-100,20},{-60,60}})));
-  Interfaces.EnergyMode.CommandEnergyModeTimeScheduleOutput M_BMS
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.EnergyModeOutput M_BMS
     "Output connector of CommandEnergyModeTimeSchedule" annotation (
       Placement(transformation(extent={{100,20},{140,60}}), iconTransformation(
           extent={{100,20},{140,60}})));
@@ -31,17 +31,14 @@ block TimeProgramEnergyModeFunctionality
     inputIntervalsAndValue=PAR_CAL)
     annotation (Placement(transformation(extent={{-80,-50},{-60,-30}})));
 
-      Modelica.Blocks.Logical.GreaterThreshold greaterThreshold(threshold=-1)
+  Modelica.Blocks.Logical.GreaterThreshold greaterThreshold(threshold=-1)
     annotation (Placement(transformation(extent={{-40,-50},{-20,-30}})));
   Modelica.Blocks.Logical.Switch switch1
     annotation (Placement(transformation(extent={{0,-50},{20,-30}})));
   Modelica.Blocks.Math.RealToInteger realToInteger
-    annotation (Placement(transformation(extent={{40,-50},{60,-30}})));
-  Sources.EnergyMode.PrescribedM_BMS prescribedM_BMS annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={70,10})));
+        origin={50,-10})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Parameter
   parameter Real offset[:]={0.0} "Offset of  output signal";
@@ -106,17 +103,18 @@ block TimeProgramEnergyModeFunctionality
             exceptionCalendar.endValue}
     "Time/value pairs of of yearly exception calendar. Format: {{days,hours,minutes,seconds,value}}. Need to leave endValue parameter as last item. Discontinuities allowed by introducing values in table twice ";
 
+  Utilities.Converters.IntegerToEnergyMode integerToEnergyMode annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={50,30})));
 equation
-  connect(realToInteger.y,prescribedM_BMS. u) annotation (Line(
-      points={{61,-40},{66,-40},{66,2}},
-      color={255,127,0},
-      smooth=Smooth.None));
   connect(greaterThreshold.u, exceptionCalendar.y) annotation (Line(
       points={{-42,-40},{-59,-40}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(realToInteger.u, switch1.y) annotation (Line(
-      points={{38,-40},{21,-40}},
+      points={{50,-22},{50,-40},{21,-40}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(switch1.u2, greaterThreshold.y) annotation (Line(
@@ -132,11 +130,10 @@ equation
       color={0,0,127},
       smooth=Smooth.None));
 
-  connect(prescribedM_BMS.M_BMS, M_BMS) annotation (Line(
-      points={{74,21.9},{74,21.9},{74,32},{100,32},{100,40},{120,40}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
+  connect(realToInteger.y, integerToEnergyMode.u) annotation (Line(points={{50,
+          1},{48,1},{48,22},{46,22}}, color={255,127,0}));
+  connect(integerToEnergyMode.M, M_BMS) annotation (Line(points={{54,41.9},{80,
+          41.9},{80,40},{120,40}}, color={0,0,0}));
   annotation (preferedView="Info",experiment(StopTime=1.2096e+006, Interval=1000),
       __Dymola_experimentSetupOutput,
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
