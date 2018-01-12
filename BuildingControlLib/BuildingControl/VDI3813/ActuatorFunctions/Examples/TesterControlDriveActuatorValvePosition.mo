@@ -12,8 +12,8 @@ model TesterControlDriveActuatorValvePosition
 equation
 
   connect(realValue.numberPort, controlDriveActuatorValvePosition.Y)
-    annotation (Line(points={{74.5,50},{30,50},{30,26.28},{29.46,26.28}}, color
-        ={0,0,127}));
+    annotation (Line(points={{74.5,50},{30,50},{30,26.28},{29.46,26.28}}, color=
+         {0,0,127}));
   connect(sourceV_SET_VP.y, controlDriveActuatorValvePosition.V_SET_VP)
     annotation (Line(points={{-79,70},{-50,70},{-50,-2},{-7.8,-2}}, color={0,0,
           127}));

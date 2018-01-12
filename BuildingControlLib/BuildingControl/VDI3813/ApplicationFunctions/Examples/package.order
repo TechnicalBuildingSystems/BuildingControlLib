@@ -3,8 +3,6 @@ TesterTimeProgramEnergyMode
 TesterPriorityControl
 TesterAutomaticTwilightControl
 TesterAutomaticSolarControl
-TesterSlatTracking
-TesterShadowCorrection
 TesterAutomaticThermalControl
 TesterWeatherProtection
 TesterEnergyModeSelection

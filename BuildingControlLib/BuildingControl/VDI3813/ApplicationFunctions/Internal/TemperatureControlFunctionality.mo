@@ -5,19 +5,19 @@ block TemperatureControlFunctionality
     BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial.PartialFunctionality;
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-   Interfaces.AirTemperature.ValueAirTemperatureRoomInput T_ROOM
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput T_ROOM
     annotation (Placement(transformation(extent={{-100,0},{-60,20}})));
-  Interfaces.AirTemperature.SetpointHeatCoolEnergyModesInput T_SETPS
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[8] T_SETPS
     annotation (Placement(transformation(extent={{-100,-20},{-56,0}})));
-  Interfaces.ControlFunction.ValueControlFunctionAirTemperatureCurrentlyInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.ControlFunctionAirTemperatureInput
     F_ACT annotation (Placement(transformation(extent={{-100,40},{-60,60}})));
-  Interfaces.EnergyMode.ValueEnergyModeCurrentlyInput M_ACT
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.EnergyModeInput M_ACT
     annotation (Placement(transformation(extent={{-100,20},{-60,40}})));
-  Interfaces.ActuatorSignal.CommandActuatorSignalValvePositionOutput V_SET_VP
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2] V_SET_VP
     annotation (Placement(transformation(extent={{100,20},{140,60}})));
-  Interfaces.ActuatorSignal.StatusActuatorSignalFanSpeedInput      V_STA_VP
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2] V_STA_VP
     annotation (Placement(transformation(extent={{-100,-40},{-58,-20}})));
-  Interfaces.ActuatorSignal.CommandActuatorSignalLockValvePositionOutput V_SET_LCK
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2] V_SET_LCK
     annotation (Placement(transformation(extent={{100,-20},{140,20}})));
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
@@ -31,8 +31,6 @@ block TemperatureControlFunctionality
     annotation (Placement(transformation(extent={{-34,-14},{-14,6}})));
   Sources.ActuatorSignal.PrescribedV_SET_VP prescribedV_SET_VP
     annotation (Placement(transformation(extent={{40,26},{60,46}})));
-  Sensors.SensorT_ROOM sensorT_ROOM
-    annotation (Placement(transformation(extent={{-34,6},{-14,26}})));
   Sources.ActuatorSignal.PrescribedV_SET_LCK prescribedV_LCK
     annotation (Placement(transformation(extent={{48,-52},{68,-32}})));
   Modelica.Blocks.Sources.Constant dummyV_LCK(k=0)
@@ -50,23 +48,23 @@ block TemperatureControlFunctionality
 algorithm
 
   if PAR_CTL then
-    if M_ACT.valueEnergyModeCurrently == EM.protection then
+    if M_ACT == EM.protection then
       add.u2 :=  sensorT_SETPTS.y[1];
-    elseif M_ACT.valueEnergyModeCurrently == EM.economy then
+    elseif M_ACT == EM.economy then
       add.u2 :=  sensorT_SETPTS.y[2];
-    elseif M_ACT.valueEnergyModeCurrently == EM.precomfort then
+    elseif M_ACT == EM.precomfort then
       add.u2 :=  sensorT_SETPTS.y[3];
-    elseif M_ACT.valueEnergyModeCurrently == EM.comfort then
+    elseif M_ACT == EM.comfort then
       add.u2 :=  sensorT_SETPTS.y[4];
     end if;
   else
-    if M_ACT.valueEnergyModeCurrently == EM.comfort then
+    if M_ACT == EM.comfort then
       add.u2 :=  sensorT_SETPTS.y[5];
-    elseif M_ACT.valueEnergyModeCurrently == EM.precomfort then
+    elseif M_ACT == EM.precomfort then
       add.u2 :=  sensorT_SETPTS.y[6];
-    elseif M_ACT.valueEnergyModeCurrently == EM.economy then
+    elseif M_ACT == EM.economy then
       add.u2 :=  sensorT_SETPTS.y[7];
-    elseif M_ACT.valueEnergyModeCurrently == EM.protection then
+    elseif M_ACT == EM.protection then
       add.u2 :=  sensorT_SETPTS.y[8];
     end if;
   end if;
@@ -84,22 +82,12 @@ equation
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
-  connect(sensorT_ROOM.T_ROOM, T_ROOM) annotation (Line(
-      points={{-32,16},{-80,16},{-80,10}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
   connect(dummyV_LCK.y, prescribedV_LCK.u) annotation (Line(
       points={{21,-60},{36,-60},{36,-42},{50,-42}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(add.y, gain.u) annotation (Line(
       points={{-27.6,74},{-24,74},{-24,72},{-20,72},{-20,73},{-13,73}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(add.u1, sensorT_ROOM.y) annotation (Line(
-      points={{-36.8,76.4},{-40,76.4},{-40,76},{-42,76},{-42,48},{-2,48},{-2,12},
-          {-12,12}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(limiter.y, prescribedV_SET_VP.u) annotation (Line(
@@ -115,10 +103,13 @@ equation
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
+  connect(T_ROOM, add.u1) annotation (Line(
+      points={{-80,10},{-42,10},{-42,76.4},{-36.8,76.4}},
+      color={0,0,0},
+      thickness=1));
   annotation (preferedView="Info",Icon(coordinateSystem(preserveAspectRatio=false, extent={{
             -100,-100},{100,100}}), graphics), Diagram(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
-        graphics),
+          preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Documentation(revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>

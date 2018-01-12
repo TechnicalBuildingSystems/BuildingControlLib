@@ -52,87 +52,12 @@ package Examples "Models for functionality test of application functions"
   annotation (experiment(StopTime=1500));
  end TesterAutomaticSolarControl;
 
- model TesterSlatTracking
-  extends Modelica.Icons.Example;
-  Sunshading.SlatTracking slatTracking
-    annotation (Placement(transformation(extent={{0,0},{100,60}})));
-  Sources.Binary.PrescribedB_ON prescribedB_ON
-    annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
-  Sources.Illuminance.PrescribedH_OUT prescribedH_OUT
-    annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
-  Sources.Angle.PrescribedA_SUN_AZ prescribedA_SUN_AZ
-    annotation (Placement(transformation(extent={{-60,0},{-40,20}})));
-  Sources.Angle.PrescribedA_SUN_EL prescribedA_SUN_EL
-    annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
- equation
-  connect(slatTracking.B_ON, prescribedB_ON.B_ON) annotation (Line(
-      points={{10,42},{-10,42},{-10,50},{-18.1,50}},
-      color={0,0,0},
-      thickness=1));
-  connect(slatTracking.H_OUT, prescribedH_OUT.H_OUT) annotation (Line(
-      points={{10,30},{-38.1,30}},
-      color={0,0,0},
-      thickness=1));
-  connect(slatTracking.A_SUN_AZ, prescribedA_SUN_AZ.A_SUN_AZ) annotation (Line(
-      points={{10,18},{-20,18},{-20,10},{-38.1,10}},
-      color={0,0,0},
-      thickness=1));
-  connect(slatTracking.A_SUN_EL, prescribedA_SUN_EL.A_SUN_EL) annotation (Line(
-      points={{10,6},{-10,6},{-10,-10},{-18.1,-10}},
-      color={0,0,0},
-      thickness=1));
- end TesterSlatTracking;
 
- model TesterShadowCorrection
-  extends Modelica.Icons.Example;
-  Sunshading.ShadowCorrection shadowCorrection
-    annotation (Placement(transformation(extent={{20,-20},{100,20}})));
-  Sources.Angle.PrescribedA_SUN_EL prescribedA_SUN_EL
-    annotation (Placement(transformation(extent={{-20,-38},{0,-18}})));
-  Sources.Angle.PrescribedA_SUN_AZ prescribedA_SUN_AZ
-    annotation (Placement(transformation(extent={{-20,-10},{0,10}})));
-  Sources.Sunshade.PrescribedS_AUTO prescribedS_AUTO
-    annotation (Placement(transformation(extent={{-20,20},{0,40}})));
- equation
-  connect(shadowCorrection.A_SUN_EL, prescribedA_SUN_EL.A_SUN_EL) annotation (
-      Line(
-      points={{28,-8},{14,-8},{14,-28},{1.9,-28}},
-      color={0,0,0},
-      thickness=1));
-  connect(shadowCorrection.A_SUN_AZ, prescribedA_SUN_AZ.A_SUN_AZ) annotation (
-      Line(
-      points={{28,0},{1.9,0}},
-      color={0,0,0},
-      thickness=1));
-  connect(shadowCorrection.S_AUTO_IN, prescribedS_AUTO.S_AUTO) annotation (Line(
-      points={{28,8},{14,8},{14,30},{1.9,30}},
-      color={0,0,0},
-      thickness=1));
- end TesterShadowCorrection;
 
  model TesterWeatherProtection
   extends Modelica.Icons.Example;
   Sunshading.WeatherProtection weatherProtection
     annotation (Placement(transformation(extent={{20,-20},{100,20}})));
-  Sources.Binary.PrescribedR_ACT prescribedR_ACT
-    annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
-  Sources.AirTemperature.PrescribedT_OUT prescribedT_OUT
-    annotation (Placement(transformation(extent={{-20,-10},{0,10}})));
-  Sources.WindVelocity.PrescribedW_ACT prescribedW_ACT
-    annotation (Placement(transformation(extent={{-20,20},{0,40}})));
- equation
-  connect(weatherProtection.R_ACT, prescribedR_ACT.R_ACT) annotation (Line(
-      points={{28,-8},{14,-8},{14,-30},{1.9,-30}},
-      color={0,0,0},
-      thickness=1));
-  connect(weatherProtection.T_OUT, prescribedT_OUT.T_OUT) annotation (Line(
-      points={{28,0},{1.9,0}},
-      color={0,0,0},
-      thickness=1));
-  connect(weatherProtection.W_ACT, prescribedW_ACT.W_ACT) annotation (Line(
-      points={{28,8},{14,8},{14,30},{1.9,30}},
-      color={0,0,0},
-      thickness=1));
  end TesterWeatherProtection;
 
 

@@ -14,8 +14,8 @@ equation
     annotation (Line(points={{-79,70},{-50,70},{-50,-2},{-7.8,-2}}, color={0,0,
           127}));
   connect(realValue.numberPort, controlDriveActuatorLockValvePosition.Y)
-    annotation (Line(points={{74.5,50},{32,50},{32,26.28},{29.46,26.28}}, color
-        ={0,0,127}));
+    annotation (Line(points={{74.5,50},{32,50},{32,26.28},{29.46,26.28}}, color=
+         {0,0,127}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),
     experiment(StopTime=1000, Interval=60),

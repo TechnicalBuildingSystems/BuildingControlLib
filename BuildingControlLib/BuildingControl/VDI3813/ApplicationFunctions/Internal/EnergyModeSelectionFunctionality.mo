@@ -5,23 +5,23 @@ block EnergyModeSelectionFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connector
-  Interfaces.Presence.ValuePresenceEvaluationInput P_ACT
+  Interfaces.BooleanInput P_ACT
     annotation (Placement(transformation(extent={{-100,-60},{-60,-20}})));
-  Interfaces.Binary.ValueWindowInput B_WINDOW
+  Interfaces.BooleanInput B_WINDOW
     annotation (Placement(transformation(extent={{-100,-20},{-60,20}})));
-  Interfaces.EnergyMode.ValueEnergyModeCurrentlyOutput M_ACT
+  Interfaces.EnergyModeOutput M_ACT
     annotation (Placement(transformation(extent={{100,-20},{140,20}})));
-  Interfaces.EnergyMode.CommandEnergyModeTimeScheduleInput M_BMS
+  Interfaces.EnergyModeInput M_BMS
     annotation (Placement(transformation(extent={{-100,20},{-60,60}})));
 
 algorithm
-  if B_WINDOW.valueWindow == false then
-    M_ACT.valueEnergyModeCurrently := EM.protection;
+  if B_WINDOW == false then
+    M_ACT := EM.protection;
   else
-    if P_ACT.valuePresenceEvaluation == true then
-      M_ACT.valueEnergyModeCurrently := EM.comfort;
+    if P_ACT == true then
+      M_ACT := EM.comfort;
     else
-       M_ACT.valueEnergyModeCurrently := M_BMS.commandEnergyModeTimeSchedule;
+       M_ACT := M_BMS;
     end if;
   end if;
   annotation (preferedView="Info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,

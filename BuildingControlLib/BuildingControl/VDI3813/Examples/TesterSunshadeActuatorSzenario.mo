@@ -71,7 +71,7 @@ equation
       smooth=Smooth.None));
   connect(actuateSunshade.S_MAN, priorityControl.S_MAN) annotation (Line(
       points={{-80.5,111},{-80.5,110},{-80,110},{-80,90},{-88,90},{-88,-44},{
-          -34,-44}},
+          -38,-44}},
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
@@ -85,12 +85,12 @@ equation
       color={255,0,255},
       smooth=Smooth.None));
   connect(prescribedB_WINDOW.B_WINDOW, priorityControl.B_WINDOW) annotation (Line(
-      points={{-178.1,134},{-156,134},{-156,-17},{-34,-17}},
+      points={{-178.1,134},{-156,134},{-156,-17},{-38,-17}},
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
   connect(prescribedS_PROT.S_PROT, priorityControl.S_PROT) annotation (Line(
-      points={{-158.1,72},{-144,72},{-144,-26},{-34,-26}},
+      points={{-158.1,72},{-144,72},{-144,-26},{-38,-26}},
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
@@ -104,12 +104,12 @@ equation
       smooth=Smooth.None));
   connect(prescribedS_MAINT.S_MAINT, priorityControl.S_MAINT) annotation (
       Line(
-      points={{-160.1,34},{-146,34},{-146,-35},{-34,-35}},
+      points={{-160.1,34},{-146,34},{-146,-35},{-38,-35}},
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
   connect(prescribedS_AUTO.S_AUTO, priorityControl.S_AUTO) annotation (Line(
-      points={{-156.1,-50},{-142,-50},{-142,-53},{-34,-53}},
+      points={{-156.1,-50},{-142,-50},{-142,-53},{-38,-53}},
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));

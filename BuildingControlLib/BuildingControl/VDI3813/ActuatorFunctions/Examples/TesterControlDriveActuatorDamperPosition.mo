@@ -11,8 +11,8 @@ model TesterControlDriveActuatorDamperPosition
 equation
 
   connect(realValue.numberPort, controlDriveActuatorDamperPosition.Y)
-    annotation (Line(points={{74.5,50},{20,50},{20,22.28},{19.46,22.28}}, color
-        ={0,0,127}));
+    annotation (Line(points={{74.5,50},{20,50},{20,22.28},{19.46,22.28}}, color=
+         {0,0,127}));
   connect(sourceV_SET_DP.y, controlDriveActuatorDamperPosition.V_SET_DP)
     annotation (Line(points={{-79,70},{-60,70},{-60,-6},{-36,-6},{-17.8,-6}},
         color={0,0,127}));

@@ -19,9 +19,13 @@ BooleanInput
 BooleanOutput
 RealInput
 RealOutput
+EnergyModeInput
+EnergyModeOutput
+ControlFunctionAirTemperatureInput
+ControlFunctionAirTemperatureOutput
+ControlFunctionAirVolumeFlowInput
+ControlFunctionAirVolumeFlowOutput
 PhysicalBooleanInput
 PhysicalBooleanOutput
 PhysicalRealInput
 PhysicalRealOutput
-EnergyModeInput
-EnergyModeOutput

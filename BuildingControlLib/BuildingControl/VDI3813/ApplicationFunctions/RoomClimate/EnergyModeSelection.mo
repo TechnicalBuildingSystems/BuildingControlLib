@@ -10,14 +10,14 @@ extends
         functionality);
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  Interfaces.Presence.ValuePresenceEvaluationInput P_ACT
+  Interfaces.BooleanInput P_ACT
     annotation (Placement(transformation(extent={{-100,-60},{-60,-20}}),
         iconTransformation(extent={{-100,-60},{-60,-20}})));
-  Interfaces.Binary.ValueWindowInput B_WINDOW
+  Interfaces.BooleanInput B_WINDOW
     annotation (Placement(transformation(extent={{-100,-20},{-60,20}})));
-  Interfaces.EnergyMode.ValueEnergyModeCurrentlyOutput M_ACT
+  Interfaces.EnergyModeOutput M_ACT
     annotation (Placement(transformation(extent={{100,-20},{140,20}})));
-  Interfaces.EnergyMode.CommandEnergyModeTimeScheduleInput M_BMS
+  Interfaces.EnergyModeInput M_BMS
     annotation (Placement(transformation(extent={{-100,20},{-60,60}}),
         iconTransformation(extent={{-100,20},{-60,60}})));
 equation

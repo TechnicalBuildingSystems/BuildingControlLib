@@ -1,7 +1,7 @@
 within BuildingControlLib.BuildingControl.VDI3813.Interfaces;
-connector EnergyModeOutput = output
-    BuildingControlLib.BuildingControl.VDI3813.Types.EnumerationTypes.EnergyModes
-  "Possible energy modes defined in VDI3813." annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+connector ControlFunctionAirTemperatureOutput = output
+    BuildingControlLib.BuildingControl.VDI3813.Types.EnumerationTypes.ControlFunctionsAirTemperature
+  "Possible control functions for air temperature defined in VDI3813." annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics={
           Polygon(
           points={{-100,100},{-100,-100},{0,0},{-100,100}},
