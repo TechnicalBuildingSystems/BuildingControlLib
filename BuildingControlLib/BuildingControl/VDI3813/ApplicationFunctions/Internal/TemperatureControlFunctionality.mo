@@ -7,17 +7,17 @@ block TemperatureControlFunctionality
   // Connectors
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput T_ROOM
     annotation (Placement(transformation(extent={{-100,0},{-60,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[8] T_SETPS
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[8] T_SETPTS
     annotation (Placement(transformation(extent={{-100,-20},{-56,0}})));
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.ControlFunctionAirTemperatureInput
     F_ACT annotation (Placement(transformation(extent={{-100,40},{-60,60}})));
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.EnergyModeInput M_ACT
     annotation (Placement(transformation(extent={{-100,20},{-60,40}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2] V_SET_VP
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput V_SET_VP
     annotation (Placement(transformation(extent={{100,20},{140,60}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2] V_STA_VP
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput V_STA_VP
     annotation (Placement(transformation(extent={{-100,-40},{-58,-20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2] V_SET_LCK
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput V_SET_LCK
     annotation (Placement(transformation(extent={{100,-20},{140,20}})));
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
@@ -27,12 +27,6 @@ block TemperatureControlFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Components
-  Sensors.SensorT_SETPTS sensorT_SETPTS
-    annotation (Placement(transformation(extent={{-34,-14},{-14,6}})));
-  Sources.ActuatorSignal.PrescribedV_SET_VP prescribedV_SET_VP
-    annotation (Placement(transformation(extent={{40,26},{60,46}})));
-  Sources.ActuatorSignal.PrescribedV_SET_LCK prescribedV_LCK
-    annotation (Placement(transformation(extent={{48,-52},{68,-32}})));
   Modelica.Blocks.Sources.Constant dummyV_LCK(k=0)
     annotation (Placement(transformation(extent={{0,-70},{20,-50}})));
   Modelica.Blocks.Math.Add add(k2=-1)
@@ -49,62 +43,43 @@ algorithm
 
   if PAR_CTL then
     if M_ACT == EM.protection then
-      add.u2 :=  sensorT_SETPTS.y[1];
+      add.u2 :=  T_SETPTS[1];
     elseif M_ACT == EM.economy then
-      add.u2 :=  sensorT_SETPTS.y[2];
+      add.u2 :=  T_SETPTS[2];
     elseif M_ACT == EM.precomfort then
-      add.u2 :=  sensorT_SETPTS.y[3];
+      add.u2 :=  T_SETPTS[3];
     elseif M_ACT == EM.comfort then
-      add.u2 :=  sensorT_SETPTS.y[4];
+      add.u2 :=  T_SETPTS[4];
     end if;
   else
     if M_ACT == EM.comfort then
-      add.u2 :=  sensorT_SETPTS.y[5];
+      add.u2 :=  T_SETPTS[5];
     elseif M_ACT == EM.precomfort then
-      add.u2 :=  sensorT_SETPTS.y[6];
+      add.u2 :=  T_SETPTS[6];
     elseif M_ACT == EM.economy then
-      add.u2 :=  sensorT_SETPTS.y[7];
+      add.u2 :=  T_SETPTS[7];
     elseif M_ACT == EM.protection then
-      add.u2 :=  sensorT_SETPTS.y[8];
+      add.u2 :=  T_SETPTS[8];
     end if;
   end if;
 
 equation
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Auto generated
-  connect(sensorT_SETPTS.T_SETPTS, T_SETPS) annotation (Line(
-      points={{-32,-4},{-78,-4},{-78,-10}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedV_SET_VP.V_SET_VP, V_SET_VP) annotation (Line(
-      points={{61.9,36},{100,36},{100,40},{120,40}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(dummyV_LCK.y, prescribedV_LCK.u) annotation (Line(
-      points={{21,-60},{36,-60},{36,-42},{50,-42}},
-      color={0,0,127},
-      smooth=Smooth.None));
   connect(add.y, gain.u) annotation (Line(
       points={{-27.6,74},{-24,74},{-24,72},{-20,72},{-20,73},{-13,73}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(limiter.y, prescribedV_SET_VP.u) annotation (Line(
-      points={{39,76},{40,76},{40,36},{42,36}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(gain.y, limiter.u) annotation (Line(
       points={{-1.5,73},{7.25,73},{7.25,76},{16,76}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(prescribedV_LCK.V_SET_LCK, V_SET_LCK) annotation (Line(
-      points={{69.9,-42},{88,-42},{88,0},{120,0}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
+  connect(dummyV_LCK.y, V_SET_LCK) annotation (Line(points={{21,-60},{62,-60},{62,
+          0},{120,0}}, color={0,0,127}));
+  connect(limiter.y, V_SET_VP) annotation (Line(points={{39,76},{72,76},{72,40},
+          {120,40}}, color={0,0,127}));
   connect(T_ROOM, add.u1) annotation (Line(
-      points={{-80,10},{-42,10},{-42,76.4},{-36.8,76.4}},
+      points={{-80,10},{-58,10},{-58,76.4},{-36.8,76.4}},
       color={0,0,0},
       thickness=1));
   annotation (preferedView="Info",Icon(coordinateSystem(preserveAspectRatio=false, extent={{

@@ -5,10 +5,10 @@ model TesterTemperatureControl
 
   parameter Integer nF_ACT = 6 "Size of enumeration ControlFunction";
   parameter Integer nM_ACT = 4 "Size of enumeration Energy Modes";
-  parameter Integer nT_SETPS = 8 "Number of defined setpoints";
+  parameter Integer nT_SETPTS = 8 "Number of defined setpoints";
 
   parameter Real T_SETPTS[8] = {16,18,20,22,28,32,34,36};
-  Modelica.Blocks.Sources.Constant SourceT_SETPTS[nT_SETPS](
+  Modelica.Blocks.Sources.Constant SourceT_SETPTS[nT_SETPTS](
    k = {273.15+T_SETPTS[1],
         273.15+T_SETPTS[2],
         273.15+T_SETPTS[3],
@@ -18,16 +18,6 @@ model TesterTemperatureControl
         273.15+T_SETPTS[7],
         273.15+T_SETPTS[8]});
 
- Sources.AirTemperature.PrescribedT_SETPTS prescribedT_SETPTS annotation (
-      Placement(transformation(
-        extent={{-40,-41},{40,41}},
-        rotation=270,
-        origin={-363,382})));
-  Sources.AirTemperature.PrescribedT_ROOM prescribedT_ROOM annotation (
-      Placement(transformation(
-        extent={{-40.5,-40.5},{40.5,40.5}},
-        rotation=270,
-        origin={-281.5,381.5})));
 
   Modelica.Blocks.Sources.IntegerStep SourcM_ACT[nM_ACT](
     height={0,1,1,1},
@@ -53,21 +43,6 @@ model TesterTemperatureControl
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={-200,480})));
-  Sources.ControlFunction.PrescribedF_ACT prescribedF_ACT annotation (Placement(
-        transformation(
-        extent={{-39.5,-39.5},{39.5,39.5}},
-        rotation=270,
-        origin={-120.5,380.5})));
-  Sources.EnergyMode.PrescribedM_ACT prescribedM_ACT annotation (Placement(
-        transformation(
-        extent={{-38.5,-38.5},{38.5,38.5}},
-        rotation=270,
-        origin={-201.5,379.5})));
-  Sources.ActuatorSignal.PrescribedV_STA_FS prescribedV_STA_VP annotation (
-      Placement(transformation(
-        extent={{-44,-42},{44,42}},
-        rotation=270,
-        origin={-446,380})));
   Modelica.Blocks.Sources.Constant SourceV_STA_VP(k=0) annotation (Placement(
         transformation(
         extent={{-21,-21},{21,21}},
@@ -78,17 +53,22 @@ model TesterTemperatureControl
         extent={{-53,-53},{53,53}},
         rotation=180,
         origin={211,643})));
-  Sensors.SensorV_SET_VP sensorV_SET_VP annotation (Placement(transformation(
-        extent={{-67,-55},{67,55}},
-        rotation=90,
-        origin={399,525})));
   RoomClimate.TemperatureControl temperatureControl
     annotation (Placement(transformation(extent={{-50,112},{352,316}})));
+  Utilities.Converters.IntegerToControlFunctionsAirTemperature
+    integerToControlFunctionsAirTemperature annotation (Placement(
+        transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={-122,400})));
+  Utilities.Converters.IntegerToEnergyMode integerToEnergyMode annotation (
+      Placement(transformation(
+        extent={{-19,-19},{19,19}},
+        rotation=270,
+        origin={-199,403})));
 equation
 
-  for i in 1:nT_SETPS loop
-   connect( SourceT_SETPTS[i].y, prescribedT_SETPTS.u[i]);
-  end for;
+
   for j in 1:nM_ACT loop
     connect( SourcM_ACT[j].y, sumM_ACT.u[j]);
   end for;
@@ -97,70 +77,39 @@ equation
   end for;
     // Auto
 
-  connect(sumM_ACT.y, prescribedM_ACT.u) annotation (Line(
-      points={{-200,457},{-202,457},{-202,410.3},{-201.5,410.3}},
-      color={255,127,0},
-      smooth=Smooth.None));
-  connect(sumF_ACT.y, prescribedF_ACT.u) annotation (Line(
-      points={{-120,457},{-120,412.1},{-120.5,412.1}},
-      color={255,127,0},
-      smooth=Smooth.None));
-  connect(SourceV_STA_VP.y, prescribedV_STA_VP.u) annotation (Line(
-      points={{-437,463.9},{-437,433.95},{-446,433.95},{-446,415.2}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(sensorV_SET_VP.y, Room.u) annotation (Line(
-      points={{421,605.4},{413.5,605.4},{413.5,643},{274.6,643}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(prescribedT_ROOM.u, Room.y) annotation (Line(
-      points={{-281.5,413.9},{-279.75,413.9},{-279.75,643},{152.7,643}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(temperatureControl.V_SET_VP, sensorV_SET_VP.V_SET_VP) annotation (
+  connect(temperatureControl.T_SETPTS, SourceT_SETPTS.y)  annotation (
       Line(
-      points={{392.2,254.8},{392.2,358.4},{399,358.4},{399,471.4}},
+      points={{-7.79,203.8},{-361.895,203.8},{-361.895,334.4},{-363,334.4}},
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
-  connect(temperatureControl.F_ACT, prescribedF_ACT.F_ACT) annotation (Line(
-      points={{-9.8,265},{-65.9,265},{-65.9,333.495},{-120.5,333.495}},
+  connect(temperatureControl.V_SET_VP, Room.u) annotation (Line(
+      points={{392.2,254.8},{392.2,643.4},{274.6,643.4},{274.6,643}},
       color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(temperatureControl.M_ACT, prescribedM_ACT.M_ACT) annotation (Line(
-      points={{-9.8,244.6},{-108.9,244.6},{-108.9,333.685},{-201.5,333.685}},
+      thickness=1));
+  connect(SourceV_STA_VP.y, temperatureControl.V_STA_VP) annotation (Line(
+        points={{-437,463.9},{-437,183.4},{-7.79,183.4}}, color={0,0,127}));
+  connect(Room.y, temperatureControl.T_ROOM) annotation (Line(points={{152.7,643},
+          {-282,643},{-282,224.2},{-9.8,224.2}}, color={0,0,127}));
+  connect(sumM_ACT.y, integerToEnergyMode.u) annotation (Line(points={{-200,457},
+          {-200,457},{-200,418.2},{-191.4,418.2}}, color={255,127,0}));
+  connect(integerToEnergyMode.M, temperatureControl.M_ACT) annotation (Line(
+      points={{-206.6,380.39},{-208,380.39},{-208,244.6},{-9.8,244.6}},
       color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(temperatureControl.T_ROOM, prescribedT_ROOM.T_ROOM) annotation (Line(
-      points={{-9.8,224.2},{-147.9,224.2},{-147.9,333.305},{-281.5,333.305}},
+      thickness=1));
+  connect(integerToControlFunctionsAirTemperature.u, sumF_ACT.y) annotation (
+      Line(points={{-114,416},{-116,416},{-116,457},{-120,457}}, color={255,127,
+          0}));
+  connect(integerToControlFunctionsAirTemperature.F, temperatureControl.F_ACT)
+    annotation (Line(
+      points={{-130,376.2},{-128,376.2},{-128,265},{-9.8,265}},
       color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(temperatureControl.T_SETPS, prescribedT_SETPTS.T_SETPTS) annotation (
-      Line(
-      points={{-7.79,203.8},{-189.895,203.8},{-189.895,334.4},{-363,334.4}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedV_STA_VP.V_STA_FS, temperatureControl.V_STA_FS) annotation (
-     Line(
-      points={{-446,327.64},{-236,327.64},{-236,183.4},{-7.79,183.4}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
+      thickness=1));
   annotation (experiment(StopTime=100, Interval=1),
       __Dymola_experimentSetupOutput,
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),      graphics={Text(
-          extent={{-88,50},{-52,16}},
-          lineColor={0,0,255},
-          textString="See source code"), Line(
-          points={{-58,28},{-52,18},{-54,18}},
-          color={0,0,255},
-          smooth=Smooth.None)}),
-    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),preferedView="Info",
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-500,-100},{500,
+            760}})),
+    Icon(coordinateSystem(extent={{-500,-100},{500,760}})),preferedView="Info",
     Documentation(revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider & Georg Ambrosius Peler:<br>Implemented.</li>

@@ -8,19 +8,19 @@ block TemperatureControl
       functionality);
     /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  Interfaces.AirTemperature.ValueAirTemperatureRoomInput T_ROOM
+  Interfaces.RealInput T_ROOM
     annotation (Placement(transformation(extent={{-100,0},{-60,20}})));
-  Interfaces.AirTemperature.SetpointHeatCoolEnergyModesInput T_SETPS
+  Interfaces.RealInput[8] T_SETPTS
     annotation (Placement(transformation(extent={{-100,-20},{-58,0}})));
-  Interfaces.ControlFunction.ValueControlFunctionAirTemperatureCurrentlyInput
+  Interfaces.ControlFunctionAirTemperatureInput
     F_ACT annotation (Placement(transformation(extent={{-100,40},{-60,60}})));
-  Interfaces.EnergyMode.ValueEnergyModeCurrentlyInput M_ACT
+  Interfaces.EnergyModeInput M_ACT
     annotation (Placement(transformation(extent={{-100,20},{-60,40}})));
-  Interfaces.ActuatorSignal.CommandActuatorSignalValvePositionOutput V_SET_VP
+  Interfaces.RealOutput V_SET_VP
     annotation (Placement(transformation(extent={{100,20},{140,60}})));
-  Interfaces.ActuatorSignal.StatusActuatorSignalFanSpeedInput      V_STA_VP
+  Interfaces.RealInput V_STA_VP
     annotation (Placement(transformation(extent={{-100,-40},{-58,-20}})));
-  Interfaces.ActuatorSignal.SetpointActuatorSignalLockValvePositionOutput V_LCK
+  Interfaces.RealOutput V_SET_LCK
     annotation (Placement(transformation(extent={{100,-20},{140,20}})));
 equation
   connect(F_ACT, functionality.F_ACT) annotation (Line(
@@ -38,7 +38,7 @@ equation
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
-  connect(T_SETPS, functionality.T_SETPS) annotation (Line(
+  connect(T_SETPTS, functionality.T_SETPTS) annotation (Line(
       points={{-79,-10},{-56,-10},{-56,-3.8},{-29.64,-3.8}},
       color={0,0,0},
       thickness=1,
