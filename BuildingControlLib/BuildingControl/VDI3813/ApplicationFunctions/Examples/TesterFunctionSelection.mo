@@ -10,21 +10,6 @@ model TesterFunctionSelection
         origin={-10,82})));
   RoomClimate.FunctionSelection functionSelection
     annotation (Placement(transformation(extent={{-62,-76},{98,-40}})));
-  Sources.Binary.PrescribedB_DEW prescribedB_DEW annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-10,10})));
-  Sources.AirTemperature.PrescribedT_ROOM prescribedT_ROOM annotation (
-      Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-30,10})));
-  Sources.AirTemperature.PrescribedT_SETPTS prescribedT_SETPTS annotation (
-      Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-50,10})));
 
   Modelica.Blocks.Sources.Constant SourceT_SETPTS[8](
    k = {273.15+T_SETPTS[1],
@@ -37,7 +22,7 @@ model TesterFunctionSelection
         273.15+T_SETPTS[8]});
 
   parameter Real T_SETPTS[8] = {16,18,20,22,28,32,34,36};
-  parameter Integer nF_BMS = integer(CF.nightcool);
+  parameter Integer nF_BMS = 11;//integer(CFAT.nightcool);
 
   Modelica.Blocks.Sources.Step step(
     height=-5,
@@ -59,12 +44,13 @@ model TesterFunctionSelection
     annotation (Placement(transformation(extent={{-6,-6},{6,6}},
         rotation=270,
         origin={10,32})));
-  Sources.ControlFunction.PrescribedF_BMS_AirTemperature prescribedF_BMS
-    annotation (Placement(transformation(
+
+  Utilities.Converters.IntegerToControlFunctionsAirTemperature
+    integerToControlFunctionsAirTemperature annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={10,10})));
-
+        origin={10,4})));
 equation
     for j in 1:nF_BMS loop
     connect(SourceF_BMS[j].y, sum.u[j]) annotation (Line(
@@ -73,54 +59,29 @@ equation
       smooth=Smooth.None));
   end for;
 
-  for i in 1:8 loop
-   SourceT_SETPTS[i].y = prescribedT_SETPTS.u[i];
-  end for;
-  connect(prescribedF_BMS.F_BMS, functionSelection.F_BMS) annotation (Line(
-      points={{10,-1.9},{10,-24},{-68,-24},{-68,-50.8},{-46,-50.8}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedB_DEW.B_DEW, functionSelection.B_DEW) annotation (Line(
-      points={{-10,-1.9},{-10,-22},{-74,-22},{-74,-58},{-46,-58}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedT_ROOM.T_ROOM, functionSelection.T_ROOM) annotation (Line(
-      points={{-30,-1.9},{-30,-18},{-80,-18},{-80,-66},{-66,-66},{-66,-65.2},{-46,
-          -65.2}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
+  connect(SourceT_SETPTS.y, functionSelection.T_SETPTS);
 
-  connect(prescribedT_SETPTS.T_SETPTS, functionSelection.T_SETPTS) annotation (
-      Line(
-      points={{-50,-1.9},{-50,-8},{-84,-8},{-84,-72.4},{-46,-72.4}},
+  connect(sourceB_DEW.y, functionSelection.B_DEW) annotation (Line(points={{-10,
+          71},{-10,71},{-10,-20},{-74,-20},{-74,-58},{-46,-58}}, color={255,0,255}));
+  connect(step.y, functionSelection.T_ROOM) annotation (Line(points={{-30,39},{-32,
+          39},{-32,-14},{-78,-14},{-78,-65.2},{-46,-65.2}}, color={0,0,127}));
+  connect(sum.y, integerToControlFunctionsAirTemperature.u) annotation (Line(
+        points={{10,25.1},{12,25.1},{12,12},{14,12}}, color={255,127,0}));
+  connect(integerToControlFunctionsAirTemperature.F, functionSelection.F_BMS)
+    annotation (Line(
+      points={{6,-7.9},{6,-7.9},{6,-30},{-66,-30},{-66,-50.8},{-46,-50.8}},
       color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-
-  connect(sourceB_DEW.y, prescribedB_DEW.u) annotation (Line(
-      points={{-10,71},{-10,18}},
-      color={255,0,255},
-      smooth=Smooth.None));
-  connect(sum.y, prescribedF_BMS.u) annotation (Line(
-      points={{10,25.1},{10,18}},
-      color={255,127,0},
-      smooth=Smooth.None));
-
-  connect(step.y, prescribedT_ROOM.u) annotation (Line(
-      points={{-30,39},{-34,39},{-34,18},{-30,18}},
-      color={0,0,127},
-      smooth=Smooth.None));
+      thickness=1));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}),      graphics={Text(
-          extent={{-88,50},{-52,16}},
+          extent={{-96,-68},{-60,-102}},
           lineColor={0,0,255},
           textString="See source code"), Line(
-          points={{-58,28},{-52,18},{-54,18}},
+          points={{-3,5},{3,-5},{1,-5}},
           color={0,0,255},
-          smooth=Smooth.None)}),
+          smooth=Smooth.None,
+          origin={-67,-77},
+          rotation=90)}),
     experiment(StopTime=200),
     __Dymola_experimentSetupOutput,preferedView="Info",
     Documentation(revisions="<html>

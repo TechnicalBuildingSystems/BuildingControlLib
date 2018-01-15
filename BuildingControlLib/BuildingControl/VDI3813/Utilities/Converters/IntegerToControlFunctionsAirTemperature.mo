@@ -2,7 +2,7 @@ within BuildingControlLib.BuildingControl.VDI3813.Utilities.Converters;
 block IntegerToControlFunctionsAirTemperature
   extends Interfaces.Partial.PartialSource;
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.ControlFunctionAirTemperatureOutput
-    F_ annotation (Placement(transformation(extent={{100,-60},{138,-20}}),
+    F annotation (Placement(transformation(extent={{100,-60},{138,-20}}),
         iconTransformation(extent={{100,-60},{138,-20}})));
   Modelica.Blocks.Interfaces.IntegerInput u annotation (Placement(
         transformation(extent={{-100,20},{-60,60}}), iconTransformation(extent={
@@ -10,17 +10,17 @@ block IntegerToControlFunctionsAirTemperature
 
 algorithm
   if u == 1 then
-    M := CF.off;
+    F := CFAT.off;
   elseif u == 2 then
-    M := CF.auto;
+    F := CFAT.auto;
   elseif u == 3 then
-    M := CF.heating;
+    F := CFAT.heating;
   elseif u == 4 then
-    M := CF.cooling;
+    F := CFAT.cooling;
   elseif u == 5 then
-    M := CF.precool;
+    F := CFAT.precool;
   elseif u == 6 then
-    M := CF.nightcool;
+    F := CFAT.nightcool;
   else
     assert( 1 > u or u > 6,  "Error: Input u out of bounds choose integer values in the range 1 <= u <= 6 ");
   end if;
