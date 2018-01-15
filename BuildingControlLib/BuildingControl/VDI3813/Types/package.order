@@ -1,17 +1,1 @@
-ActuatorSignal
-AirQuality
-AirTemperature
-Analog
-Angle
-Binary
-ControlFunction
-EnergyMode
-Illuminance
-Light
-Physical
-Presence
-RoomUtilisationType
-Sunshade
-Time
-WindVelocity
 EnumerationTypes

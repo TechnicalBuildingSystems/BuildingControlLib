@@ -53,7 +53,7 @@ equation
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
-  connect(functionality.V_LCK, V_LCK) annotation (Line(
+  connect(functionality.V_SET_LCK, V_SET_LCK) annotation (Line(
       points={{45.6,0},{120,0}},
       color={0,0,0},
       thickness=1,
