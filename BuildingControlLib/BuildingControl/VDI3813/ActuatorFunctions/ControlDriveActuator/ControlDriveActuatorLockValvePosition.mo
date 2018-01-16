@@ -55,47 +55,7 @@ Documentation(info="<html>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_ControlDriveActuator.PNG\" alt=\"docVDI3813_ControlDriveActuator.PNG\"/> </p></td>
 </tr>
 </table>
-<h4><span style=\"color: #008000\">Input Variables</span></h4>
-<p><b>Tab. 1: </b>The following table presents the input variables of the function. The connectors and data types have been specialized to provide semantic interfaces and improve error prevention of connections. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>V_SET_LCK</p></td>
-<td valign=\"top\"><p>Position</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignals.CommandActuatorSignalLockValvePositionInput\">CommandActuatorSignalLockValvePosition</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>New lock valve position.</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color: #008000\">Output Variables</span></h4></p>
-<p><b>Tab. 2: </b>The following table presents the output variables of the function. The connectors and data types have been specialized to provide semantic interfaces and improve error prevention of connections. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>V_STA_LCK</p></td>
-<td valign=\"top\"><p>Position</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignals.StatusActuatorSignalLockValvePositionOutput\">StatusActuatorSignalLockValvePosition</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Currently used lock valve position.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>Y</p></td>
-<td valign=\"top\"><p>Analog</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Analog.CommandPhysicalControlDriveOutput\">CommandPhysicalControlDrive</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Physical signal to change lock valve position.</p></td>
-</tr>
-</table>
+
 </html>",
         revisions="<html>
 <ul>

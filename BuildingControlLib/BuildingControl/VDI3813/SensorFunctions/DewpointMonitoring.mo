@@ -51,51 +51,7 @@ Documentation(info="<html>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_DewpointMonitoring.png\" alt=\"docVDI3813_DewpointMonitoring.png\"/> </p></td>
 </tr>
 </table>
-<p><br><h4><span style=\"color:#008000\">Input Variables</span></h4></p>
-<p><b>Tab . 1: </b>The following table presents the input variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>B</p></td>
-<td valign=\"top\"><p>Binary</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValuePhysicalBinaryInput\">ValuePhysicalBinary</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Physical signal of dewpoint contact (default: true = dewpoint reached / false = dewpoint not reached).</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color:#008000\">Output Variables</span></h4></p>
-<p><b>Tab . 2: </b>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>B_DEW</p></td>
-<td valign=\"top\"><p>Binary</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueDewpointOutput\">ValueDewpoint</a></p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Boolean dewpoint state of rooms or room segments (default: true = dewpoint reached / false = dewpoint not reached).</p></td>
-</tr>
-</table>
-<p><br><br><br><b><font style=\"color: #008000; \">Parameters</font></b> </p>
-<p><b>Tab . 3: </b>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_CAL</p></td>
-<td valign=\"top\"><p>For specifying the logic of the dewpoint detector.</p></td>
-</tr>
-</table>
+
 </html>",
         revisions="<html>
 <ul>
