@@ -18,8 +18,7 @@ block OccupancyEvaluationFunctionality
         iconTransformation(extent={{100,-20},{140,20}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Parameters
-  parameter Boolean PAR_BEH = true "Choose operation mode, if true automatic sensor is only evaluated
-                                    if false also manual feedback signal is evaluated";
+  parameter Boolean PAR_BEH = true "Changes the evaluation behaviour. TRUE: Only P_AUTO is evaluated; FALSE: P_AUTO and P_MAN are evaluated using logical conjunction";
 
 equation
   if PAR_BEH then
@@ -44,58 +43,6 @@ equation
 </table>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"0\"><tr>
 <td></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color:#008000\">Input Variables</span></h4></p>
-<p><b>Tab . 1: </b>The following table presents the input variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>P_AUTO</p></td>
-<td valign=\"top\"><p>Presence</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput\">ValuePresenceSensor</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Presence signal for evaluation issues generated from a sensor device.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>P_MAN</p></td>
-<td valign=\"top\"><p>Presence</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput\">CommandPresenceOperator</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Presence signal for evaluation issues generated from an operator input.</p></td>
-</tr>
-</table>
-<h4><span style=\"color:#008000\">Output Variables</span></h4>
-<p><b>Tab . 2: </b>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>P_ACT</p></td>
-<td valign=\"top\"><p>Presence</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanOutput\">ValuePresenceEvaluation</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Evaluated presence signal.</p></td>
-</tr>
-</table>
-<p><br><br><br><br><br><br><b><font style=\"color: #008000; \">Parameter</font></b> </p>
-<p><b>Tab . 3: </b>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_BEH</p></td>
-<td valign=\"top\"><p>Changes the evaluation behaviour. TRUE: Only P_AUTO is evaluated; FALSE: P_AUTO and P_MAN are evaluated using logical conjunction</p></td>
 </tr>
 </table>
 </html>", revisions="<html>

@@ -12,6 +12,9 @@ block ControlDriveActuatorFanSpeed
       functionality);
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealOutput
+    Y "Physical signal to change damper position(0-1, 0:deactive, 1:full speed)." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
+        iconTransformation(extent={{-22,82},{20,120}})));
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     V_SET_FS "New fan speed(0-1, 0:deactive, 1:full speed)." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
@@ -20,9 +23,7 @@ block ControlDriveActuatorFanSpeed
     V_STA_FS "Currently used fan speed(0-1, 0:deactive, 1:full speed)." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealOutput
-    Y "Physical signal to change damper position(0-1, 0:deactive, 1:full speed)." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
-        iconTransformation(extent={{-22,82},{20,120}})));
+
 
 equation
   connect(Y,functionality.Y) annotation (Line(

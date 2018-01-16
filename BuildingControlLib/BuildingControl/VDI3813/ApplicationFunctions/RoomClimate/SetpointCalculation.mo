@@ -23,41 +23,32 @@ model SetpointCalculation
 
   /***   ***   ***   ***   ***   ***   ***     ***/
   /* PAR_SETPTS i.e. default values of setpoints */
-  // Start value and default value of temperature setpoint of energy mode comfort heating
   parameter Modelica.SIunits.Temperature   PAR_SETPTS_defTComfHeat = 273.15 + 21
-    "Start value and default value of temperature setpoint of energy mode comfort heating"
-                                                                                        annotation(Dialog(group = "Parameterization", descriptionLabel = true));
-  // Start value and default value of temperature setpoint of energy mode precomfort heating
+    "Temperature setpoint for heating in energy mode comfort." annotation(Dialog(group = "Parameterization", descriptionLabel = true));
   parameter Modelica.SIunits.Temperature   PAR_SETPTS_defTPreComfHeat = 273.15 + 19
-    "Start value and default value of temperature setpoint of energy mode precomfort heating"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
-  // Start value and default value of temperature setpoint of energy mode economy heating
+    "Temperature setpoint for heating in energy mode precomfort." annotation(Dialog(group = "Parameterization", descriptionLabel = true));
   parameter Modelica.SIunits.Temperature   PAR_SETPTS_defTEconHeat = 273.15 + 15
-    "Start value and default value of temperature setpoint of energy mode economy heating"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
-  // Start value and default value of temperature setpoint of energy mode protection heating
+    "Temperature setpoint for heating in energy mode economy." annotation(Dialog(group = "Parameterization", descriptionLabel = true));
   parameter Modelica.SIunits.Temperature   PAR_SETPTS_defTProtHeat = 273.15 + 12
-    "Start value and default value of temperature setpoint of energy mode protection heating"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
-  // Start value and default value of temperature setpoint of energy mode comfort cooling
+    "Temperature setpoint for heating in energy mode protection." annotation(Dialog(group = "Parameterization", descriptionLabel = true));
   parameter Modelica.SIunits.Temperature   PAR_SETPTS_defTComfCool = 273.15 + 24
-    "Start value and default value of temperature setpoint of energy mode comfort cooling"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
-  // Start value and default value of temperature setpoint of energy mode precomfort cooling
+    "Temperature setpoint for cooling in energy mode comfort." annotation(Dialog(group = "Parameterization", descriptionLabel = true));
   parameter Modelica.SIunits.Temperature   PAR_SETPTS_defTPreComfCool = 273.15 + 28
-    "Start value and default value of temperature setpoint of energy mode precomfort cooling"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
-  // Start value and default value of temperature setpoint of energy mode economy cooling
+    "Temperature setpoint for cooling in energy mode precomfort." annotation(Dialog(group = "Parameterization", descriptionLabel = true));
   parameter Modelica.SIunits.Temperature   PAR_SETPTS_defTEconCool = 273.15 + 35
-    "Start value and default value of temperature setpoint of energy mode economy cooling"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
-  // Start value and default value of temperature setpoint of energy mode protection cooling
+    "Temperature setpoint for cooling in energy mode economy."    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
   parameter Modelica.SIunits.Temperature   PAR_SETPTS_defTProtCool = 273.15 + 40
-    "Start value and default value of temperature setpoint of energy mode protection cooling"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
+    "Temperature setpoint for cooling in energy mode protection." annotation(Dialog(group = "Parameterization", descriptionLabel = true));
 
    /* PAR_SUMM i.e. parameter to configure summer compensation */
    parameter Modelica.SIunits.Temperature PAR_SUMM_uMin = 273.15 + 25
-    "Parameter when minimum of limiter is reached"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
+    "Outdoor air temperature when summer compensation raise starts."    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
    parameter Modelica.SIunits.Temperature PAR_SUMM_uMax = 273.15 + 35
-    "Parameter when maximum of limiter is reached"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
+    "Outdoor air temperature when summer compensation raise ends."    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
    parameter Modelica.SIunits.TemperatureDifference PAR_SUMM_yMin = 0
-    "Parameter defining minimum setpoint shift value"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
+    "Lower limit for raise value of summer compensation."    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
    parameter Modelica.SIunits.TemperatureDifference PAR_SUMM_yMax = 3
-    "Parameter defining maximum setpoint shift value"    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
+    "Upper limit for raise value of summer compensation."    annotation(Dialog(group = "Parameterization", descriptionLabel = true));
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
@@ -67,12 +58,13 @@ model SetpointCalculation
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_SETPT "Setpoint shift provided by the user of a room manually." annotation (Placement(transformation(extent={{-100,20},{-80,40}}),
         iconTransformation(extent={{-100,-40},{-44,0}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[8]
-    T_SETPTS "Measured outdoor air temperature value, that can cause summer compensation shift." annotation (Placement(transformation(extent={{100,60},{120,80}}),
-        iconTransformation(extent={{100,-20},{154,20}})));
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     T_OUT "Array of setpoints for heating and cooling in every energy mode." annotation (Placement(transformation(extent={{-100,-20},{-80,0}}),
         iconTransformation(extent={{-100,-98},{-48,-60}})));
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[8]
+    T_SETPTS "Measured outdoor air temperature value, that can cause summer compensation shift." annotation (Placement(transformation(extent={{100,60},{120,80}}),
+        iconTransformation(extent={{100,-20},{154,20}})));
+
 
 equation
   connect(T_BMS,functionality.T_BMS);
@@ -103,109 +95,6 @@ equation
 <p><br><br><br><b>Fig. 2: </b>&QUOT;Informative representation of the application function <i>Setpoint calculation</i>&QUOT;, <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.21, Figure 43, p. 69]</a></p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"0\"><tr>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_SetpointCalculation.PNG\" alt=\"docVDI3813_SetpointCalculation.PNG\"/> </p></td>
-</tr>
-</table>
-<h4><span style=\"color: #008000\">Input Variables</span></h4>
-<p>The following table presents the input variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_BMS</p></td>
-<td valign=\"top\"><p>Temperature</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointTemperatureOperatorInput\">SetpointTemperatureOperator</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Setpoint shift provided by the operator of a building through a Building Management System (BMS).</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_SETPT</p></td>
-<td valign=\"top\"><p>Temperature</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointTemperatureUserInput\">SetpointTemperatureUser</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Setpoint shift provided by the user of a room manually.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_OUT</p></td>
-<td valign=\"top\"><p>Temperature</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.ValueAirTemperatureOutdoorInput\">ValueTemperatureOutdoor</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Measured outdoor air temperature value, that can cause summer compensation shift.</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color: #008000\">Output Variables</span></h4></p>
-<p>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_SETPS</p></td>
-<td valign=\"top\"><p>Temperature</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointHeatCoolEnergyModesOutput\">SetpointSetpointHeatCoolEnergyModes</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Array of setpoints for heating and cooling in every energy mode.</p></td>
-</tr>
-</table>
-<p><br><br><br><br><br><br><br><br><br><b><span style=\"color: #008000;\">Parameters</span></b> </p>
-<p>The following table presents the parameters of the function.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SETPS_defTComfHeat</p></td>
-<td valign=\"top\"><p>Temperature setpoint for heating in energy mode comfort.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SETPS_defTPreComfHeat</p></td>
-<td valign=\"top\"><p>Temperature setpoint for heating in energy mode precomfort.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SETPS_defTEconHeat</p></td>
-<td valign=\"top\"><p>Temperature setpoint for heating in energy mode economy.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SETPS_defTProtHeat</p></td>
-<td valign=\"top\"><p>Temperature setpoint for heating in energy mode protection.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SETPS_defTComfCool</p></td>
-<td valign=\"top\"><p>Temperature setpoint for cooling in energy mode comfort.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SETPS_defTPreComfCool</p></td>
-<td valign=\"top\"><p>Temperature setpoint for cooling in energy mode precomfort.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SETPS_defTEconCool</p></td>
-<td valign=\"top\"><p>Temperature setpoint for cooling in energy mode economy.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SETPS_defTProtCool</p></td>
-<td valign=\"top\"><p>Temperature setpoint for cooling in energy mode protection.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SUMM_uMin</p></td>
-<td valign=\"top\"><p>Outdoor air temperature when summer compensation raise starts.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SUMM_uMax</p></td>
-<td valign=\"top\"><p>Outdoor air temperature when summer compensation raise ends.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SUMM_yMin</p></td>
-<td valign=\"top\"><p>Lower limit for raise value of summer compensation.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SUMM_yMax</p></td>
-<td valign=\"top\"><p>Upper limit for raise value of summer compensation.</p></td>
 </tr>
 </table>
 </html>", revisions="<html>

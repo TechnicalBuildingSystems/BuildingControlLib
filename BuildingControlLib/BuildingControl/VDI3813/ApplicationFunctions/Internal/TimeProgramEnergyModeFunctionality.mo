@@ -7,9 +7,9 @@ block TimeProgramEnergyModeFunctionality
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connector
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput D_ACT
-    "Input connector of ValueCurrentTimeAndDate" annotation (Placement(transformation(extent={{-100,20},{-60,60}})));
+    "Current date and time." annotation (Placement(transformation(extent={{-100,20},{-60,60}})));
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.EnergyModeOutput M_BMS
-    "Output connector of CommandEnergyModeTimeSchedule" annotation (
+    "Valid energy mode for the current time (defined in schedules by operator)." annotation (
       Placement(transformation(extent={{100,20},{140,60}}), iconTransformation(
           extent={{100,20},{140,60}})));
 
@@ -150,75 +150,6 @@ equation
 <p>&QUOT;The function <i>Time program</i> (RA-FL section 6, column 3; informative function block Figure 25) allows time-controlled generation of output information, thus influencing or controlling application functions or actuator functions.The time program contains the time and date functions as well as calendar entries including exception days (e. g. holidays). The respective switching operations are generated via a default week schedule and exception day schedules with switching point/value pairs. Such a time program can be implemented and maintained either directly via an interaction interface, or it is transferred by a management communication function to an operating device or external system.&QUOT;<a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.4, p. 35 - 37]</a></p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"0\"><tr>
 <td><p><br><b>Fig. 1: </b>UML activity diagram of the application function <i>Time program, </i><a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.4, p. 35 - 37]</a></p><p><img src=\"modelica://BuildingControlLib/Resources/Images/docUMLAkt_TimeProgram.PNG\"/> </p></td>
-</tr>
-</table>
-<p><br><br><br><br><br><br><br><b><span style=\"color: #008000;\">Input Variables</span></b></p>
-<p><b>Tab . 1: </b>The following table presents the input variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>D_ACT</p></td>
-<td valign=\"top\"><p>Time</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Time.ValueCurrentTimeAndDateInput\">ValueCurrentTimeAndDate</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Current date and time.</p></td>
-</tr>
-</table>
-<p><br><br><br><br><br><br><b><span style=\"color: #008000;\">Output Variables</span></b></p>
-<p><b>Tab . 2: </b>The following table presents the output variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>M_BMS</p></td>
-<td valign=\"top\"><p>Mode</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.EnergyMode.CommandEnergyModeTimeScheduleOutput\">CommandEnergyModeTimeSchedule</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Valid energy mode for the current time (defined in schedules by operator).</p></td>
-</tr>
-</table>
-<p><br><br><br><br><br><br><b><span style=\"color: #008000;\">Parameters</span></b> </p>
-<p><b>Tab . 3: </b>The following table presents the parameter of the function .</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_WSCH</p></td>
-<td valign=\"top\"><p>Time / value&nbsp;pairs&nbsp;of&nbsp;weekly&nbsp;schedule&nbsp;in&nbsp;regular&nbsp;operation.&nbsp;Format:&nbsp;{{days,hours,minutes,seconds,value}}.&nbsp;</p><p>Need&nbsp;to&nbsp;leave&nbsp;endValue&nbsp;parameter&nbsp;as&nbsp;last&nbsp;item.&nbsp;Discontinuities&nbsp;allowed&nbsp;by&nbsp;introducing&nbsp;values&nbsp;in&nbsp;table&nbsp;twice.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_ESCH</p></td>
-<td valign=\"top\"><p>Time/value&nbsp;pairs&nbsp;of&nbsp;exception&nbsp;schedule.&nbsp;Format:&nbsp;{{days,hours,minutes,seconds,value}}.&nbsp;</p><p>Need&nbsp;to&nbsp;leave&nbsp;endValue&nbsp;parameter&nbsp;as&nbsp;last&nbsp;item.&nbsp;Discontinuities&nbsp;allowed&nbsp;by&nbsp;introducing&nbsp;values&nbsp;in&nbsp;table&nbsp;twice.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_CAL</p></td>
-<td valign=\"top\"><p>Time/value&nbsp;pairs&nbsp;of&nbsp;of&nbsp;yearly&nbsp;exception&nbsp;calendar.&nbsp;Format:&nbsp;{{days,hours,minutes,seconds,value}}.&nbsp;</p><p>Need&nbsp;to&nbsp;leave&nbsp;endValue&nbsp;parameter&nbsp;as&nbsp;last&nbsp;item.&nbsp;Discontinuities&nbsp;allowed&nbsp;by&nbsp;introducing&nbsp;values&nbsp;in&nbsp;table&nbsp;twice.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>startTimeWSCH</p></td>
-<td valign=\"top\"><p>Array&nbsp;with&nbsp;start&nbsp;time&nbsp;and&nbsp;value&nbsp;format:&nbsp;{{days,hours,minutes,seconds,startValue}}.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>startTimeESCH</p></td>
-<td valign=\"top\"><p>Array&nbsp;with&nbsp;start&nbsp;time&nbsp;and&nbsp;value&nbsp;format:&nbsp;{{days,hours,minutes,seconds,startValue}}.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>startTimeCAL</p></td>
-<td valign=\"top\"><p>Array&nbsp;with&nbsp;start&nbsp;time&nbsp;and&nbsp;value&nbsp;format:&nbsp;{{days,hours,minutes,seconds,startValue}}.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>offset</p></td>
-<td valign=\"top\"><p>Offset&nbsp;of&nbsp;&nbsp;output&nbsp;signal.</p></td>
 </tr>
 </table>
 </html>"));

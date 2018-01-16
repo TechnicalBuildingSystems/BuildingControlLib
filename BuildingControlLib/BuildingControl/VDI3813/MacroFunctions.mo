@@ -69,8 +69,32 @@ package MacroFunctions
   end Examples;
 
   model MacroSunblind "Macro which implements a control for a sunblind"
-
-        SensorFunctions.PresenceDetection                         presenceDetection
+    //**************************************************************************//
+    // CONNECTORS
+    Interfaces.RealInput H "Measurement of outdoor illuminance."
+      annotation (Placement(transformation(extent={{-260,160},{-240,180}}),
+      iconTransformation(extent={{-260,160},{-240,180}})));
+    Interfaces.BooleanInput P_MAN "Presence sensor signal."
+      annotation (Placement(transformation(extent={{-260,-22},{-240,-2}}),
+      iconTransformation(extent={{-260,-22},{-240,-2}})));
+    Interfaces.RealInput T "Air temperature measurement in the room."
+      annotation (Placement(transformation(extent={{-260,140},{-240,160}}),
+      iconTransformation(extent={{-260,140},{-240,160}})));
+    Interfaces.BooleanInput P "Presence detection in the room"
+      annotation (Placement(transformation(extent={{-260,10},{-240,30}}),
+      iconTransformation(extent={{-260,10},{-240,30}})));
+    Interfaces.RealInput T1 "Air temperature measurement outdoor."
+      annotation(Placement(transformation(extent={{-260,-80},{-240,-60}}),
+      iconTransformation(extent={{-260,-80},{-240,-60}})));
+    Interfaces.BooleanInput B "Monitoring of window position."
+      annotation(Placement(transformation(extent={{-260,124},{-240,144}}),
+      iconTransformation(extent={{-260,124},{-240,144}})));
+    Interfaces.BooleanOutput M "Control signal for the sunshade drive."
+      annotation(Placement(transformation(extent={{120,80},{140,100}}),
+      iconTransformation(extent={{-9,-20},{9,20}},rotation=-90,origin={112,139})));
+    //**************************************************************************//
+    // SENSOR FUNCTIONS
+    SensorFunctions.PresenceDetection                         presenceDetection
       annotation (Placement(transformation(extent={{-218,-10},{-198,10}})));
     SensorFunctions.AirTemperatureMeasurementFunctions.AirTemperatureMeasurementRoom
       airTemperatureMeasurementRoom
@@ -80,78 +104,55 @@ package MacroFunctions
     SensorFunctions.AirTemperatureMeasurementFunctions.AirTemperatureMeasurementOutdoor
       airTemperatureMeasurementOutdoor
       annotation (Placement(transformation(extent={{-210,-100},{-190,-80}})));
-        ApplicationFunctions.Basic.OccupancyEvaluation
+    SensorFunctions.BrightnessMeasurementFunctions.BrightnessMeasurementOutdoor
+      brightnessMeasurementOutdoor
+      annotation (Placement(transformation(extent={{-40,140},{-20,160}})));
+    //**************************************************************************//
+    // ACTUATOR FUNCTIONS
+    ActuatorFunctions.SunshadeActuator sunshadeActuator
+      annotation (Placement(transformation(extent={{40,40},{80,80}})));
+    //**************************************************************************//
+    // OPERATOR AND DISPLAY FUNCTIONS
+    OperatorAndDisplayFunctions.AdjustTemperatureSetpoint adjustTemperatureSetpoint
+      annotation (Placement(transformation(extent={{-180,-80},{-160,-60}})));
+    //**************************************************************************//
+    // APPLICATION FUNCTIONS
+    ApplicationFunctions.Basic.OccupancyEvaluation
       occupancyEvaluation
       annotation (Placement(transformation(extent={{-80,-28},{-40,12}})));
     ApplicationFunctions.RoomClimate.SetpointCalculation
       setpointCalculation
       annotation (Placement(transformation(extent={{-100,-100},{-60,-60}})));
-        ApplicationFunctions.Sunshading.PriorityControl priorityControl
+    ApplicationFunctions.Sunshading.PriorityControl priorityControl
       annotation (Placement(transformation(extent={{-98,40},{-58,80}})));
-    ActuatorFunctions.SunshadeActuator sunshadeActuator
-      annotation (Placement(transformation(extent={{40,40},{80,80}})));
-    Modelica.Blocks.Sources.Constant
-                                 sourceS_PROT_Pos(k=-1)
+    ApplicationFunctions.Sunshading.AutomaticThermalControl automaticThermalControl
+      annotation (Placement(transformation(extent={{40,-86},{80,-46}})));
+    //**************************************************************************//
+    // SOURCES
+    Modelica.Blocks.Sources.Constant sourceS_PROT_Pos(k=-1)
       annotation (Placement(transformation(extent={{-180,74},{-160,94}})));
     Modelica.Blocks.Sources.Constant sourceS_PROT_Angle(k=10)
       annotation (Placement(transformation(extent={{-154,90},{-134,110}})));
-    Modelica.Blocks.Sources.Constant
-                                 sourceS_MAINT_Pos(k=-1)
+    Modelica.Blocks.Sources.Constant sourceS_MAINT_Pos(k=-1)
       "Source to define S_xxx input signal. Fixed to -1 to deactivate in priorityControl."
       annotation (Placement(transformation(extent={{-180,38},{-160,58}})));
     Modelica.Blocks.Sources.Constant sourceS_MAINT_Angle(k=20)
       annotation (Placement(transformation(extent={{-154,54},{-134,74}})));
-      Modelica.Blocks.Sources.Constant
-                                   sourceS_AUTO_Pos(k=-1)
+    Modelica.Blocks.Sources.Constant sourceS_AUTO_Pos(k=-1)
       "Source to define S_xxx input signal. Fixed to -1 to deactivate in priorityControl."
       annotation (Placement(transformation(extent={{-180,4},{-160,24}})));
     Modelica.Blocks.Sources.Constant sourceS_AUTO_Angle(k=50)
       annotation (Placement(transformation(extent={{-154,18},{-134,38}})));
-    ApplicationFunctions.Sunshading.AutomaticThermalControl
-      automaticThermalControl
-      annotation (Placement(transformation(extent={{40,-86},{80,-46}})));
-    SensorFunctions.BrightnessMeasurementFunctions.BrightnessMeasurementOutdoor
-      brightnessMeasurementOutdoor
-      annotation (Placement(transformation(extent={{-40,140},{-20,160}})));
-    Interfaces.BooleanOutput M annotation (
-        Placement(transformation(extent={{120,80},{140,100}}),
-          iconTransformation(
-          extent={{-9,-20},{9,20}},
-          rotation=-90,
-          origin={112,139})));
-    Interfaces.RealInput H annotation (Placement(
-          transformation(extent={{-260,160},{-240,180}}), iconTransformation(
-            extent={{-260,160},{-240,180}})));
-    Interfaces.BooleanInput P_MAN annotation (
-        Placement(transformation(extent={{-260,-22},{-240,-2}}),
-          iconTransformation(extent={{-260,-22},{-240,-2}})));
-    Interfaces.RealInput T
-      "Air temperature measurement of room temperature" annotation (Placement(
-          transformation(extent={{-260,140},{-240,160}}), iconTransformation(
-            extent={{-260,140},{-240,160}})));
-    Interfaces.BooleanInput P annotation (Placement(
-          transformation(extent={{-260,10},{-240,30}}),   iconTransformation(
-            extent={{-260,10},{-240,30}})));
-    Interfaces.RealInput T1
-      "Air temperature measurement of outdoor air temperature" annotation (
-        Placement(transformation(extent={{-260,-80},{-240,-60}}),
-          iconTransformation(extent={{-260,-80},{-240,-60}})));
     Modelica.Blocks.Sources.Constant sourceT_STA(k=0)
       "Boundary condition defining the room air temperature"
       annotation (Placement(transformation(extent={{-220,-60},{-200,-40}})));
-    Interfaces.BooleanInput B annotation (Placement(
-          transformation(extent={{-260,124},{-240,144}}),
-                                                        iconTransformation(
-            extent={{-260,124},{-240,144}})));
     Modelica.Blocks.Sources.Constant sourceT_BMS(k=0)
       "Boundary condition to set T_BMS i.e. relative change of temperature setpoint from BMS system in Kelvin. Temperature difference ! ."
       annotation (Placement(transformation(extent={{-150,-60},{-130,-40}})));
-    OperatorAndDisplayFunctions.AdjustTemperatureSetpoint
-      adjustTemperatureSetpoint
-      annotation (Placement(transformation(extent={{-180,-80},{-160,-60}})));
     Modelica.Blocks.Sources.Constant sourceCMD_T(k=0)
       "Boundary condition to set T_SETPT i.e. relative change of temperature setpoint from user in Kelvin. Temperature difference ! ."
       annotation (Placement(transformation(extent={{-196,-40},{-176,-20}})));
+
   equation
     connect(presenceDetection.P_AUTO,occupancyEvaluation.P_AUTO) annotation (
         Line(
@@ -310,75 +311,6 @@ package MacroFunctions
 <p>Block that implements a room automation control function for sunblind control; from VDI 3813 [1]. </p>
 <h4><span style=\"color:#008000\">Functional Description</span></h4>
 <p>Block calculated the setpoints for energy modes protection, economy, precomfort and comfort, heating and cooling respectively. Setpoint shifts may be induced from outside through the operator (T_BMS) or manually by the user (T_SETPT). Parameter of heating and cooling protection serve as boundaries and my not be crossed. Also a setpoint might not cross another setpoint, e.g. the setpoint for heating precomfort may not be larger than the setpoint from heating comfort. Setpoint shifts affect all setpoints equally. Setpoints comfort and precomfort are shiftable from the user and the operator. Setpoints for economy mode may be shifted only by the operator. Additionally setpoint for energy modes cooling comfort and precomfort may be shifted through the outdoor air temperature (T_OUT) termed &QUOT;summer compensation&QUOT;.</p>
-<h4><span style=\"color:#008000\">Input Variables</span></h4>
-<p>The following table presents the input variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_BMS</p></td>
-<td valign=\"top\"><p>Temp</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Types.SetpointTemperatureOperator\">SetpointTemperatureOperator</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Setpoint shift provided by the operator of a building through a Building Management System (BMS).</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_SETPT</p></td>
-<td valign=\"top\"><p>Temp</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Types.SetpointTemperatureUser\">SetpointTemperatureUser</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Setpoint shift provided by the user of a room manually.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_OUT</p></td>
-<td valign=\"top\"><p>Temp</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Types.ValueTemperatureOutdoor\">ValueTemperatureOutdoor</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Measurement of outdoor air temperature. Has an effect on summer compensation.</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color:#008000\">Output Variables</span></h4></p>
-<p>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_SETPS</p></td>
-<td valign=\"top\"><p>Temp</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Types.SetpointHeatCoolEnergyModes\">SetpointSetpointHeatCoolEnergyModes</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Array of setpoints for every energy mode.</p></td>
-</tr>
-</table>
-<p><br><br><br><b><font style=\"color: #008000; \">Parameter</font></b> </p>
-<p>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SETPS</p></td>
-<td valign=\"top\"><p>Array containing default setpoints for every energy mode.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_SUMM</p></td>
-<td valign=\"top\"><p>Parameter to specify summer compensation behaviour.</p></td>
-</tr>
-</table>
-<p><br><br><br><b><font style=\"color: #008000; \">References</font></b> </p>
-<table cellspacing=\"2\" cellpadding=\"0\" border=\"0\"><tr>
-<td><p>[1]</p></td>
-<td><p>VDI 3813-2 - Geb&auml;udeautomation (GA) - Blatt 2: Raumautomationsfunktionen (RA-Funktionen). Beuth Verlag GmbH, Berlin, 2011. </p></td>
-</tr>
-</table>
 </html>", revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>

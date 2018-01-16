@@ -12,6 +12,9 @@ block ControlDriveActuatorValvePosition
       functionality);
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealOutput
+    Y "Physical signal to change valve position(0-1, 0:closed, 1:opened)." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
+        iconTransformation(extent={{-22,82},{20,120}})));
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
     V_SET_VP "New valve position(0-1, 0:closed, 1:opened)." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
@@ -20,9 +23,7 @@ block ControlDriveActuatorValvePosition
     V_STA_VP "Currently used valve position(0-1, 0:closed, 1:opened)." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealOutput
-    Y "Physical signal to change valve position(0-1, 0:closed, 1:opened)." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
-        iconTransformation(extent={{-22,82},{20,120}})));
+
 
 equation
   connect(Y,functionality.Y) annotation (Line(

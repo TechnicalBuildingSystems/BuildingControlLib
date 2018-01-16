@@ -107,9 +107,9 @@ equation
       thickness=1));
   annotation (experiment(StopTime=100, Interval=1),
       __Dymola_experimentSetupOutput,
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-500,-100},{500,
-            760}})),
-    Icon(coordinateSystem(extent={{-500,-100},{500,760}})),preferedView="Info",
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
+            100,100}})),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),preferedView="Info",
     Documentation(revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider & Georg Ambrosius Peler:<br>Implemented.</li>

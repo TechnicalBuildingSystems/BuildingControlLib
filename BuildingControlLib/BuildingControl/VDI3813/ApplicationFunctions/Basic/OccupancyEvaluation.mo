@@ -57,58 +57,7 @@ equation
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_OccupancyEvaluation.PNG\" alt=\"docVDI3813_OccupancyEvaluation.PNG\"/> </p></td>
 </tr>
 </table>
-<p><br><h4><span style=\"color: #008000\">Input Variables</span></h4></p>
-<p><b>Tab . 1: </b>The following table presents the input variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>P_AUTO</p></td>
-<td valign=\"top\"><p>Presence</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceSensorInput\">ValuePresenceSensor</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Presence signal for evaluation issues generated from a sensor device.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>P_MAN</p></td>
-<td valign=\"top\"><p>Presence</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.CommandPresenceOperatorInput\">CommandPresenceOperator</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Presence signal for evaluation issues generated from an operator input.</p></td>
-</tr>
-</table>
-<h4><span style=\"color: #008000\">Output Variables</span></h4>
-<p><b>Tab . 2: </b>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>P_ACT</p></td>
-<td valign=\"top\"><p>Presence</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceEvaluationOutput\">ValuePresenceEvaluation</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Evaluated presence signal.</p></td>
-</tr>
-</table>
-<p><br><br><b><span style=\"color: #008000;\">Parameters</span></b> </p>
-<p><b>Tab . 3: </b>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_BEH</p></td>
-<td valign=\"top\"><p>Changes the evaluation behaviour. TRUE: Only P_AUTO is evaluated; FALSE: P_AUTO and P_MAN are evaluated using logical conjunction</p></td>
-</tr>
-</table>
+
 </html>", revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>

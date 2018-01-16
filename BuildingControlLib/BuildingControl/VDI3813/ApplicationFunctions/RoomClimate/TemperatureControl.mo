@@ -8,19 +8,19 @@ block TemperatureControl
       functionality);
     /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  Interfaces.RealInput T_ROOM
-    annotation (Placement(transformation(extent={{-100,0},{-60,20}})));
-  Interfaces.RealInput[8] T_SETPTS
-    annotation (Placement(transformation(extent={{-100,-20},{-58,0}})));
   Interfaces.ControlFunctionAirTemperatureInput
-    F_ACT annotation (Placement(transformation(extent={{-100,40},{-60,60}})));
-  Interfaces.EnergyModeInput M_ACT
+    F_ACT "Valid room air temperature control function." annotation (Placement(transformation(extent={{-100,40},{-60,60}})));
+  Interfaces.EnergyModeInput M_ACT "Valid energy mode."
     annotation (Placement(transformation(extent={{-100,20},{-60,40}})));
-  Interfaces.RealOutput V_SET_VP
-    annotation (Placement(transformation(extent={{100,20},{140,60}})));
-  Interfaces.RealInput V_STA_VP
+  Interfaces.RealInput T_ROOM "Measured room air temperature in Kelvin."
+    annotation (Placement(transformation(extent={{-100,0},{-60,20}})));
+  Interfaces.RealInput[8] T_SETPTS "Array of setpoints for heating and cooling in every energy mode."
+    annotation (Placement(transformation(extent={{-100,-20},{-58,0}})));
+  Interfaces.RealInput V_STA_FS "Currently used fan speed."
     annotation (Placement(transformation(extent={{-100,-40},{-58,-20}})));
-  Interfaces.RealOutput V_SET_LCK
+  Interfaces.RealOutput V_SET_VP "New valve position."
+    annotation (Placement(transformation(extent={{100,20},{140,60}})));
+  Interfaces.RealOutput V_SET_LCK "New lock valve position."
     annotation (Placement(transformation(extent={{100,-20},{140,20}})));
 equation
   connect(F_ACT, functionality.F_ACT) annotation (Line(
@@ -43,7 +43,7 @@ equation
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
-  connect(V_STA_VP, functionality.V_STA_VP) annotation (Line(
+  connect(V_STA_FS, functionality.V_STA_FS) annotation (Line(
       points={{-79,-30},{-57.5,-30},{-57.5,-11.4},{-30.02,-11.4}},
       color={0,0,0},
       thickness=1,
@@ -70,90 +70,6 @@ Documentation(info="<html>
 <p><b>Fig. 1: </b>&QUOT;Informative representation of the application function <i>Temperature control</i>&QUOT;, <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.23, Figure 46, p. 73]</a></p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"0\"><tr>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_TemperatureControl.PNG\" alt=\"docVDI3813_TemperatureControl.PNG\"/> </p></td>
-</tr>
-</table>
-<h4><span style=\"color: #008000\">Input Variables</span></h4>
-<p>The following table presents the input variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>F_ACT</p></td>
-<td valign=\"top\"><p>Funktion</p></td>
-<td valign=\"top\"></td>
-<td valign=\"top\"><p><br><br>Input</p></td>
-<td valign=\"top\"><p>Valid room air temperature control function.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>M_ACT</p></td>
-<td valign=\"top\"><p>Niveau</p></td>
-<td valign=\"top\"></td>
-<td valign=\"top\"><p><br><br>Input</p></td>
-<td valign=\"top\"><p>Valid energy mode.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_ROOM</p></td>
-<td valign=\"top\"><p>Temp</p></td>
-<td valign=\"top\"></td>
-<td valign=\"top\"><p><br><br>Input</p></td>
-<td valign=\"top\"><p>Measured room air temperature in Kelvin.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>M_SETPTS</p></td>
-<td valign=\"top\"><p>Temp[x]</p></td>
-<td valign=\"top\"></td>
-<td valign=\"top\"><p><br><br>Input</p></td>
-<td valign=\"top\"><p>Array of setpoints for heating and cooling in every energy mode.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>V_STA_FS</p></td>
-<td valign=\"top\"><p>Pos</p></td>
-<td valign=\"top\"></td>
-<td valign=\"top\"><p><br><br>Input</p></td>
-<td valign=\"top\"><p>Currently used fan speed.</p></td>
-</tr>
-</table>
-<h4><span style=\"color: #008000\">Output Variables</span></h4>
-<p>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>V_SET_VP</p></td>
-<td valign=\"top\"><p>Pos </p></td>
-<td valign=\"top\"></td>
-<td valign=\"top\"><p><br><br>Output</p></td>
-<td valign=\"top\"><p>New valve position.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>V_SET_LCK</p></td>
-<td valign=\"top\"><p>Pos</p></td>
-<td valign=\"top\"></td>
-<td valign=\"top\"><p><br><br>Output</p></td>
-<td valign=\"top\"><p>New lock valve position.</p></td>
-</tr>
-</table>
-<p><br><br><br><br><b><span style=\"color: #008000;\">Parameter</span></b> </p>
-<p>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_XXX</p></td>
-<td valign=\"top\"><p>Provide description</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_XXX</p></td>
-<td valign=\"top\"><p>Provide description</p></td>
 </tr>
 </table>
 </html>",

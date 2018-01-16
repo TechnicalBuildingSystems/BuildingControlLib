@@ -12,6 +12,11 @@ block SunshadeActuator
       functionality);
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanOutput
+    M
+    "Physical signal to change the sunshade position (if M == true then sunshade deployed else sunshade not deployed)."
+                                                                                                        annotation (Placement(transformation(extent={{-10,90},{10,110}}),
+        iconTransformation(extent={{-22,82},{20,120}})));
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
     S_SET "New position of the sunshade(1: position, 2: slat angle)." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
@@ -19,12 +24,6 @@ block SunshadeActuator
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
     S_STA "Current position of the sunshade(1: position, 2: slat angle)." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-20},{160,20}})));
-
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanOutput
-    M
-    "Physical signal to change the sunshade position (if M == true then sunshade deployed else sunshade not deployed)."
-                                                                                                        annotation (Placement(transformation(extent={{-10,90},{10,110}}),
-        iconTransformation(extent={{-22,82},{20,120}})));
 
 equation
   connect(S_STA,functionality.S_STA) annotation (Line(
