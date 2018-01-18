@@ -19,11 +19,11 @@ block AirQualityMeasurement
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
    BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealInput
-    Q "Physical signal of an indoor air quality measurement." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
+    Q "Physical signal of an indoor air quality measurement (0 = worst quality; 1 = best quality)." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-20,80},{20,120}})));
    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput
     Q_ROOM
-    "Relative air quality in rooms (0 = worst quality; 1 = best quality)"        annotation (Placement(transformation(extent={{100,60},{120,80}}),
+    "Relative air quality in rooms (0 = worst quality; 1 = best quality)."        annotation (Placement(transformation(extent={{100,60},{120,80}}),
                    iconTransformation(extent={{100,-20},{160,20}})));
 equation
 

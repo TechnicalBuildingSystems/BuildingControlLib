@@ -72,26 +72,28 @@ package MacroFunctions
     //**************************************************************************//
     // CONNECTORS
     Interfaces.RealInput H "Measurement of outdoor illuminance."
-      annotation (Placement(transformation(extent={{-260,160},{-240,180}}),
-      iconTransformation(extent={{-260,160},{-240,180}})));
+      annotation (Placement(transformation(extent={{-260,120},{-240,140}}),
+      iconTransformation(extent={{-260,120},{-240,140}})));
     Interfaces.BooleanInput P_MAN "Presence sensor signal."
-      annotation (Placement(transformation(extent={{-260,-22},{-240,-2}}),
-      iconTransformation(extent={{-260,-22},{-240,-2}})));
+      annotation (Placement(transformation(extent={{-260,0},{-240,20}}),
+      iconTransformation(extent={{-260,0},{-240,20}})));
     Interfaces.RealInput T "Air temperature measurement in the room."
-      annotation (Placement(transformation(extent={{-260,140},{-240,160}}),
-      iconTransformation(extent={{-260,140},{-240,160}})));
+      annotation (Placement(transformation(extent={{-260,90},{-240,110}}),
+      iconTransformation(extent={{-260,90},{-240,110}})));
     Interfaces.BooleanInput P "Presence detection in the room"
-      annotation (Placement(transformation(extent={{-260,10},{-240,30}}),
-      iconTransformation(extent={{-260,10},{-240,30}})));
+      annotation (Placement(transformation(extent={{-260,30},{-240,50}}),
+      iconTransformation(extent={{-260,30},{-240,50}})));
     Interfaces.RealInput T1 "Air temperature measurement outdoor."
-      annotation(Placement(transformation(extent={{-260,-80},{-240,-60}}),
-      iconTransformation(extent={{-260,-80},{-240,-60}})));
+      annotation(Placement(transformation(extent={{-260,-30},{-240,-10}}),
+      iconTransformation(extent={{-260,-30},{-240,-10}})));
     Interfaces.BooleanInput B "Monitoring of window position."
-      annotation(Placement(transformation(extent={{-260,124},{-240,144}}),
-      iconTransformation(extent={{-260,124},{-240,144}})));
+      annotation(Placement(transformation(extent={{-260,60},{-240,80}}),
+      iconTransformation(extent={{-260,60},{-240,80}})));
     Interfaces.BooleanOutput M "Control signal for the sunshade drive."
       annotation(Placement(transformation(extent={{120,80},{140,100}}),
-      iconTransformation(extent={{-9,-20},{9,20}},rotation=-90,origin={112,139})));
+      iconTransformation(extent={{-10.5,-10.5},{10.5,10.5}},
+                                                  rotation=0,  origin={151.5,
+              59.5})));
     //**************************************************************************//
     // SENSOR FUNCTIONS
     SensorFunctions.PresenceDetection                         presenceDetection
@@ -203,29 +205,29 @@ package MacroFunctions
     connect(sunshadeActuator.M, M) annotation (Line(points={{59.8,80.2},{57.9,80.2},
             {57.9,90},{130,90}},         smooth=Smooth.None));
     connect(H, brightnessMeasurementOutdoor.H) annotation (Line(
-        points={{-250,170},{-30,170},{-30,160}},
+        points={{-250,130},{-30,130},{-30,160}},
         color={0,0,0},
         smooth=Smooth.None));
     connect(P_MAN, occupancyEvaluation.P_MAN) annotation (Line(
-        points={{-250,-12},{-76,-12},{-76,-11.8},{-75.8,-11.8}},
+        points={{-250,10},{-76,10},{-76,-11.8},{-75.8,-11.8}},
         color={0,0,0},
         thickness=1,
         smooth=Smooth.None));
     connect(T, airTemperatureMeasurementRoom.T) annotation (Line(
-        points={{-250,150},{-70,150},{-70,140}},
+        points={{-250,100},{-70,100},{-70,140}},
         color={0,0,0},
         smooth=Smooth.None));
     connect(P, presenceDetection.P) annotation (Line(
-        points={{-250,20},{-208,20},{-208,20},{-208,20},{-208,20},{-208,18},{-208,
-            10}},
+        points={{-250,40},{-208,40},{-208,20},{-208,20},{-208,20},{-208,18},{
+            -208,10}},
         color={0,0,0},
         smooth=Smooth.None));
     connect(T1, airTemperatureMeasurementOutdoor.T) annotation (Line(
-        points={{-250,-70},{-200,-70},{-200,-80}},
+        points={{-250,-20},{-200,-20},{-200,-80}},
         color={0,0,0},
         smooth=Smooth.None));
     connect(B, windowMonitoring.B) annotation (Line(
-        points={{-250,134},{-170,134},{-170,128}},
+        points={{-250,70},{-170,70},{-170,128}},
         color={0,0,0},
         smooth=Smooth.None));
     connect(automaticThermalControl.S_MAN, priorityControl.S_MAN) annotation (
@@ -287,7 +289,7 @@ package MacroFunctions
             textString="Outputs")}), Icon(coordinateSystem(extent={{-260,-100},
               {140,200}}, preserveAspectRatio=false), graphics={
           Rectangle(
-            extent={{-258,192},{138,-52}},
+            extent={{-260,200},{140,-52}},
             lineColor={0,0,0},
             fillColor={255,255,255},
             fillPattern=FillPattern.Solid,

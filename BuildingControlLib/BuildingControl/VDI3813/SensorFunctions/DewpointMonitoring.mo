@@ -11,11 +11,11 @@ block DewpointMonitoring
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
    BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanInput
-    B "Physical signal of dewpoint contact." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
+    B "Physical signal of dewpoint contact (true = dewpoint reached / false = dewpoint not reached)." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-20,80},{20,120}})));
    BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanOutput
     B_DEW
-    "Boolean dewpoint state of rooms or room segments(true = dewpoint reached / false = dewpoint not reached)."
+    "Boolean dewpoint state of rooms or room segments (true = dewpoint reached / false = dewpoint not reached)."
     annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-20},{160,20}})));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/

@@ -14,10 +14,10 @@ block BrightnessMeasurementOutdoorFunctionality
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealInput
-    H "Physical signal of outdoor brightness measurement." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
+    H "Physical signal of outdoor brightness measurement (expected unit is Lux)." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput
-    H_OUT "Outdoor illuminance in Lux." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
+    H_OUT "Outdoor illuminance (expected unit is Lux)." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
 equation

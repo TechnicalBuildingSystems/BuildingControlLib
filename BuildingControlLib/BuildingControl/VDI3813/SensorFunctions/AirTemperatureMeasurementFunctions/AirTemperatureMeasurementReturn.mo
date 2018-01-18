@@ -20,12 +20,12 @@ block AirTemperatureMeasurementReturn
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealInput T
-    "Physical signal of return air temperature measurement." annotation (
+    "Physical signal of return air temperature measurement (expected unit is Kelvin)." annotation (
       Placement(transformation(extent={{-10,90},{10,110}}), iconTransformation(
           extent={{-20,80},{20,120}})));
 
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput T_RETURN
-    "Return air temperature of a ventilation system in Kelvin." annotation (
+    "Return air temperature of a ventilation system in Kelvin (expected unit is Kelvin)." annotation (
       Placement(transformation(extent={{100,60},{120,80}}), iconTransformation(
           extent={{100,-20},{160,20}})));
 

@@ -12,7 +12,7 @@ block PrecipitationDetection
   // Connectors
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanInput
     R
-    "Physical signal of precipitation detection(true = precipitation detected/false = no precipitation detected)."
+    "Physical signal of precipitation detection(true = precipitation detected / false = no precipitation detected)."
                                                                                                         annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-20,80},{20,120}})));
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanOutput

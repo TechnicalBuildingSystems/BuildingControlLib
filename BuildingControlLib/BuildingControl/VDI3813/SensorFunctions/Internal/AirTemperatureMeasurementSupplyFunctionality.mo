@@ -14,11 +14,11 @@ block AirTemperatureMeasurementSupplyFunctionality
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealInput
-    T "Physical signal of supply air temperature measurement." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
+    T "Physical signal of supply air temperature measurement (expected unit is Kelvin)." annotation (Placement(transformation(extent={{-20,80},{20,120}}),
         iconTransformation(extent={{-20,80},{20,120}})));
 
   BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput
-    T_SUPPLY "Supply air temperature of a ventilation system in Kelvin." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
+    T_SUPPLY "Supply air temperature of a ventilation system (expected unit is Kelvin)." annotation (Placement(transformation(extent={{100,-20},{160,20}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
