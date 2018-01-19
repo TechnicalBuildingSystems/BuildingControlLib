@@ -13,7 +13,8 @@ The model library **BuildingControlLib** is released by Fraunhofer Institute for
 
 ### Dependencies
 
-The libary uses models from the [**AixLib**-library](https://github.com/RWTH-EBC/AixLib), version 0.4.0 and models of the [**Modelica  Buildings library**](https://github.com/lbl-srg/modelica-buildings), version 4.0.0.
+The libary uses models from the [**AixLib**-library](https://github.com/RWTH-EBC/AixLib), version 0.4.0 and models of the [**Modelica Buildings library**](https://github.com/lbl-srg/modelica-buildings), version 4.0.0.
+
 
 The library uses models from **Modelica Standard Library** version 3.2.2.
 
