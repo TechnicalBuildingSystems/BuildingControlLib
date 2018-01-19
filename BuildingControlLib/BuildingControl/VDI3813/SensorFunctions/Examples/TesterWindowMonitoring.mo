@@ -6,21 +6,13 @@ model TesterWindowMonitoring
     annotation (Placement(transformation(extent={{-70,2},{-50,22}})));
   WindowMonitoring windowMonitoring
     annotation (Placement(transformation(extent={{-34,-52},{38,-6}})));
-  Sources.Physical.PrescribedB prescribedB
-    annotation (Placement(transformation(extent={{-34,0},{-14,20}})));
 equation
-  connect(prescribedB.u, sourceWindow.y) annotation (Line(
-      points={{-32,12},{-49,12}},
-      color={255,0,255},
-      smooth=Smooth.None));
-  connect(prescribedB.B, windowMonitoring.B) annotation (Line(
-      points={{-13.9,10},{2.35,10},{2.35,-6},{2,-6}},
-      color={0,0,0},
-      smooth=Smooth.None));
+  connect(sourceWindow.y, windowMonitoring.B) annotation (Line(points={{-49,12},
+          {2,12},{2,12},{2,12},{2,-6},{2,-6}}, color={255,0,255}));
       annotation ( preferredView="info", experiment(
         __Dymola_NumberOfIntervals=10),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
-            100,100}}),  graphics),
+            100,100}})),
     __Dymola_experimentSetupOutput,
     Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>

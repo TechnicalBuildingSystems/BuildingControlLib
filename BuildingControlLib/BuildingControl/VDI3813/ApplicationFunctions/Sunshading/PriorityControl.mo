@@ -14,24 +14,24 @@ extends
       PAR_PRIO_S_AUTO=PAR_PRIO_S_AUTO));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueWindowInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput
   B_WINDOW "Boolean window state (default: true == closed / false == open)." annotation (Placement(transformation(extent={{-100,50},{-80,70}}), iconTransformation(extent={{-100,40},
             {-80,60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeProtectionInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
       S_PROT "Positioning command for the sunshade from WeatherProtection." annotation (Placement(transformation(extent={{-100,20},{-80,40}}),
           iconTransformation(extent={{-100,10},{-80,30}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeMaintenanceInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
       S_MAINT "Positioning command for the sunshade from operator." annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
           iconTransformation(extent={{-100,-20},{-80,0}})));
 
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeManualInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
       S_MAN "Positioning command for the sunshade from ActuateSunshade or AutomaticThermalControl." annotation (Placement(transformation(extent={{-100,-40},{-80,-20}}),
           iconTransformation(extent={{-100,-50},{-80,-30}})));
 
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
       S_AUTO "Positioning command for the sunshade from other automation functions." annotation (Placement(transformation(extent={{-100,-70},{-80,-50}}),
           iconTransformation(extent={{-100,-80},{-80,-60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeOutput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
       S_SET "New position of the sunshade." annotation (Placement(transformation(extent={{100,-10},{120,10}}),
           iconTransformation(extent={{100,-20},{140,20}})));
 
@@ -109,91 +109,7 @@ equation
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_PriorityControl.PNG\" alt=\"docVDI3813_PriorityControl.PNG\"/> </p></td>
 </tr>
 </table>
-<h4><span style=\"color: #008000\">Input Variables</span></h4>
-<p>The following table presents the input variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>B_WINDOW</p></td>
-<td valign=\"top\"><p>Binary</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueWindowInput\">ValueWindow</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Boolean window state (default: true == closed / false == open).</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_PROT</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeProtectionInput\">CommandSunshadeProtection</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Positioning command for the sunshade from <i>WeatherProtection</i>.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_MAINT</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeMaintenanceInput\">CommandSunshadeMaintenance</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Positioning command for the sunshade from operator.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_MAN</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeManualInput\">CommandSunshadeManual</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Positioning command for the sunshade from <i>ActuateSunshade</i> or <i>AutomaticThermalControl</i>.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_AUTO</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticInput\">CommandSunshadeAutomatic</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Positioning command for the sunshade from other automation functions.</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color: #008000\">Output Variables</span></h4></p>
-<p>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_SET</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeOutput\">CommandSunshade</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>New position of the sunshade.</p></td>
-</tr>
-</table>
-<p><br><br><br><br><br><br><br><br><br><br><br><b><span style=\"color: #008000;\">Parameters</span></b> </p>
-<p>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_PRIO_S_PROT</p></td>
-<td valign=\"top\"><p>Parameter&nbsp;to&nbsp;set&nbsp;priority&nbsp;level&nbsp;of&nbsp;S_PROT.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_PRIO_S_MAINT</p></td>
-<td valign=\"top\"><p>Parameter&nbsp;to&nbsp;set&nbsp;priority&nbsp;level&nbsp;of&nbsp;S_MAINT.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_PRIO_S_MAN</p></td>
-<td valign=\"top\"><p>Parameter&nbsp;to&nbsp;set&nbsp;priority&nbsp;level&nbsp;of&nbsp;S_MAN.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_PRIO_S_AUTO</p></td>
-<td valign=\"top\"><p>Parameter&nbsp;to&nbsp;set&nbsp;priority&nbsp;level&nbsp;of&nbsp;S_AUTO.</p></td>
-</tr>
-</table>
+
 </html>", revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>

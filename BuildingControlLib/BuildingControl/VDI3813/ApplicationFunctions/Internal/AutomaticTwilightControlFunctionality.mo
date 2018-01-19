@@ -17,14 +17,14 @@ block AutomaticTwilightControlFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueSwitchFunctionOnOffInput B_ON "Command to switch the function on or off (true == on / false == off)."
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput B_ON "Command to switch the function on or off (true == on / false == off)."
       annotation (Placement(transformation(extent={{-220,60},{-200,80}}),
           iconTransformation(extent={{-100,40},{-60,60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
       H_OUT "Measured outdoor illuminance in lux." annotation (Placement(transformation(extent={{-220,20},
           {-200,40}}),
           iconTransformation(extent={{-100,0},{-60,20}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticOutput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
       S_AUTO "New sunshade position." annotation (Placement(transformation(extent={{160,0},
           {180,20}}),
           iconTransformation(extent={{100,-10},{140,10}})));
@@ -38,18 +38,16 @@ inner Modelica.StateGraph.StateGraphRoot stateGraphRoot
   annotation (Placement(transformation(extent={{120,120},{140,140}})));
 Modelica.StateGraph.Transition t0
   annotation (Placement(transformation(extent={{-70,70},{-50,90}})));
-Sources.Sunshade.PrescribedS_AUTO prescribedS_AUTO
-  annotation (Placement(transformation(extent={{120,-20},{140,0}})));
 Modelica.Blocks.Math.MultiSum sunshadePosition(nu=3)
   annotation (Placement(transformation(extent={{120,40},{140,60}})));
 Modelica.Blocks.Math.MultiSum slatAngle(nu=3)
   annotation (Placement(transformation(extent={{120,-80},{140,-60}})));
-Modelica.StateGraph.Transition t1(condition=B_ON.valueSwitchFunctionOnOff)
+Modelica.StateGraph.Transition t1(condition=B_ON)
   annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=-90,
       origin={-54,30})));
-Modelica.StateGraph.Transition t2(condition=H_OUT.valueIlluminanceOutdoor <=
+Modelica.StateGraph.Transition t2(condition=H_OUT <=
       PAR_H_ACT,
     enableTimer=true,
     waitTime=PAR_TI)
@@ -57,12 +55,12 @@ Modelica.StateGraph.Transition t2(condition=H_OUT.valueIlluminanceOutdoor <=
       extent={{-10,10},{10,-10}},
       rotation=270,
       origin={-16,-30})));
-Modelica.StateGraph.Transition t3(condition=B_ON.valueSwitchFunctionOnOff ==
+Modelica.StateGraph.Transition t3(condition=B_ON ==
       false) annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=90,
       origin={-2,-74})));
-Modelica.StateGraph.Transition t7(condition=H_OUT.valueIlluminanceOutdoor >=
+Modelica.StateGraph.Transition t7(condition=H_OUT >=
       PAR_H_DEA,
     enableTimer=true,
     waitTime=PAR_TI)
@@ -70,7 +68,7 @@ Modelica.StateGraph.Transition t7(condition=H_OUT.valueIlluminanceOutdoor >=
       extent={{-10,-10},{10,10}},
       rotation=90,
       origin={-90,-22})));
-Modelica.StateGraph.Transition t6(condition=B_ON.valueSwitchFunctionOnOff ==
+Modelica.StateGraph.Transition t6(condition=B_ON ==
       false) annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=90,
@@ -108,16 +106,6 @@ equation
 
 connect(s0.outPort[1], t0.inPort) annotation (Line(points={{-73.5,80},{-73.5,80},
           {-64,80}},             color={0,0,0}));
-connect(prescribedS_AUTO.S_AUTO, S_AUTO) annotation (Line(
-    points={{141.9,-10},{150,-10},{150,4},{160,4},{160,10},{170,10}},
-    color={0,0,0},
-    thickness=1));
-connect(sunshadePosition.y, prescribedS_AUTO.u[1]) annotation (Line(points={{141.7,
-        50},{150,50},{150,20},{108,20},{108,-11},{122,-11}},
-                                                  color={0,0,127}));
-connect(slatAngle.y, prescribedS_AUTO.u[2]) annotation (Line(points={{141.7,
-        -70},{150,-70},{150,-40},{114,-40},{114,-9},{122,-9}},
-                                            color={0,0,127}));
   connect(t2.outPort, Activated.inPort[1]) annotation (Line(points={{-16,-31.5},
           {-16,-31.5},{-16,-34},{-44,-34},{-44,-34},{-50,-34},{-50,-39}},
                                             color={0,0,0}));
@@ -174,6 +162,10 @@ connect(slatAngle.y, prescribedS_AUTO.u[2]) annotation (Line(points={{141.7,
           {-50,-10.5},{-50,-16},{-12,-16},{-12,2},{-12,28}}, color={0,0,0}));
   connect(Deactivated.outPort[2], t2.inPort) annotation (Line(points={{-49.75,-10.5},
           {-50,-10.5},{-50,-26},{-16,-26}}, color={0,0,0}));
+  connect(sunshadePosition.y, S_AUTO[1]) annotation (Line(points={{141.7,50},{
+          152,50},{152,5},{170,5}}, color={0,0,127}));
+  connect(slatAngle.y, S_AUTO[2]) annotation (Line(points={{141.7,-70},{152,-70},
+          {152,15},{170,15}}, color={0,0,127}));
   annotation (preferedView="Info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
           -100},{100,100}})),                  Documentation(revisions="<html>
 <ul>
@@ -188,74 +180,6 @@ connect(slatAngle.y, prescribedS_AUTO.u[2]) annotation (Line(points={{141.7,
 <p><br><br><b>Fig. 1: </b>UML activity diagram of the application function <i>Automatic twilight control,</i><a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.17, p. 59 - 61]</a></p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"0\"><tr>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docUMLAkt_AutomaticTwilightControl.PNG\"/> </p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color: #008000\">Input Variables</span></h4></p>
-<p>The following table presents the input variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>B_ON</p></td>
-<td valign=\"top\"><p>Binary</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueSwitchFunctionOnOffInput\">ValueSwitchFunctionOnOff</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Command to switch the function on or off (true == on / false == off).</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>H_OUT</p></td>
-<td valign=\"top\"><p>Illuminance</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput\">ValueIlluminanceOutdoor</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Measured outdoor illuminance in lux.</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color: #008000\">Output Variables</span></h4></p>
-<p>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_AUTO</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticOutput\">CommandSunshadeAutomatic</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>New sunshade position.</p></td>
-</tr>
-</table>
-<p><br><br><b><span style=\"color: #008000;\">Parameters</span></b> </p>
-<p>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_H_ACT</p></td>
-<td valign=\"top\"><p>Sunset&nbsp;threshold&nbsp;value&nbsp;of&nbsp;outdoor&nbsp;illuminance&nbsp;in&nbsp;lux for sunblind activation.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_H_DEA</p></td>
-<td valign=\"top\"><p>Sunrise&nbsp;threshold&nbsp;value&nbsp;of&nbsp;outdoor&nbsp;illuminance&nbsp;in&nbsp;lux&nbsp;for&nbsp;sunblind&nbsp;deactivation.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_TI</p></td>
-<td valign=\"top\"><p>Hysteresis&nbsp;time&nbsp;for&nbsp;twilight&nbsp;recognition&nbsp;in&nbsp;seconds.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_S_ACT</p></td>
-<td valign=\"top\"><p>Setpoints&nbsp;for&nbsp;sun&nbsp;shade&nbsp;position&nbsp;and&nbsp;slat&nbsp;angle&nbsp;(in&nbsp;percent&nbsp;and&nbsp;degree)&nbsp;when&nbsp;sunset&nbsp;detected.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_S_DEA</p></td>
-<td valign=\"top\"><p>Setpoints&nbsp;for&nbsp;sun&nbsp;shade&nbsp;position&nbsp;and&nbsp;slat&nbsp;angle&nbsp;(in&nbsp;percent&nbsp;and&nbsp;degree)&nbsp;when&nbsp;sunrise&nbsp;detected.</p></td>
 </tr>
 </table>
 </html>"),

@@ -5,10 +5,6 @@ model TesterActuateSunshade
 
   ActuateSunshade actuateSunshade
     annotation (Placement(transformation(extent={{-20,-20},{40,20}})));
-  Sources.Sunshade.PrescribedS_STA prescribedS_STA
-    annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
-  Sources.Sunshade.PrescribedCMD_S prescribedCMD_S
-    annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
   Modelica.Blocks.Sources.BooleanStep sourceCMD(startTime=10)
     annotation (Placement(transformation(extent={{-92,40},{-72,60}})));
   Modelica.Blocks.Sources.RealExpression sourceCurrentPosition
@@ -16,18 +12,12 @@ model TesterActuateSunshade
   Modelica.Blocks.Sources.RealExpression sourceCurrentAngle
     annotation (Placement(transformation(extent={{-98,-20},{-78,0}})));
 equation
-  connect(prescribedCMD_S.CMD, actuateSunshade.CMD) annotation (Line(points={{-44.1,
-          46},{10,46},{10,20},{10,20}},      color={0,0,0}));
-  connect(sourceCMD.y, prescribedCMD_S.u)
-    annotation (Line(points={{-71,50},{-64,50},{-58,50}}, color={255,0,255}));
-  connect(prescribedS_STA.S_STA, actuateSunshade.S_STA) annotation (Line(
-      points={{-38.1,0},{-11,0}},
-      color={0,0,0},
-      thickness=1));
-  connect(sourceCurrentPosition.y, prescribedS_STA.u[1]) annotation (Line(
-        points={{-77,10},{-68,10},{-68,-1},{-58,-1}}, color={0,0,127}));
-  connect(sourceCurrentAngle.y, prescribedS_STA.u[2]) annotation (Line(points={
-          {-77,-10},{-68,-10},{-68,1},{-58,1}}, color={0,0,127}));
+  connect(sourceCMD.y, actuateSunshade.CMD) annotation (Line(points={{-71,50},{
+          8,50},{8,20},{10,20}}, color={255,0,255}));
+  connect(sourceCurrentPosition.y, actuateSunshade.S_STA[1]) annotation (Line(
+        points={{-77,10},{-48,10},{-48,0},{-15.5,0}}, color={0,0,127}));
+  connect(sourceCurrentAngle.y, actuateSunshade.S_STA[2]) annotation (Line(
+        points={{-77,-10},{-48,-10},{-48,0},{-6.5,0}}, color={0,0,127}));
  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
            -100},{100,100}})),                preferredView="info",Documentation(info="<html>
 <h4><span style=\"color: #008000\">Overview</span></h4>

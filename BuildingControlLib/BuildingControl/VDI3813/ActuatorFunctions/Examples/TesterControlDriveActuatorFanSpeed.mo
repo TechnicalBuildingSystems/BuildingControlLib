@@ -4,31 +4,16 @@ model TesterControlDriveActuatorFanSpeed
   extends Modelica.Icons.Example;
   ControlDriveActuator.ControlDriveActuatorFanSpeed controlDriveActuatorFanSpeed
     annotation (Placement(transformation(extent={{-26,-28},{82,28}})));
-  Sources.ActuatorSignal.PrescribedV_SET_FS prescribedV_SET_FS annotation (
-      Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-50,50})));
-  Sensors.SensorY sensorY
-    annotation (Placement(transformation(extent={{40,40},{60,60}})));
   Modelica.Blocks.Interaction.Show.RealValue realValue
     annotation (Placement(transformation(extent={{76,40},{96,60}})));
   Modelica.Blocks.Sources.Step sourceV_SET_FS(height=1, startTime=200)
     annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
 equation
 
-  connect(prescribedV_SET_FS.V_SET_FS, controlDriveActuatorFanSpeed.V_SET_FS)
-    annotation (Line(
-      points={{-50,38.1},{-50,0},{-9.8,0}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(sensorY.Y, controlDriveActuatorFanSpeed.Y)
-    annotation (Line(points={{40,50},{28,50},{28,28.28},{27.46,28.28}}));
-  connect(sensorY.y, realValue.numberPort)
-    annotation (Line(points={{62,50},{74.5,50},{74.5,50}}, color={0,0,127}));
-  connect(prescribedV_SET_FS.u, sourceV_SET_FS.y) annotation (Line(points={{-50,
-          58},{-64,58},{-64,70},{-79,70}}, color={0,0,127}));
+  connect(realValue.numberPort, controlDriveActuatorFanSpeed.Y) annotation (
+      Line(points={{74.5,50},{30,50},{30,28.28},{27.46,28.28}}, color={0,0,127}));
+  connect(sourceV_SET_FS.y, controlDriveActuatorFanSpeed.V_SET_FS) annotation (
+      Line(points={{-79,70},{-50,70},{-50,0},{-9.8,0}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),
     experiment(StopTime=1000, Interval=60),

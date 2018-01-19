@@ -12,19 +12,18 @@ block SunshadeActuator
       functionality);
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeInput
-    S_SET "New position of the sunshade." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
-        iconTransformation(extent={{-100,-20},{-40,20}})));
-
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.StatusSunshadeOutput
-    S_STA "Current position of the sunshade." annotation (Placement(transformation(extent={{100,60},{120,80}}),
-        iconTransformation(extent={{100,-20},{160,20}})));
-
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.CommandPhysicalMotorControlRelayOutput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanOutput
     M
     "Physical signal to change the sunshade position (if M == true then sunshade deployed else sunshade not deployed)."
                                                                                                         annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-22,82},{20,120}})));
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
+    S_SET "New position of the sunshade(1: position, 2: slat angle)." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
+        iconTransformation(extent={{-100,-20},{-40,20}})));
+
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
+    S_STA "Current position of the sunshade(1: position, 2: slat angle)." annotation (Placement(transformation(extent={{100,60},{120,80}}),
+        iconTransformation(extent={{100,-20},{160,20}})));
 
 equation
   connect(S_STA,functionality.S_STA) annotation (Line(
@@ -57,84 +56,7 @@ Documentation(info="<html>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_SunshadeActuator.PNG\" alt=\"docVDI3813_SunshadeActuator.PNG\"/> </p></td>
 </tr>
 </table>
-<p><br><h4><span style=\"color:#008000\">Input Variables</span></h4></p>
-<p><b>Tab. 1: </b>The following table presents the input variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_SET</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeInput\">CommandSunshadePos</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>New position of the sunshade.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_SET</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeInput\">CommandSunshadeSlatAngle</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>New position of the slats.</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color:#008000\">Output Variables</span></h4></p>
-<p><b>Tab. 2: </b>The following table presents the output variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_STA</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.StatusSunshadeOutput\">StatusSunshadePos</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Current position of the sunshade.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_STA</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.StatusSunshadeOutput\">StatusSunshadeSlatAngle</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Current position of the slats.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>M</p></td>
-<td valign=\"top\"><p>Binary</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.CommandPhysicalMotorControlRelayOutput\">CommandPhysicalMotorControlRelay</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Physical signal to change the sunshade position.</p></td>
-</tr>
-</table>
-<p><br><br><br><br><br><br><br><br><b><font style=\"color: #008000; \">Parameters</font></b> </p>
-<p><b>Tab. 3: </b>The following table presents the parameters of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_PON</p></td>
-<td valign=\"top\"><p>Contains the sunshade position that is used after a voltage recovery.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_RT</p></td>
-<td valign=\"top\"><p>Contains the runtime of one full move of the sunshade.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_TT</p></td>
-<td valign=\"top\"><p>Contains the runtime of one full move of the slats.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_ANG</p></td>
-<td valign=\"top\"><p>Possible maximum and minimum slat angles.</p></td>
-</tr>
-</table>
+
 </html>",
         revisions="<html>
 <ul>

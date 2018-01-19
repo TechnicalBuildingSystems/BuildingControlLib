@@ -6,22 +6,12 @@ model TesterPrecipitationDetection
     annotation (Placement(transformation(extent={{-92,22},{-72,42}})));
   PrecipitationDetection precipitationDetection
     annotation (Placement(transformation(extent={{-32,-20},{50,8}})));
-  Sources.Physical.PrescribedR
-    prescribedPhysicalPrecipitation
-    annotation (Placement(transformation(extent={{-58,20},{-38,40}})));
 equation
-  connect(prescribedPhysicalPrecipitation.u, booleanPulse.y) annotation (Line(
-      points={{-56,32},{-71,32}},
-      color={255,0,255},
-      smooth=Smooth.None));
-  connect(prescribedPhysicalPrecipitation.R, precipitationDetection.R)
-    annotation (Line(
-      points={{-38.1,30},{9,30},{9,8}},
-      color={0,0,0},
-      smooth=Smooth.None));
+  connect(booleanPulse.y, precipitationDetection.R)
+    annotation (Line(points={{-71,32},{8,32},{8,8},{9,8}}, color={255,0,255}));
       annotation (preferredView="info",experiment(StopTime=1000, Interval=1),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
-            100}}),      graphics),
+            100}})),
     __Dymola_experimentSetupOutput,
     Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>

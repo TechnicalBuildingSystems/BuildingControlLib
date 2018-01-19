@@ -3,11 +3,24 @@ package VDI3813 "Package of control functions for building automation referring 
     extends Modelica.Icons.VariantsPackage;
   import EM =
   BuildingControlLib.BuildingControl.VDI3813.Types.EnumerationTypes.EnergyModes;
-  import CF =
+  import CFAT =
+  BuildingControlLib.BuildingControl.VDI3813.Types.EnumerationTypes.ControlFunctionsAirTemperature;
+  import CFAVF =
   BuildingControlLib.BuildingControl.VDI3813.Types.EnumerationTypes.ControlFunctionsAirTemperature;
   import RU =
   BuildingControlLib.BuildingControl.VDI3813.Types.EnumerationTypes.RoomUtilisations;
   //import           BuildingControlLib.BuildingControl.VDI3813;
+
+
+
+
+
+
+
+
+
+
+
 
 
   annotation (preferredView="info", Documentation(info="<html>

@@ -4,13 +4,8 @@ model TesterAdjustTemperatureSetpoint
   extends Modelica.Icons.Example;
   AdjustTemperatureSetpoint adjustTemperatureSetpoint
     annotation (Placement(transformation(extent={{-40,-28},{50,24}})));
-  Sources.AirTemperature.PrescribedT_STA prescribedT_STA
-    annotation (Placement(transformation(extent={{-72,-14},{-52,6}})));
   Modelica.Blocks.Sources.Constant T_STA(k=23)
     annotation (Placement(transformation(extent={{-100,-14},{-80,6}})));
-  Sources.AirTemperature.PrescribedCMD_T
-    prescribedCommandAdjustTemperatureSetpoint
-    annotation (Placement(transformation(extent={{-48,60},{-10,76}})));
   Modelica.Blocks.Sources.Pulse userInput1(
     startTime=10,
     amplitude=2,
@@ -29,27 +24,14 @@ model TesterAdjustTemperatureSetpoint
     annotation (Placement(transformation(extent={{-94,36},{-74,56}})));
 equation
 
-  connect(T_STA.y, prescribedT_STA.u) annotation (Line(
-      points={{-79,-4},{-70,-4}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(adjustTemperatureSetpoint.CMD,
-    prescribedCommandAdjustTemperatureSetpoint.CMD_T) annotation (Line(
-      points={{5,24.26},{5,68},{-6.39,68}},
-      color={0,0,0},
-      smooth=Smooth.None));
-  connect(adjustTemperatureSetpoint.T_STA, prescribedT_STA.T_STA) annotation (
-      Line(
-      points={{-26.5,-2},{-40,-2},{-40,-4},{-50.1,-4}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
   connect(userInput1.y, multiSum.u[1]) annotation (Line(points={{-73,78},{-73,
           60},{-66,60},{-66,64.1}}, color={0,0,127}));
   connect(userInput2.y, multiSum.u[2]) annotation (Line(points={{-73,46},{-70,
           46},{-70,59.9},{-66,59.9}}, color={0,0,127}));
-  connect(multiSum.y, prescribedCommandAdjustTemperatureSetpoint.u) annotation (
-     Line(points={{-52.98,62},{-50,62},{-50,68},{-44.2,68}}, color={0,0,127}));
+  connect(multiSum.y, adjustTemperatureSetpoint.CMD) annotation (Line(points={{
+          -52.98,62},{4,62},{4,24.26},{5,24.26}}, color={0,0,127}));
+  connect(T_STA.y, adjustTemperatureSetpoint.T_STA) annotation (Line(points={{
+          -79,-4},{-26.5,-4},{-26.5,-2}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),               preferredView="info", Documentation(info="<html>
 <h4><span style=\"color: #008000\">Overview</span></h4>

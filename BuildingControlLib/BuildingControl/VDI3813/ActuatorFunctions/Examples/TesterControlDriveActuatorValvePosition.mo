@@ -5,31 +5,18 @@ model TesterControlDriveActuatorValvePosition
   ControlDriveActuator.ControlDriveActuatorValvePosition
     controlDriveActuatorValvePosition
     annotation (Placement(transformation(extent={{-24,-30},{84,26}})));
-  Sources.ActuatorSignal.PrescribedV_SET_VP prescribedV_SET_VP annotation (
-      Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-50,50})));
-  Sensors.SensorY sensorY
-    annotation (Placement(transformation(extent={{40,40},{60,60}})));
   Modelica.Blocks.Interaction.Show.RealValue realValue
     annotation (Placement(transformation(extent={{76,40},{96,60}})));
   Modelica.Blocks.Sources.Step sourceV_SET_VP(height=1, startTime=200)
     annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
 equation
 
-  connect(prescribedV_SET_VP.V_SET_VP, controlDriveActuatorValvePosition.V_SET_VP)
-    annotation (Line(
-      points={{-50,38.1},{-50,-2},{-7.8,-2}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(controlDriveActuatorValvePosition.Y, sensorY.Y) annotation (Line(
-        points={{29.46,26.28},{29.46,49.14},{40,49.14},{40,50}}, color={0,0,0}));
-  connect(sensorY.y, realValue.numberPort)
-    annotation (Line(points={{62,50},{74.5,50}}, color={0,0,127}));
-  connect(sourceV_SET_VP.y, prescribedV_SET_VP.u)
-    annotation (Line(points={{-79,70},{-50,70},{-50,58}}, color={0,0,127}));
+  connect(realValue.numberPort, controlDriveActuatorValvePosition.Y)
+    annotation (Line(points={{74.5,50},{30,50},{30,26.28},{29.46,26.28}}, color=
+         {0,0,127}));
+  connect(sourceV_SET_VP.y, controlDriveActuatorValvePosition.V_SET_VP)
+    annotation (Line(points={{-79,70},{-50,70},{-50,-2},{-7.8,-2}}, color={0,0,
+          127}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),
     experiment(StopTime=1000, Interval=60),

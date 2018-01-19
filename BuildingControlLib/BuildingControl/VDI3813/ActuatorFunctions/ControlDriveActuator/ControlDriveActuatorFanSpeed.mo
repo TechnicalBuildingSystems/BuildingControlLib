@@ -12,17 +12,18 @@ block ControlDriveActuatorFanSpeed
       functionality);
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignal.CommandActuatorSignalFanSpeedInput
-    V_SET_FS "New fan speed." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealOutput
+    Y "Physical signal to change damper position(0-1, 0:deactive, 1:full speed)." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
+        iconTransformation(extent={{-22,82},{20,120}})));
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
+    V_SET_FS "New fan speed(0-1, 0:deactive, 1:full speed)." annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,-20},{-40,20}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignal.StatusActuatorSignalFanSpeedOutput
-    V_STA_FS "Currently used fan speed." annotation (Placement(transformation(extent={{100,60},{120,80}}),
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput
+    V_STA_FS "Currently used fan speed(0-1, 0:deactive, 1:full speed)." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-20},{160,20}})));
 
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Analog.CommandPhysicalControlDriveOutput
-    Y "Physical signal to change damper position." annotation (Placement(transformation(extent={{-10,90},{10,110}}),
-        iconTransformation(extent={{-22,82},{20,120}})));
+
 
 equation
   connect(Y,functionality.Y) annotation (Line(
@@ -55,47 +56,7 @@ Documentation(info="<html>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_ControlDriveActuator.PNG\" alt=\"docVDI3813_ControlDriveActuator.PNG\"/> </p></td>
 </tr>
 </table>
-<h4><span style=\"color: #008000\">Input Variables</span></h4>
-<p><b>Tab. 1: </b>The following table presents the input variables of the function. The connectors and data types have been specialized to provide semantic interfaces and improve error prevention of connections. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>V_SET_FS</p></td>
-<td valign=\"top\"><p>Position</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignals.CommandActuatorSignalFanSpeedInput\">CommandActuatorSignalFanSpeed</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>New fan speed.</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color: #008000\">Output Variables</span></h4></p>
-<p><b>Tab. 2: </b>The following table presents the output variables of the function. The connectors and data types have been specialized to provide semantic interfaces and improve error prevention of connections. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>V_STA_FS</p></td>
-<td valign=\"top\"><p>Position</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.ActuatorSignals.StatusActuatorSignalFanSpeedOutput\">StatusActuatorSignalFanSpeed</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Currently used fan speed.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>Y</p></td>
-<td valign=\"top\"><p>Analog</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Analog.CommandPhysicalControlDriveOutput\">CommandPhysicalControlDrive</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Physical signal to change damper position.</p></td>
-</tr>
-</table>
+
 </html>",
         revisions="<html>
 <ul>

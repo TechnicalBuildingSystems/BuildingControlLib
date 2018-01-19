@@ -4,23 +4,15 @@ model TesterDewpointMonitoring
   extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.BooleanPulse sourceDewpoint(period=1)
     annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
-  Sources.Physical.PrescribedB prescribedB
-    annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
   DewpointMonitoring dewpointMonitoring
     annotation (Placement(transformation(extent={{-36,-40},{36,0}})));
 equation
-  connect(prescribedB.u, sourceDewpoint.y) annotation (Line(
-      points={{-38,52},{-48,52},{-48,50},{-59,50}},
-      color={255,0,255},
-      smooth=Smooth.None));
-  connect(prescribedB.B, dewpointMonitoring.B) annotation (Line(
-      points={{-19.9,50},{0.35,50},{0.35,0},{0,0}},
-      color={0,0,0},
-      smooth=Smooth.None));
+  connect(sourceDewpoint.y, dewpointMonitoring.B)
+    annotation (Line(points={{-59,50},{0,50},{0,0}}, color={255,0,255}));
       annotation (preferredView="info", experiment(
         __Dymola_NumberOfIntervals=10),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
-            {100,100}}), graphics),
+            {100,100}})),
     __Dymola_experimentSetupOutput,
     Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>

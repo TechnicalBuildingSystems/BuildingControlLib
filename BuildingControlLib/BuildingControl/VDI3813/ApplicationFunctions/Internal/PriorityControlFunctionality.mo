@@ -5,21 +5,21 @@ block PriorityControlFunctionality
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueWindowInput B_WINDOW "Boolean window state (default: true == closed / false == open)."
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput B_WINDOW "Boolean window state (default: true == closed / false == open)."
     annotation (Placement(transformation(extent={{-100,60},{-80,80}}), iconTransformation(extent={{-100,40},{-60,60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeProtectionInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
     S_PROT "Positioning command for the sunshade from WeatherProtection." annotation (Placement(transformation(extent={{-100,30},{-80,50}}),
         iconTransformation(extent={{-100,10},{-60,30}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeMaintenanceInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
     S_MAINT "Positioning command for the sunshade from operator." annotation (Placement(transformation(extent={{-100,0},{-80,20}}),
         iconTransformation(extent={{-100,-20},{-60,0}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeManualInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
     S_MAN "Positioning command for the sunshade from ActuateSunshade or AutomaticThermalControl." annotation (Placement(transformation(extent={{-100,-30},{-80,-10}}),
         iconTransformation(extent={{-100,-50},{-60,-30}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[2]
     S_AUTO "Positioning command for the sunshade from other automation functions." annotation (Placement(transformation(extent={{-100,-60},{-80,-40}}),
         iconTransformation(extent={{-100,-80},{-60,-60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeOutput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
     S_SET "New position of the sunshade." annotation (Placement(transformation(extent={{100,60},{120,80}}),
         iconTransformation(extent={{100,-10},{140,10}})));
 
@@ -59,8 +59,7 @@ block PriorityControlFunctionality
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-20,30})));
-  Modelica.StateGraph.Transition t1(condition=B_WINDOW.valueWindow)
-                                                              annotation (Placement(transformation(
+  Modelica.StateGraph.Transition t1(condition=B_WINDOW)       annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-52,52})));
@@ -116,8 +115,6 @@ block PriorityControlFunctionality
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={60,-74})));
-  Sources.Sunshade.PrescribedS_SET prescribedS_SET
-    annotation (Placement(transformation(extent={{74,40},{94,60}})));
 
   sunShadeUtility noPrioSunPos(
     valFalse( y = 0.0), valTrue(y=0.0))
@@ -210,14 +207,14 @@ block PriorityControlFunctionality
     annotation (Placement(transformation(extent={{44,-28},{56,-16}})));
 equation
   // Assignment of positions and angles to evaluation cascade
-  valuesPosition[ PAR_PRIO_S_PROT]    = S_PROT.commandSunshadeProtectionPos;
-  valuesPosition[ PAR_PRIO_S_MAINT]   = S_MAINT.commandSunshadeMaintenancePos;
-  valuesPosition[ PAR_PRIO_S_MAN]     = S_MAN.commandSunshadeManualPos;
-  valuesPosition[ PAR_PRIO_S_AUTO]    = S_AUTO.commandSunshadeAutomaticPos;
-  valuesAngle[ PAR_PRIO_S_PROT]       = S_PROT.commandSunshadeProtectionSlatAngle;
-  valuesAngle[ PAR_PRIO_S_MAINT]      = S_MAINT.commandSunshadeMaintenanceSlatAngle;
-  valuesAngle[ PAR_PRIO_S_MAN]        = S_MAN.commandSunshadeManualSlatAngle;
-  valuesAngle[ PAR_PRIO_S_AUTO]       = S_AUTO.commandSunshadeAutomaticSlatAngle;
+  valuesPosition[ PAR_PRIO_S_PROT]    = S_PROT[1];
+  valuesPosition[ PAR_PRIO_S_MAINT]   = S_MAINT[1];
+  valuesPosition[ PAR_PRIO_S_MAN]     = S_MAN[1];
+  valuesPosition[ PAR_PRIO_S_AUTO]    = S_AUTO[1];
+  valuesAngle[ PAR_PRIO_S_PROT]       = S_PROT[2];
+  valuesAngle[ PAR_PRIO_S_MAINT]      = S_MAINT[2];
+  valuesAngle[ PAR_PRIO_S_MAN]        = S_MAN[2];
+  valuesAngle[ PAR_PRIO_S_AUTO]       = S_AUTO[2];
 
   // if window is closed then evaluate lower priority inputs
   // Value for window state in rooms (true := closed/ window is save , false := open/window and sunshade may collide)"
@@ -242,11 +239,6 @@ equation
   connect(t6.outPort, start.inPort[2]) annotation (Line(
       points={{60,-72.5},{60,100},{-40,100},{-40,82},{-21.7,82},{-21.7,80.6}},
       color={0,0,0},
-      smooth=Smooth.None));
-  connect(prescribedS_SET.S_SET, S_SET) annotation (Line(
-      points={{95.9,50},{98,50},{98,70},{110,70}},
-      color={0,0,0},
-      thickness=1,
       smooth=Smooth.None));
   connect(noPrioSunPos.u, noPrio.active) annotation (Line(
       points={{22,-72.7},{26,-72.7},{26,-77},{28,-77}},
@@ -334,14 +326,6 @@ equation
       color={0,0,0},
       smooth=Smooth.None));
 
-  connect(sumSunAng.y, prescribedS_SET.u[2]) annotation (Line(
-      points={{57.02,-22},{64,-22},{64,51},{76,51}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(sumSunPos.y, prescribedS_SET.u[1]) annotation (Line(
-      points={{43.02,54},{56,54},{56,49},{76,49}},
-      color={0,0,127},
-      smooth=Smooth.None));
   connect(startSunPos.y, sumSunPos.u[1]) annotation (Line(
       points={{1.85,77.5},{10,77.5},{10,78},{20,78},{20,58},{26,58},{26,57.5},{
           30,57.5}},
@@ -393,6 +377,10 @@ equation
       points={{1.85,65.5},{1.85,66},{12,66},{12,-20},{44,-20},{44,-25.5}},
       color={0,0,127},
       smooth=Smooth.None));
+  connect(sumSunPos.y, S_SET[1]) annotation (Line(points={{43.02,54},{72,54},{
+          72,65},{110,65}}, color={0,0,127}));
+  connect(sumSunAng.y, S_SET[2]) annotation (Line(points={{57.02,-22},{80,-22},
+          {80,75},{110,75}}, color={0,0,127}));
   annotation (preferedView="Info",Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),                Documentation(revisions="<html>
 <ul>
@@ -407,91 +395,6 @@ equation
 <p><br><br><b>Fig. 1: </b>UML activity diagram of the application function <i>Priority control, </i><a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.12, p. 49 - 51]</a></p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"0\"><tr>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docUMLAkt_PriorityControl.PNG\"/> </p></td>
-</tr>
-</table>
-<h4><span style=\"color: #008000\">Input Variables</span></h4>
-<p>The following table presents the input variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>B_WINDOW</p></td>
-<td valign=\"top\"><p>Binary</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueWindowInput\">ValueWindow</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Boolean window state (default: true == closed / false == open).</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_PROT</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeProtectionInput\">CommandSunshadeProtection</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Positioning command for the sunshade from <i>WeatherProtection</i>.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_MAINT</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeMaintenanceInput\">CommandSunshadeMaintenance</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Positioning command for the sunshade from operator.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_MAN</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeManualInput\">CommandSunshadeManual</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Positioning command for the sunshade from <i>ActuateSunshade</i> or <i>AutomaticThermalControl</i>.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_AUTO</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticInput\">CommandSunshadeAutomatic</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Positioning command for the sunshade from other automation functions.</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color: #008000\">Output Variables</span></h4></p>
-<p>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_SET</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeOutput\">CommandSunshade</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>New position of the sunshade.</p></td>
-</tr>
-</table>
-<p><br><br><br><br><br><br><br><br><br><b><span style=\"color: #008000;\">Parameters</span></b> </p>
-<p>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_PRIO_S_PROT</p></td>
-<td valign=\"top\"><p>Parameter&nbsp;to&nbsp;set&nbsp;priority&nbsp;level&nbsp;of&nbsp;S_PROT.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_PRIO_S_MAINT</p></td>
-<td valign=\"top\"><p>Parameter&nbsp;to&nbsp;set&nbsp;priority&nbsp;level&nbsp;of&nbsp;S_MAINT.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_PRIO_S_MAN</p></td>
-<td valign=\"top\"><p>Parameter&nbsp;to&nbsp;set&nbsp;priority&nbsp;level&nbsp;of&nbsp;S_MAN.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_PRIO_S_AUTO</p></td>
-<td valign=\"top\"><p>Parameter&nbsp;to&nbsp;set&nbsp;priority&nbsp;level&nbsp;of&nbsp;S_AUTO.</p></td>
 </tr>
 </table>
 </html>"));

@@ -4,25 +4,15 @@ model TesterAirQualityMeasurement
   extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Pulse pulse(period=100)
     annotation (Placement(transformation(extent={{-100,40},{-80,62}})));
-  Sources.Analog.PrescribedQ
-    prescribedPhysicalAirQuality
-    annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
   AirQualityMeasurement airQualityMeasurement
     annotation (Placement(transformation(extent={{-64,-22},{2,4}})));
 equation
-  connect(pulse.y, prescribedPhysicalAirQuality.u) annotation (Line(
-      points={{-79,51},{-66.5,51},{-66.5,50},{-58,50}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(airQualityMeasurement.Q, prescribedPhysicalAirQuality.Q)
-    annotation (Line(
-      points={{-31,4},{-30,4},{-30,50},{-38.1,50}},
-      color={0,0,0},
-      smooth=Smooth.None));
+  connect(pulse.y, airQualityMeasurement.Q) annotation (Line(points={{-79,51},{
+          -30,51},{-30,48},{-30,4},{-31,4}}, color={0,0,127}));
       annotation ( preferredView="info", experiment(StopTime=1000,
         Interval=1),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
-            100,100}}),  graphics),
+            100,100}})),
     __Dymola_experimentSetupOutput,
     Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>

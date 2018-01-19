@@ -9,45 +9,23 @@ model TesterEnergyModeSelection
     annotation (Placement(transformation(extent={{-126,44},{-106,64}})));
   RoomClimate.EnergyModeSelection energyModeSelection
     annotation (Placement(transformation(extent={{-48,0},{116,62}})));
-  Sources.EnergyMode.PrescribedM_BMS prescribedM_BMS
-    annotation (Placement(transformation(extent={{-78,72},{-58,92}})));
-  Sources.Presence.PrescribedP_ACT prescribedP_ACT
-    annotation (Placement(transformation(extent={{-104,8},{-84,28}})));
-  Sources.Binary.PrescribedB_WINDOW prescribedB_WINDOW
-    annotation (Placement(transformation(extent={{-86,42},{-66,62}})));
   Modelica.Blocks.Sources.IntegerConstant SourceM_BMS(k=3)
     annotation (Placement(transformation(extent={{-116,76},{-96,96}})));
+  Utilities.Converters.IntegerToEnergyMode integerToEnergyMode
+    annotation (Placement(transformation(extent={{-76,74},{-56,94}})));
 equation
-  connect(prescribedP_ACT.P_ACT, energyModeSelection.P_ACT) annotation (Line(
-      points={{-82.1,18},{-86,18},{-86,18.6},{-31.6,18.6}},
+  connect(sourceB_WINDOW.y, energyModeSelection.B_WINDOW) annotation (Line(
+        points={{-105,54},{-76,54},{-76,31},{-31.6,31}}, color={255,0,255}));
+  connect(sourceP_ACT.y, energyModeSelection.P_ACT) annotation (Line(points={{
+          -123,16},{-84,16},{-84,18.6},{-31.6,18.6}}, color={255,0,255}));
+  connect(SourceM_BMS.y, integerToEnergyMode.u) annotation (Line(points={{-95,
+          86},{-82,86},{-82,88},{-74,88}}, color={255,127,0}));
+  connect(integerToEnergyMode.M, energyModeSelection.M_BMS) annotation (Line(
+      points={{-54.1,80},{-48,80},{-48,43.4},{-31.6,43.4}},
       color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedB_WINDOW.B_WINDOW, energyModeSelection.B_WINDOW)
-    annotation (Line(
-      points={{-64.1,52},{-58,52},{-58,31},{-31.6,31}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(sourceP_ACT.y, prescribedP_ACT.u) annotation (Line(
-      points={{-123,16},{-138,16},{-138,18},{-102,18}},
-      color={255,0,255},
-      smooth=Smooth.None));
-  connect(sourceB_WINDOW.y, prescribedB_WINDOW.u) annotation (Line(
-      points={{-105,54},{-94,54},{-94,52},{-84,52}},
-      color={255,0,255},
-      smooth=Smooth.None));
-  connect(prescribedM_BMS.M_BMS, energyModeSelection.M_BMS) annotation (Line(
-      points={{-56.1,78},{-52,78},{-52,43.4},{-31.6,43.4}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(SourceM_BMS.y, prescribedM_BMS.u) annotation (Line(
-      points={{-95,86},{-76,86}},
-      color={255,127,0},
-      smooth=Smooth.None));
+      thickness=1));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),      graphics),
+            -100},{100,100}})),
     experiment(StopTime=100),
     __Dymola_experimentSetupOutput,preferedView="Info",
     Documentation(revisions="<html>

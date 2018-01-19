@@ -4,31 +4,18 @@ model TesterControlDriveActuatorLockValvePosition
   extends Modelica.Icons.Example;
   ControlDriveActuator.ControlDriveActuatorLockValvePosition controlDriveActuatorLockValvePosition
     annotation (Placement(transformation(extent={{-24,-30},{84,26}})));
-  Sources.ActuatorSignal.PrescribedV_SET_LCK prescribedV_SET_LCK annotation (
-      Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-50,50})));
-  Sensors.SensorY sensorY
-    annotation (Placement(transformation(extent={{40,40},{60,60}})));
   Modelica.Blocks.Interaction.Show.RealValue realValue
     annotation (Placement(transformation(extent={{76,40},{96,60}})));
   Modelica.Blocks.Sources.Step sourceV_SET_LCK(height=1, startTime=200)
     annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
 equation
 
-  connect(prescribedV_SET_LCK.V_SET_LCK, controlDriveActuatorLockValvePosition.V_SET_LCK)
-    annotation (Line(
-      points={{-50,38.1},{-50,-2},{-7.8,-2}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(controlDriveActuatorLockValvePosition.Y, sensorY.Y) annotation (Line(
-        points={{29.46,26.28},{29.46,50.14},{40,50.14},{40,50}}, color={0,0,0}));
-  connect(sensorY.y, realValue.numberPort)
-    annotation (Line(points={{62,50},{74.5,50},{74.5,50}}, color={0,0,127}));
-  connect(prescribedV_SET_LCK.u, sourceV_SET_LCK.y) annotation (Line(points={{
-          -50,58},{-64,58},{-64,70},{-79,70}}, color={0,0,127}));
+  connect(sourceV_SET_LCK.y, controlDriveActuatorLockValvePosition.V_SET_LCK)
+    annotation (Line(points={{-79,70},{-50,70},{-50,-2},{-7.8,-2}}, color={0,0,
+          127}));
+  connect(realValue.numberPort, controlDriveActuatorLockValvePosition.Y)
+    annotation (Line(points={{74.5,50},{32,50},{32,26.28},{29.46,26.28}}, color=
+         {0,0,127}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),
     experiment(StopTime=1000, Interval=60),

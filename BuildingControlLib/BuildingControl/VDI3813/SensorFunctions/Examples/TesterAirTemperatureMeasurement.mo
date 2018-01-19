@@ -20,8 +20,6 @@ model TesterAirTemperatureMeasurement
   AirTemperatureMeasurementFunctions.AirTemperatureMeasurementOutdoor
     airTemperatureMeasurementOutdoor(PAR_CAL_yIntercept=2)
     annotation (Placement(transformation(extent={{0,-40},{60,-20}})));
-  Sources.Analog.PrescribedT prescribedT
-    annotation (Placement(transformation(extent={{-22,-2},{-2,18}})));
   AirTemperatureMeasurementFunctions.AirTemperatureMeasurementRoom
     airTemperatureMeasurementRoom(PAR_CAL_yIntercept=1)
     annotation (Placement(transformation(extent={{-100,-40},{-40,-20}})));
@@ -32,35 +30,23 @@ model TesterAirTemperatureMeasurement
     airTemperatureMeasurementReturn(PAR_CAL_yIntercept=3)
     annotation (Placement(transformation(extent={{-100,-80},{-40,-60}})));
 equation
-  connect(prescribedT.u, temperatureSensor.T) annotation (Line(
-      points={{-20,8},{-38,8},{-38,10},{-40,10}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(prescribedT.T, airTemperatureMeasurementOutdoor.T) annotation (
-      Line(
-      points={{-0.1,8},{30,8},{30,-20}},
-      color={0,0,0},
-      smooth=Smooth.None));
-  connect(prescribedT.T, airTemperatureMeasurementRoom.T) annotation (Line(
-      points={{-0.1,8},{8,8},{8,-16},{-64,-16},{-64,-20},{-70,-20}},
-      color={0,0,0},
-      smooth=Smooth.None));
-  connect(prescribedT.T, airTemperatureMeasurementReturn.T) annotation (
-      Line(
-      points={{-0.1,8},{-0.1,4},{8,4},{8,-16},{-16,-16},{-16,-50},{-70,-50},{
-          -70,-60}},
-      color={0,0,0},
-      smooth=Smooth.None));
-  connect(prescribedT.T, airTemperatureMeasurementSupply.T) annotation (
-      Line(
-      points={{-0.1,8},{-2,8},{-2,4},{8,4},{8,-16},{-16,-16},{-16,-56},{30,-56},
-          {30,-60}},
-      color={0,0,0},
-      smooth=Smooth.None));
   connect(temperatureSensor.port, heatCapacitor.port) annotation (Line(
       points={{-60,10},{-68,10},{-68,50},{20,50}},
       color={191,0,0},
       smooth=Smooth.None));
+
+  connect(airTemperatureMeasurementRoom.T, temperatureSensor.T) annotation (
+      Line(points={{-70,-20},{-70,-20},{-70,-10},{-20,-10},{-20,10},{-40,10}},
+        color={0,0,0}));
+  connect(airTemperatureMeasurementOutdoor.T, temperatureSensor.T) annotation (
+      Line(points={{30,-20},{30,-20},{30,-10},{-20,-10},{-20,10},{-40,10}},
+        color={0,0,0}));
+  connect(airTemperatureMeasurementReturn.T, temperatureSensor.T) annotation (
+      Line(points={{-70,-60},{-70,-50},{-20,-50},{-20,10},{-40,10},{-40,10}},
+        color={0,0,0}));
+  connect(airTemperatureMeasurementSupply.T, temperatureSensor.T) annotation (
+      Line(points={{30,-60},{30,-60},{30,-50},{-20,-50},{-20,10},{-40,10}},
+        color={0,0,0}));
       annotation ( preferredView="info",Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>
 <p>Simulation to check the behaviour of the function models of &QUOT;Air temperature measurement&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.1.5, p. 13]</a>.</p>
@@ -74,6 +60,6 @@ equation
 </ul>
 </html>"),    experiment(StopTime=1000, Interval=1),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
-            100,100}}),  graphics),
+            100,100}})),
     __Dymola_experimentSetupOutput);
 end TesterAirTemperatureMeasurement;

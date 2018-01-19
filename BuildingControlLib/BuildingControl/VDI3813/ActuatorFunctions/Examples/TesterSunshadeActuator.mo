@@ -5,30 +5,20 @@ model TesterSunshadeActuator
 
   SunshadeActuator sunshadeActuator
     annotation (Placement(transformation(extent={{-20,-80},{80,20}})));
-  Sources.Sunshade.PrescribedS_SET prescribedS_SET
-    annotation (Placement(transformation(extent={{-120,-70},{-40,10}})));
   Modelica.Blocks.Sources.Step sunshadePosition(startTime=200)
     annotation (Placement(transformation(extent={{-200,0},{-160,40}})));
   Modelica.Blocks.Sources.Constant slatAngle(k=180)
     annotation (Placement(transformation(extent={{-254,-46},{-214,-6}})));
   Modelica.Blocks.Interaction.Show.BooleanValue sunshadeMotorSignal
     annotation (Placement(transformation(extent={{60,140},{120,200}})));
-  Sensors.SensorM sensorM
-    annotation (Placement(transformation(extent={{0,60},{60,120}})));
 equation
-  connect(prescribedS_SET.S_SET, sunshadeActuator.S_SET) annotation (Line(
-      points={{-32.4,-30},{-5,-30}},
-      color={0,0,0},
-      thickness=1));
-  connect(slatAngle.y, prescribedS_SET.u[2]) annotation (Line(points={{-212,-26},
-          {-158,-26},{-112,-26}}, color={0,0,127}));
-  connect(sunshadePosition.y, prescribedS_SET.u[1]) annotation (Line(points={{
-          -158,20},{-156,20},{-156,-34},{-112,-34}}, color={0,0,127}));
-  connect(sensorM.y, sunshadeMotorSignal.activePort) annotation (Line(points={{
-          66,90},{80,90},{80,140},{40,140},{40,170},{55.5,170}}, color={255,0,
-          255}));
-  connect(sunshadeActuator.M, sensorM.M) annotation (Line(points={{29.5,20.5},{
-          29.5,46},{-32,46},{-32,90},{0,90}}, color={0,0,0}));
+  connect(sunshadeActuator.M, sunshadeMotorSignal.activePort) annotation (Line(
+        points={{29.5,20.5},{29.5,170},{54,170},{56,170},{55.5,170}}, color={0,
+          0,0}));
+  connect(sunshadePosition.y, sunshadeActuator.S_SET[1]) annotation (Line(
+        points={{-158,20},{-88,20},{-88,-30},{-12.5,-30}}, color={0,0,127}));
+  connect(slatAngle.y, sunshadeActuator.S_SET[2]) annotation (Line(points={{
+          -212,-26},{-88,-26},{-88,-30},{2.5,-30}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-260,
             -100},{100,200}})),
     experiment(StopTime=86400, Interval=60),

@@ -8,15 +8,16 @@ block AdjustTemperatureSetpoint
       functionality(PAR_T_UL=PAR_T_UL,PAR_T_LL=PAR_T_LL,strict=strict));
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.StatusAirTemperatureInput
-    T_STA "Absolute temperature difference that is currently used as setpoint."    annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
-        iconTransformation(extent={{-100,-20},{-40,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointAirTemperatureUserOutput
-    T_SETPT "New absolute temperature difference for use as setpoint."   annotation (Placement(transformation(extent={{100,60},{120,80}}),
-        iconTransformation(extent={{100,-20},{160,20}})));
-  BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.CommandAdjustTemperatureSetpointInput
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalRealInput
     CMD "Physical operation command (absolute temperature difference) for changing room air temperature."   annotation (Placement(transformation(extent={{-10,90},{10,110}}),
         iconTransformation(extent={{-20,82},{20,120}})));
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
+    T_STA "Absolute temperature difference that is currently used as setpoint."    annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
+        iconTransformation(extent={{-100,-20},{-40,20}})));
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput
+    T_SETPT "New absolute temperature difference for use as setpoint."   annotation (Placement(transformation(extent={{100,60},{120,80}}),
+        iconTransformation(extent={{100,-20},{160,20}})));
+
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Parameter
   parameter Modelica.SIunits.TemperatureDifference PAR_T_UL = 4
@@ -57,62 +58,7 @@ Documentation(info="<html>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_AdjustTemperatureSetpoint.PNG\" alt=\"docVDI3813_AdjustTemperatureSetpoint.PNG\"/> </p></td>
 </tr>
 </table>
-<p><br><h4><span style=\"color: #008000\">Input Variables</span></h4></p>
-<p><b>Tab. 1: </b>The following table presents the input variables of the function.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_STA</p></td>
-<td valign=\"top\"><p>Temperature</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.StatusAirTemperatureUserInput\">StatusAirTemperatureUser</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Absolute&nbsp;temperature&nbsp;difference&nbsp;that&nbsp;is&nbsp;currently&nbsp;used&nbsp;as&nbsp;setpoint.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>CMD</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.CommandAdjustTemperatureSetpointInput\">CommandAdjustTemperatureSetpoint</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Physical operation command (absolute temperature difference) for changing room air temperature.</p></td>
-</tr>
-</table>
-<p><br><br><h4><span style=\"color: #008000\">Output Variables</span></h4></p>
-<p><b>Tab. 2: </b>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_SETPT</p></td>
-<td valign=\"top\"><p>Temperature</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointAirTemperatureUserOutput\">SetpointAirTemperatureUser</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>New absolute temperature difference for use as setpoint. </p></td>
-</tr>
-</table>
-<p><br><br><b><span style=\"color: #008000;\">Parameter</span></b> </p>
-<p><b>Tab. 3: </b>The following table presents the parameters of the function.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_T_UL</p></td>
-<td valign=\"top\"><p>Upper limit for new air temperature setpoint.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_T_LL</p></td>
-<td valign=\"top\"><p>Lower limit for new air temperature setpoint.</p></td>
-</tr>
-</table>
+
 </html>",
         revisions="<html>
 <ul>

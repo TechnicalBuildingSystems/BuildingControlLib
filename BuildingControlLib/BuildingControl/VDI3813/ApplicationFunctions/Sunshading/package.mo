@@ -32,13 +32,13 @@ package Sunshading "Subgroup ob sunshading application functions"
 
     /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
     // Connectors
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueSwitchFunctionOnOffInput B_ON "Command to switch the function on or off (true == on / false == off)."
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput B_ON "Command to switch the function on or off (true == on / false == off)."
         annotation (Placement(transformation(extent={{-100,40},{-80,60}}),
             iconTransformation(extent={{-100,20},{-60,60}})));
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
         H_OUT "Measured outdoor illuminance in lux." annotation (Placement(transformation(extent={{-100,0},{-80,20}}),
             iconTransformation(extent={{-100,-60},{-60,-20}})));
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticOutput
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
         S_AUTO "New sunshade position." annotation (Placement(transformation(extent={{100,-10},{120,10}}),
             iconTransformation(extent={{100,-20},{140,20}})));
 
@@ -75,74 +75,7 @@ package Sunshading "Subgroup ob sunshading application functions"
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_AutomaticTwilightControl.PNG\" alt=\"docVDI3813_AutomaticTwilightControl.PNG\"/> </p></td>
 </tr>
 </table>
-<p><br><h4><span style=\"color: #008000\">Input Variables</span></h4></p>
-<p>The following table presents the input variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>B_ON</p></td>
-<td valign=\"top\"><p>Binary</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueSwitchFunctionOnOffInput\">ValueSwitchFunctionOnOff</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Command to switch the function on or off (true == on / false == off).</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>H_OUT</p></td>
-<td valign=\"top\"><p>Illuminance</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput\">ValueIlluminanceOutdoor</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Measured outdoor illuminance in lux.</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color: #008000\">Output Variables</span></h4></p>
-<p>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_AUTO</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticOutput\">CommandSunshadeAutomatic</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>New sunshade position.</p></td>
-</tr>
-</table>
-<p><br><br><b><span style=\"color: #008000;\">Parameters</span></b> </p>
-<p>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_H_ACT</p></td>
-<td valign=\"top\"><p>Sunset&nbsp;threshold&nbsp;value&nbsp;of&nbsp;outdoor&nbsp;illuminance&nbsp;in&nbsp;lux for sunblind activation.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_H_DEA</p></td>
-<td valign=\"top\"><p>Sunrise&nbsp;threshold&nbsp;value&nbsp;of&nbsp;outdoor&nbsp;illuminance&nbsp;in&nbsp;lux&nbsp;for&nbsp;sunblind&nbsp;deactivation.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_TI</p></td>
-<td valign=\"top\"><p>Hysteresis&nbsp;time&nbsp;for&nbsp;twilight&nbsp;recognition&nbsp;in&nbsp;seconds.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_S_ACT</p></td>
-<td valign=\"top\"><p>Setpoints&nbsp;for&nbsp;sun&nbsp;shade&nbsp;position&nbsp;and&nbsp;slat&nbsp;angle&nbsp;(in&nbsp;percent&nbsp;and&nbsp;degree)&nbsp;when&nbsp;sunset&nbsp;detected.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_S_DEA</p></td>
-<td valign=\"top\"><p>Setpoints&nbsp;for&nbsp;sun&nbsp;shade&nbsp;position&nbsp;and&nbsp;slat&nbsp;angle&nbsp;(in&nbsp;percent&nbsp;and&nbsp;degree)&nbsp;when&nbsp;sunrise&nbsp;detected.</p></td>
-</tr>
-</table>
+
 </html>", revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
@@ -179,13 +112,13 @@ package Sunshading "Subgroup ob sunshading application functions"
 
     /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
     // Connectors
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueSwitchFunctionOnOffInput B_ON "Command to switch the function on or off (true == on / false == off)."
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput B_ON "Command to switch the function on or off (true == on / false == off)."
         annotation (Placement(transformation(extent={{-100,40},{-80,60}}),
             iconTransformation(extent={{-100,20},{-60,60}})));
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
         H_OUT "Measured outdoor illuminance in lux." annotation (Placement(transformation(extent={{-100,0},{-80,20}}),
             iconTransformation(extent={{-100,-60},{-60,-20}})));
-      BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticOutput
+      BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
         S_AUTO "New sunshade position." annotation (Placement(transformation(extent={{100,-10},{120,10}}),
             iconTransformation(extent={{100,-20},{140,20}})));
 
@@ -222,74 +155,7 @@ package Sunshading "Subgroup ob sunshading application functions"
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_AutomaticSolarControl.PNG\" alt=\"docVDI3813_AutomaticSolarControl.PNG\"/> </p></td>
 </tr>
 </table>
-<h4><span style=\"color: #008000\">Input Variables</span></h4>
-<p>The following table presents the input variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>B_ON</p></td>
-<td valign=\"top\"><p>Binary</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Binary.ValueSwitchFunctionOnOffInput\">ValueSwitchFunctionOnOff</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Command to switch the function on or off (true == on / false == off).</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>H_OUT</p></td>
-<td valign=\"top\"><p>Illuminance</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput\">ValueIlluminanceOutdoor</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Measured outdoor illuminance in lux.</p></td>
-</tr>
-</table>
-<h4><span style=\"color: #008000\">Output Variables</span></h4>
-<p>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_AUTO</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeAutomaticOutput\">CommandSunshadeAutomatic</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>New sunshade position.</p></td>
-</tr>
-</table>
-<p><br><br><br><b><span style=\"color: #008000;\">Parameters</span></b> </p>
-<p>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_H_ACT</p></td>
-<td valign=\"top\"><p>Threshold&nbsp;value&nbsp;of&nbsp;outdoor&nbsp;illuminance&nbsp;in&nbsp;lux for sunblind activation (protection).</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_H_DEA</p></td>
-<td valign=\"top\"><p>Threshold&nbsp;value&nbsp;of&nbsp;outdoor&nbsp;illuminance&nbsp;in&nbsp;lux&nbsp;for&nbsp;sunblind&nbsp;deactivation (parking).</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_TI</p></td>
-<td valign=\"top\"><p>Hysteresis&nbsp;time&nbsp;for&nbsp;twilight&nbsp;recognition&nbsp;in&nbsp;seconds.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_S_ACT</p></td>
-<td valign=\"top\"><p>Setpoints&nbsp;for&nbsp;sun&nbsp;shade&nbsp;position&nbsp;and&nbsp;slat&nbsp;angle&nbsp;(in&nbsp;percent&nbsp;and&nbsp;degree)&nbsp;when&nbsp;sunset&nbsp;detected.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_S_DEA</p></td>
-<td valign=\"top\"><p>Setpoints&nbsp;for&nbsp;sun&nbsp;shade&nbsp;position&nbsp;and&nbsp;slat&nbsp;angle&nbsp;(in&nbsp;percent&nbsp;and&nbsp;degree)&nbsp;when&nbsp;sunrise&nbsp;detected.</p></td>
-</tr>
-</table>
+
 </html>", revisions="<html>
 <ul>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
@@ -300,6 +166,87 @@ package Sunshading "Subgroup ob sunshading application functions"
 
 
 
+  block WeatherProtection
+    "Sunshade control for unoccupied room with the aim to backup heating/cooling of the room"
+    /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
+    // Extend from PartialFunctionBlock and insert specific functionality
+    extends
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Partial.PartialFunction(
+          redeclare
+        BuildingControlLib.BuildingControl.VDI3813.ApplicationFunctions.Internal.WeatherProtectionFunctionality
+          functionality(
+          PAR_WIND=PAR_WIND,
+          PAR_FROST=PAR_FROST,
+          PAR_DEICE=PAR_DEICE,
+          PAR_PROT=PAR_PROT));
+
+    /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
+    // Parameter
+    parameter Modelica.SIunits.Velocity PAR_WIND = 0
+      "Threshold for critical wind velocity.";
+    parameter   Modelica.SIunits.Temp_K PAR_FROST = 1
+      "Threshold for critical temperatures before icing.";
+    parameter Modelica.SIunits.Time PAR_DEICE = 3600
+      "Protection time for the sunshade de-icing after cold temperatures and rain.";
+    parameter Real[2] PAR_PROT = {1,0}
+      "Sunshade position in protection mode.";
+
+    /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
+    // Connectors
+
+    Interfaces.RealInput W_ACT
+      "Measured wind velocity in m/s." annotation (Placement(transformation(
+            extent={{-100,20},{-80,40}}), iconTransformation(extent={{-100,20},{-60,
+              60}})));
+    Interfaces.RealInput T_OUT
+      "Measured outdoor air temperature in Kelvin." annotation (Placement(
+          transformation(extent={{-100,-20},{-80,0}}), iconTransformation(extent={
+              {-100,-20},{-60,20}})));
+    Interfaces.BooleanInput R_ACT "Measured precipitation."
+      annotation (Placement(transformation(extent={{-100,-60},{-80,-40}}),
+          iconTransformation(extent={{-100,-60},{-60,-20}})));
+    Interfaces.RealOutput[2] S_PROT
+      "New sunshade position." annotation (Placement(transformation(extent={{100,-20},
+              {120,0}}), iconTransformation(extent={{100,-20},{140,20}})));
+  equation
+  connect(W_ACT, functionality.W_ACT) annotation (Line(
+      points={{-90,30},{-62,30},{-62,15.2},{-30.4,15.2}},
+      color={0,0,0},
+      thickness=1));
+  connect(T_OUT, functionality.T_OUT) annotation (Line(
+      points={{-90,-10},{-64,-10},{-64,0},{-30.4,0}},
+      color={0,0,0},
+      thickness=1));
+  connect(R_ACT, functionality.R_ACT) annotation (Line(
+      points={{-90,-50},{-64,-50},{-64,-15.2},{-30.4,-15.2}},
+      color={0,0,0},
+      thickness=1));
+  connect(functionality.S_PROT, S_PROT) annotation (Line(
+      points={{45.6,0},{76,0},{76,-10},{110,-10}},
+      color={0,0,0},
+      thickness=1));
+    annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+              -100},{100,100}})),                Icon(coordinateSystem(
+            preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
+                      preferredView="info",
+  Documentation(info="<html>
+<h4><span style=\"color: #008000\">Overview</span></h4>
+<p>Block that implements function of &QUOT;Weather protection&QUOT; from VDI 3813 <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.18, p. 61 - 63]</a>. </p>
+<h4><span style=\"color: #008000\">Functional Description</span></h4>
+<p>&QUOT;The function <i>Weather protection</i> (RA-FL section 6, column 17; informative function block Figure 39) prevents damage to external sunshading equipment due to wind, rain or icing. Whereas wind velocity and rain are measured directly by means of sensors, the icing hazard is predicted indirectly through evaluation of precipitation in combination with the outdoor temperature. To this end, the application function processes the input information from the sensor functions <i>Wind velocity measurement</i>, <i>Temperature measurement</i> and <i>Precipitation detection</i> and, in case of a damage hazard, generates a positioning command for the application function <i>Priority control</i> of the sunshade.&QUOT;<a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.18, p. 61 - 63]</a></p>
+<p><b>Fig. 1: </b>&QUOT;Informative representation of the application function <i>Weather protection</i>&QUOT;, <a href=\"modelica://BuildingControlLib.UsersGuide.References\">[1, section 6.5.18, Figure 39, p. 62]</a></p>
+<table cellspacing=\"0\" cellpadding=\"2\" border=\"0\"><tr>
+<td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_WeatherProtection.PNG\" alt=\"docVDI3813_WeatherProtection.PNG\"/> </p></td>
+</tr>
+</table>
+
+</html>", revisions="<html>
+<ul>
+<li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
+</ul>
+</html>
+"));
+  end WeatherProtection;
 
           annotation(preferedView="Info", Documentation(revisions="<html>
 <ul>

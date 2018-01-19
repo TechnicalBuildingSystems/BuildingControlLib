@@ -4,24 +4,14 @@ model TesterWindVelocityMeasurement
   extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Pulse pulse(period=100)
     annotation (Placement(transformation(extent={{-100,40},{-80,62}})));
-  Sources.Analog.PrescribedW
-    prescribedPhysicalWindVelocity
-    annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
   WindVelocityMeasurement windVelocityMeasurement
     annotation (Placement(transformation(extent={{-38,0},{42,30}})));
 equation
-  connect(prescribedPhysicalWindVelocity.u, pulse.y) annotation (Line(
-      points={{-58,50},{-68,50},{-68,51},{-79,51}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(windVelocityMeasurement.W, prescribedPhysicalWindVelocity.W)
-    annotation (Line(
-      points={{2,30},{2,50},{-38.1,50}},
-      color={0,0,0},
-      smooth=Smooth.None));
+  connect(pulse.y, windVelocityMeasurement.W) annotation (Line(points={{-79,51},
+          {2,51},{2,48},{2,48},{2,30},{2,30}}, color={0,0,127}));
       annotation (preferredView="info",experiment(StopTime=1000, Interval=1),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
-            {100,100}}), graphics),
+            {100,100}})),
     __Dymola_experimentSetupOutput,
     Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>

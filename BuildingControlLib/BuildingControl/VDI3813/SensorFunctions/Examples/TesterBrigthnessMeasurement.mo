@@ -8,32 +8,18 @@ model TesterBrigthnessMeasurement
   BrightnessMeasurementFunctions.BrightnessMeasurementOutdoor
     brightnessMeasurementOutdoor
     annotation (Placement(transformation(extent={{0,-80},{60,-40}})));
-  Sources.Analog.PrescribedH
-    prescribedPhysicalIlluminance annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-10,10})));
   Modelica.Blocks.Sources.Pulse pulse(period=100)
     annotation (Placement(transformation(extent={{-78,28},{-58,50}})));
 equation
-  connect(prescribedPhysicalIlluminance.H, brightnessMeasurementOutdoor.H)
-    annotation (Line(
-      points={{-10,-1.9},{-12,-1.9},{-12,-16},{32,-16},{32,-40},{30,-40}},
-      color={0,0,0},
-      smooth=Smooth.None));
 
-  connect(prescribedPhysicalIlluminance.H, brightnessMeasurementRoom.H)
-    annotation (Line(
-      points={{-10,-1.9},{-12,-1.9},{-12,-16},{-62,-16},{-62,-40},{-70,-40}},
-      color={0,0,0},
-      smooth=Smooth.None));
-  connect(pulse.y, prescribedPhysicalIlluminance.u) annotation (Line(
-      points={{-57,39},{-10.5,39},{-10.5,18},{-10,18}},
-      color={0,0,127},
-      smooth=Smooth.None));
+  connect(pulse.y, brightnessMeasurementOutdoor.H) annotation (Line(points={{
+          -57,39},{-20,39},{-20,0},{28,0},{28,-40},{30,-40}}, color={0,0,127}));
+  connect(brightnessMeasurementRoom.H, pulse.y) annotation (Line(points={{-70,
+          -40},{-68,-40},{-68,0},{-20,0},{-20,0},{-20,39},{-38,39},{-57,39}},
+        color={0,0,0}));
       annotation ( preferredView="info", experiment(StopTime=1000, Interval=1),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
-            {100,100}}), graphics),
+            {100,100}})),
     __Dymola_experimentSetupOutput,
     Documentation(info="<html>
 <h4><span style=\"color:#008000\">Overview</span></h4>

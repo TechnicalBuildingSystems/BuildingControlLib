@@ -4,5 +4,8 @@ TesterPriorityControl
 TesterAutomaticTwilightControl
 TesterAutomaticSolarControl
 TesterAutomaticThermalControl
+TesterWeatherProtection
 TesterEnergyModeSelection
 TesterSetpointCalculation
+TesterFunctionSelection
+TesterTemperatureControl

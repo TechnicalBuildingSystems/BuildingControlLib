@@ -5,12 +5,14 @@ block PresenceDetection "Sensor function to retrieve presence from physical sens
   holdingActive=holdingActive));
  parameter Modelica.SIunits.Time PAR_HOLD=500 "Holding time in seconds for presence state, when presence has been detected.";
  parameter Boolean holdingActive=false "Flag for the presence holding process (true = holding is activated / false = holding is deactivated)";
- BuildingControlLib.BuildingControl.VDI3813.Interfaces.Physical.ValuePhysicalPresenceInput P "Physical signal of presence detection(true = presence detected/false = no presence detected)." annotation(Placement(
-  transformation(extent={{-10,90},{10,110}}),
-  iconTransformation(extent={{-20,80},{20,120}})));
- BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceSensorOutput P_AUTO "Boolean presence state in a room which comes from a sensor(true = occupied / false = unoccupied)." annotation(Placement(
-  transformation(extent={{100,60},{120,80}}),
-  iconTransformation(extent={{100,-20},{160,20}})));
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.PhysicalBooleanInput P
+    "Physical signal of presence detection(true = presence detected / false = no presence detected)."
+    annotation (Placement(transformation(extent={{-10,90},{10,110}}),
+        iconTransformation(extent={{-20,80},{20,120}})));
+  BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanOutput P_AUTO
+    "Boolean presence state in a room which comes from a sensor(true = occupied / false = unoccupied)."
+    annotation (Placement(transformation(extent={{100,60},{120,80}}),
+        iconTransformation(extent={{100,-20},{160,20}})));
 equation
   connect(P, functionality.P) annotation (Line(
       points={{0,100},{0,38}},
@@ -36,55 +38,7 @@ equation
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_PresenceDetection.png\" alt=\"docVDI3813_PresenceDetection.png\"/> </p></td>
 </tr>
 </table>
-<h4><span style=\"color:#008000\">Input Variables</span></h4>
-<p><b>Tab . 1: </b>The following table presents the input variables of the function as specified in the standard. Because in the standard is no definition of the logic level, it has been defined in this case to take the positive logic, which means &QUOT;true = presence detected&QUOT; and &QUOT;false = no presence detected&QUOT;.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>P</p></td>
-<td valign=\"top\"><p>Binary</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Physical.ValuePhysicalPresenceInput\">ValuePhysicalPresence</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Physical&nbsp;signal&nbsp;of&nbsp;presence&nbsp;detection (true = presence detected / false = no presence detected).</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color:#008000\">Output Variables</span></h4></p>
-<p><b>Tab . 2: </b>The following table presents the output variables of the function as specified in the standard. Because in the standard is no definition of the logic level, it has been defined in this case to take the positive logic, which means &QUOT;true = occupied&QUOT; and &QUOT;false = unoccupied&QUOT;.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>P_AUTO</p></td>
-<td valign=\"top\"><p>Presence</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceSensorOutput\">ValuePresenceSensor</a></p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>Boolean&nbsp;presence&nbsp;state&nbsp;in&nbsp;a&nbsp;room&nbsp;which&nbsp;comes&nbsp;from&nbsp;a&nbsp;sensor (true&nbsp;=&nbsp;occupied&nbsp;/&nbsp;false&nbsp;=&nbsp;unoccupied).</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color:#008000\">Parameters</span></h4></p>
-<p><b>Tab . 3: </b>The following table presents the parameters of the function. PAR_HOLD is specified in the standard. The parameter holdingActive is not specified in the standard. The purpose is to switch on and off the use of holding time in simulation. A positive logic is used.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_HOLD</p></td>
-<td valign=\"top\"><p>Holding time in seconds for presence state, when presence has been detected.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>holdingActive</p></td>
-<td valign=\"top\"><p>Flag for the presence holding process (true = holding is activated / false = holding is deactivated)</p></td>
-</tr>
-</table>
+
 </html>",
    revisions="<html>
 <ul>

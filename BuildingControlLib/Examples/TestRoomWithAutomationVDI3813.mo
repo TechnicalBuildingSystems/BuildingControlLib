@@ -2,147 +2,95 @@ within BuildingControlLib.Examples;
 model TestRoomWithAutomationVDI3813
   "Model which simulates a room for one day with a sun blind automation applied. Optimized for output and plotting."
   extends Modelica.Icons.Example;
-
-  BuildingControl.VDI3813.Sources.Analog.PrescribedT prescribedT
-    annotation (Placement(transformation(extent={{-414,242},{-394,262}})));
-  BuildingControl.VDI3813.Sources.Analog.PrescribedT prescribedT1
-    annotation (Placement(transformation(extent={{-416,102},{-396,122}})));
-  BuildingControl.VDI3813.Sources.Physical.PrescribedP prescribedP
-    annotation (Placement(transformation(extent={{-416,216},{-396,236}})));
-  BuildingControl.VDI3813.Sources.Physical.PrescribedB prescribedB1
-    annotation (Placement(transformation(extent={{-416,128},{-396,148}})));
-      BuildingControl.VDI3813.Sources.Presence.PrescribedP_MAN prescribedP_MAN
-    annotation (Placement(transformation(extent={{-416,184},{-396,204}})));
-  Modelica.Blocks.Sources.BooleanConstant sourceP_MAN(k=false)
-    "Source to give feedback from user that occupant is in room. if == true then occupant present."
-    annotation (Placement(transformation(extent={{-456,190},{-436,210}})));
-  BuildingControl.VDI3813.Sources.Analog.PrescribedH
-                             prescribedH
-    annotation (Placement(transformation(extent={{-416,266},{-396,286}})));
+//******************************************************************************
+  Utilities.Rooms.RoomSunshade roomSunshade
+    annotation (Placement(transformation(extent={{188,400},{-334,650}})));
   BuildingControl.VDI3813.MacroFunctions.MacroSunblind macroSunBlind(
       sourceS_AUTO_Pos(k=-1))
     annotation (Placement(transformation(extent={{-324,40},{194,286}})));
-  Utilities.Rooms.RoomSunshade roomSunshade
-    annotation (Placement(transformation(extent={{188,400},{-334,650}})));
-  BuildingControl.VDI3813.Sensors.SensorM sensorM
-    annotation (Placement(transformation(extent={{230,214},{318,260}})));
+//******************************************************************************
+  Modelica.Blocks.Sources.BooleanConstant sourceP_MAN(k=false)
+    "Source to give feedback from user that occupant is in room. if == true then occupant present."
+    annotation (Placement(transformation(extent={{-402,120},{-382,140}})));
   Modelica.Blocks.Sources.BooleanConstant sourcePresence(k=false)
     "Source to give feedback from user that occupant is in room. if == true then occupant present."
-    annotation (Placement(transformation(extent={{-466,222},{-446,242}})));
+    annotation (Placement(transformation(extent={{-444,150},{-424,170}})));
+//******************************************************************************
   Modelica.Blocks.Interfaces.RealOutput Illuminance annotation (Placement(transformation(
         extent={{-35,-35},{35,35}},
-        rotation=90,
-        origin={-507,793})));
+        rotation=0,
+        origin={437,683})));
   Modelica.Blocks.Interfaces.RealOutput PAR_H_ACT;
   Modelica.Blocks.Interfaces.BooleanOutput stHea annotation (Placement(transformation(
         extent={{-35,-35},{35,35}},
-        rotation=90,
-        origin={-395,793})));
+        rotation=0,
+        origin={435,623})));
   Modelica.Blocks.Interfaces.BooleanOutput stCoo annotation (Placement(transformation(
         extent={{-35,-35},{35,35}},
-        rotation=90,
-        origin={-347,791})));
+        rotation=0,
+        origin={437,563})));
   Modelica.Blocks.Interfaces.BooleanOutput uSun annotation (Placement(transformation(
         extent={{-35,-35},{35,35}},
-        rotation=90,
-        origin={-297,797})));
+        rotation=0,
+        origin={435,501})));
   Modelica.Blocks.Interfaces.RealOutput Ventilation annotation (Placement(transformation(
         extent={{-35,-35},{35,35}},
-        rotation=90,
-        origin={-251,795})));
+        rotation=0,
+        origin={435,443})));
   Modelica.Blocks.Interfaces.RealOutput T_Room annotation (Placement(transformation(
         extent={{-35,-35},{35,35}},
-        rotation=90,
-        origin={-203,797})));
+        rotation=0,
+        origin={437,389})));
   Modelica.Blocks.Interfaces.RealOutput T_Out annotation (Placement(transformation(
         extent={{-35,-35},{35,35}},
-        rotation=90,
-        origin={-157,799})));
+        rotation=0,
+        origin={437,323})));
   Modelica.Blocks.Interfaces.RealOutput TSetHea annotation (Placement(
         transformation(
         extent={{-35,-35},{35,35}},
-        rotation=90,
-        origin={-29,801})));
+        rotation=0,
+        origin={435,201})));
   Modelica.Blocks.Interfaces.RealOutput TSetCoo annotation (Placement(
         transformation(
         extent={{-35,-35},{35,35}},
-        rotation=90,
-        origin={-99,799})));
+        rotation=0,
+        origin={437,261})));
+
 equation
-Illuminance =roomSunshade.yIlluminance;
-PAR_H_ACT = macroSunBlind.automaticThermalControl.functionality.PAR_H_ACT;
-stHea = macroSunBlind.automaticThermalControl.functionality.heating.active;
-stCoo = macroSunBlind.automaticThermalControl.functionality.cooling.active;
-uSun =roomSunshade.uSunblind;
-Ventilation = roomSunshade.VentilationWindow.y[1];
-T_Room = macroSunBlind.airTemperatureMeasurementRoom.T_ROOM.valueAirTemperatureRoom;
-T_Out = macroSunBlind.airTemperatureMeasurementOutdoor.T_OUT.valueAirTemperatureOutdoor;
-TSetCoo = macroSunBlind.automaticThermalControl.T_SETPTS.setpointHeatCoolEnergyModes[5];
-TSetHea = macroSunBlind.automaticThermalControl.T_SETPTS.setpointHeatCoolEnergyModes[4];
+  Illuminance = roomSunshade.yIlluminance;
+  PAR_H_ACT = macroSunBlind.automaticThermalControl.functionality.PAR_H_ACT;
+  stHea = macroSunBlind.automaticThermalControl.functionality.heating.active;
+  stCoo = macroSunBlind.automaticThermalControl.functionality.cooling.active;
+  uSun =roomSunshade.uSunblind;
+  Ventilation = roomSunshade.VentilationWindow.y[1];
+  T_Room = macroSunBlind.airTemperatureMeasurementRoom.T_ROOM;
+  T_Out = macroSunBlind.airTemperatureMeasurementOutdoor.T_OUT;
+  TSetCoo = macroSunBlind.automaticThermalControl.T_SETPTS[5];
+  TSetHea = macroSunBlind.automaticThermalControl.T_SETPTS[4];
 
-  connect(sourceP_MAN.y,prescribedP_MAN. u) annotation (Line(
-      points={{-435,200},{-424,200},{-424,194},{-414,194}},
-      color={255,0,255},
-      smooth=Smooth.None));
-  connect(prescribedH.H, macroSunBlind.H) annotation (Line(
-      points={{-394.1,276},{-380,276},{-380,236.8},{-318.82,236.8}},
+  connect(macroSunBlind.M, roomSunshade.uSunblind) annotation (Line(
+      points={{208.892,170.79},{208.892,170},{226,170},{226,172},{226,172},{226,
+          196},{226,338},{226,338},{226,462.5},{161.9,462.5}},
       color={0,0,0},
-      smooth=Smooth.None));
-  connect(prescribedT.T, macroSunBlind.T) annotation (Line(
-      points={{-392.1,252},{-380,252},{-380,225.32},{-316.23,225.32}},
-      color={0,0,0},
-      smooth=Smooth.None));
-  connect(prescribedP_MAN.P_MAN, macroSunBlind.P_MAN) annotation (Line(
-      points={{-394.1,194},{-360,194},{-360,197.44},{-298.1,197.44}},
-      color={0,0,0},
-      thickness=1,
-      smooth=Smooth.None));
-  connect(prescribedP.P, macroSunBlind.P) annotation (Line(
-      points={{-395.9,226},{-380.05,226},{-380.05,213.84},{-313.64,213.84}},
-      color={0,0,0},
-      smooth=Smooth.None));
-  connect(prescribedB1.B, macroSunBlind.B) annotation (Line(
-      points={{-395.9,138},{-376,138},{-376,151.52},{-318.82,151.52}},
-      color={0,0,0},
-      smooth=Smooth.None));
-  connect(prescribedT1.T, macroSunBlind.T1) annotation (Line(
-      points={{-394.1,112},{-342,112},{-342,138.4},{-318.82,138.4}},
-      color={0,0,0},
-      smooth=Smooth.None));
-  connect(macroSunBlind.M, sensorM.M) annotation (Line(
-      points={{157.74,235.98},{204.87,235.98},{204.87,237},{230,237}},
-      color={0,0,0},
-      smooth=Smooth.None));
-
-  connect(roomSunshade.uSunblind, sensorM.y) annotation (Line(
-      points={{161.9,462.5},{254,462.5},{254,464},{346,464},{346,237},{326.8,237}},
-      color={255,0,255},
-      smooth=Smooth.None));
-
-  connect(roomSunshade.yRoomTemperature, prescribedT.u) annotation (Line(
-      points={{-360.1,586.25},{-360.1,590},{-452,590},{-452,588},{-520,588},{-520,
-          252},{-412,252}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(roomSunshade.yOutdoorAirTemperature, prescribedT1.u) annotation (Line(
-      points={{-360.1,561.25},{-360.1,560},{-518,560},{-518,112},{-414,112}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(roomSunshade.yBWindow, prescribedB1.u) annotation (Line(
-      points={{-360.1,536.25},{-360.1,536},{-518,536},{-518,140},{-414,140}},
-      color={255,0,255},
-      smooth=Smooth.None));
-  connect(roomSunshade.yIlluminance, prescribedH.u) annotation (Line(
-      points={{-360.1,611.25},{-360.1,612},{-504,612},{-504,276},{-414,276}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(sourcePresence.y, prescribedP.u) annotation (Line(
-      points={{-445,232},{-428,232},{-428,228},{-414,228}},
-      color={255,0,255},
-      smooth=Smooth.None));
+      thickness=1));
+  connect(roomSunshade.yOutdoorAirTemperature, macroSunBlind.T1) annotation (
+      Line(points={{-360.1,561.25},{-360.1,558},{-476,558},{-479.05,558},{-479.05,
+          105.6},{-311.05,105.6}}, color={0,0,127}));
+  connect(sourceP_MAN.y, macroSunBlind.P_MAN) annotation (Line(points={{-381,130},
+          {-378,130},{-378,130.2},{-311.05,130.2}}, color={255,0,255}));
+  connect(roomSunshade.yBWindow, macroSunBlind.B) annotation (Line(points={{-360.1,
+          536.25},{-360.1,536},{-458,536},{-458,180},{-311.05,180},{-311.05,179.4}},
+        color={255,0,255}));
+  connect(sourcePresence.y, macroSunBlind.P) annotation (Line(points={{-423,160},
+          {-430,160},{-430,154.8},{-311.05,154.8}}, color={255,0,255}));
+  connect(roomSunshade.yRoomTemperature, macroSunBlind.T) annotation (Line(
+        points={{-360.1,586.25},{-436,586.25},{-436,200},{-311.05,200},{-311.05,
+          204}}, color={0,0,127}));
+  connect(roomSunshade.yIlluminance, macroSunBlind.H) annotation (Line(points={{-360.1,
+          611.25},{-416,611.25},{-416,228.6},{-311.05,228.6}},        color={0,0,
+          127}));
   annotation (
-    Diagram(coordinateSystem(extent={{-600,40},{400,800}}, preserveAspectRatio=false),
-                    graphics),
+    Diagram(coordinateSystem(extent={{-600,40},{400,800}}, preserveAspectRatio=false)),
     Icon(coordinateSystem(extent={{-600,40},{400,800}})),
     experiment(
       StopTime=604800,

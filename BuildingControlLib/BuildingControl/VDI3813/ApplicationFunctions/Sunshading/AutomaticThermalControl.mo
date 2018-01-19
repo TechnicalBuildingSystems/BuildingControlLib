@@ -22,21 +22,21 @@ block AutomaticThermalControl
 
   /***   ***   ***   ***   ***   ***   ***   ***   ***   ***/
   // Connectors
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceEvaluationInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.BooleanInput
       P_ACT
     "Evaluated presence signal (true = occupied / false = unoccupied)."
       annotation (Placement(transformation(extent={{-100,40},{-80,60}}),
           iconTransformation(extent={{-100,40},{-60,60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
       H_OUT "Measured outdoor illuminance in Lux." annotation (Placement(transformation(extent={{-100,0},{-80,20}}),
           iconTransformation(extent={{-100,0},{-60,20}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.ValueAirTemperatureRoomInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput
       T_ROOM "Measured room air temperature in Kelvin." annotation (Placement(transformation(extent={{-100,-40},{-80,-20}}),
           iconTransformation(extent={{-100,-40},{-60,-20}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointHeatCoolEnergyModesInput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealInput[8]
       T_SETPTS "Array of setpoints for heating and cooling in every energy mode." annotation (Placement(transformation(extent={{-100,-80},{-80,-60}}),
           iconTransformation(extent={{-100,-80},{-60,-60}})));
-    BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeManualOutput
+    BuildingControlLib.BuildingControl.VDI3813.Interfaces.RealOutput[2]
       S_MAN "New position of sunshade." annotation (Placement(transformation(extent={{100,-10},{120,10}}),
           iconTransformation(extent={{100,-10},{140,10}})));
 
@@ -87,80 +87,7 @@ Documentation(info="<html>
 <td><p><img src=\"modelica://BuildingControlLib/Resources/Images/docVDI3813_AutomaticThermalControl.PNG\" alt=\"docVDI3813_AutomaticThermalControl.PNG\"/> </p></td>
 </tr>
 </table>
-<p><br><h4><span style=\"color: #008000\">Input Variables</span></h4></p>
-<p>The following table presents the input variables of the function as specified in the standard. </p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>P_ACT</p></td>
-<td valign=\"top\"><p>Presence</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Presence.ValuePresenceEvaluationInput\">ValuePresenceEvaluation</a> </p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Evaluated presence signal (true&nbsp;=&nbsp;occupied&nbsp;/&nbsp;false&nbsp;=&nbsp;unoccupied).</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>H_OUT</p></td>
-<td valign=\"top\"><p>Illuminance</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Illuminance.ValueIlluminanceOutdoorInput\">ValueIlluminanceOutdoor</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Measured outdoor illuminance in Lux.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_ROOM</p></td>
-<td valign=\"top\"><p>Temperature</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.ValueAirTemperatureRoomInput\">ValueAirTemperatureRoom</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Measured room air temperature in Kelvin.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>T_SETPS</p></td>
-<td valign=\"top\"><p>Temperature</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.AirTemperature.SetpointHeatCoolEnergyModesInput\">SetpointHeatCoolEnergyModes</a></p></td>
-<td valign=\"top\"><p>Input</p></td>
-<td valign=\"top\"><p>Array of setpoints for heating and cooling in every energy mode.</p></td>
-</tr>
-</table>
-<p><br><h4><span style=\"color: #008000\">Output Variables</span></h4></p>
-<p>The following table presents the output variables of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Datatype VDI3813</h4></p></td>
-<td><p align=\"center\"><h4>Semantic data type</h4></p></td>
-<td><p align=\"center\"><h4>Signal flow direction</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>S_MAN</p></td>
-<td valign=\"top\"><p>Sunshade</p></td>
-<td valign=\"top\"><p><a href=\"modelica://BuildingControlLib.BuildingControl.VDI3813.Interfaces.Sunshade.CommandSunshadeManualOutput\">CommandSunshadeManual</a> </p></td>
-<td valign=\"top\"><p>Output</p></td>
-<td valign=\"top\"><p>New sunshade position.</p></td>
-</tr>
-</table>
-<p><br><br><br><br><br><b><span style=\"color: #008000;\">Parameters</span></b> </p>
-<p>The following table presents the parameter of the function as specified in the standard.</p>
-<table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
-<td><p align=\"center\"><h4>Acronym</h4></p></td>
-<td><p align=\"center\"><h4>Description</h4></p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_H_ACT</p></td>
-<td valign=\"top\"><p>Threshold&nbsp;value&nbsp;of&nbsp;outdoor&nbsp;illuminance&nbsp;in&nbsp;lux.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_S_HEAT</p></td>
-<td valign=\"top\"><p>Heating mode setpoints for sun shade position in percent and slat angle in degree.</p></td>
-</tr>
-<tr>
-<td valign=\"top\"><p>PAR_S_COOL</p></td>
-<td valign=\"top\"><p>Cooling mode setpoints for sun shade position in percent and slat angle in degree.</p></td>
-</tr>
-</table>
+
 </html>",
         revisions="<html>
 <ul>
