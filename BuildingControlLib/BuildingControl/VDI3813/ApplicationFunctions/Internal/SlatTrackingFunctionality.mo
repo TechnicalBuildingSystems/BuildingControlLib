@@ -1,0 +1,4 @@
+within BuildingControlLib.BuildingControl.VDI3813.ApplicationFunctions.Internal;
+block SlatTrackingFunctionality
+  extends Interfaces.Partial.PartialFunctionality;
+end SlatTrackingFunctionality;

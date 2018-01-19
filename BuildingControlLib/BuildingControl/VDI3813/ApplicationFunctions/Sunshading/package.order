@@ -1,5 +1,7 @@
 PriorityControl
 AutomaticTwilightControl
 AutomaticSolarControl
+SlatTracking
+ShadowCorrection
 AutomaticThermalControl
 WeatherProtection
