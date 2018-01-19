@@ -15,6 +15,9 @@ package BuildingControlLib "Library for building control"
 
 
 
+
+
+
   annotation (version = "0.1.0", uses(AixLib(version="0.4.0"),Buildings(version="4.0.0"),
     Modelica_StateGraph2(version="2.0.2"),
     Modelica(version="3.2.2")),                                        preferredView="info",
@@ -28,8 +31,30 @@ package BuildingControlLib "Library for building control"
 </table>
 </html>", revisions="<html>
 <ul>
+<li>January 19, 2018&nbsp; by Georg Ambrosius Pe&szlig;ler:<br>Replaced semantic connectors from VDI3813 with standard type connectors.</li>
 <li>March 07, 2017&nbsp; by Georg Ferdinand Schneider &amp; Georg Ambrosius Pe&szlig;ler:<br>Implemented.</li>
 </ul>
+<ul>
+<li><i>June 23, 2004</i>
+       by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a>:<br>
+       Introduced new block connectors and adapted all blocks to the new connectors.
+       Included subpackages Continuous, Discrete, Logical, Nonlinear from
+       package ModelicaAdditions.Blocks.
+       Included subpackage ModelicaAdditions.Table in Modelica.Blocks.Sources
+       and in the new package Modelica.Blocks.Tables.
+       Added new blocks to Blocks.Sources and Blocks.Logical.
+       </li>
+<li><i>October 21, 2002</i>
+       by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a>
+       and Christian Schweiger:<br>
+       New subpackage Examples, additional components.
+       </li>
+<li><i>June 20, 2000</i>
+       by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a> and
+       Michael Tiller:<br>
+       Introduced a replaceable signal type into
+       Blocks.Interfaces.RealInput/RealOutput:
+
 </html>
 "),
   Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),

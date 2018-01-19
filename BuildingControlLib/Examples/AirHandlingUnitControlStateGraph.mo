@@ -363,8 +363,8 @@ model AirHandlingUnitControlStateGraph
     annotation (Placement(transformation(extent={{-390,170},{-370,190}})));
   Buildings.BoundaryConditions.WeatherData.Bus weaBus "Weather Data Bus"
     annotation (Placement(transformation(extent={{-360,170},{-340,190}})));
-  Buildings.Examples.VAVReheat.ThermalZones.Floor flo(redeclare package Medium =
-        MediumA, lat=lat)
+  Buildings.Examples.VAVReheat.ThermalZones.Floor flo(redeclare package Medium
+      = MediumA, lat=lat)
     "Model of a floor of the building that is served by this VAV system"
     annotation (Placement(transformation(extent={{800,280},{1128,674}})));
   Modelica.Blocks.Routing.DeMultiplex5 TRooAir

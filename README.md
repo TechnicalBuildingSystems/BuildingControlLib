@@ -22,7 +22,7 @@ The library has been tested with **Dymola 2017 FD01 64bit** and the **Microsoft 
 
 ### Version
 
-The current version 0.1.0 is a pre-release.
+The current version 1.0.0 is the first official release.
 
 ### How to cite **BuildingControlLib**
 
